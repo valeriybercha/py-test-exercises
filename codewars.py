@@ -1177,5 +1177,65 @@ def tickets(people):
                 return "NO"
     return "YES"
 
+# TASK - Write Number in Expanded Form
+
+# You will be given a number and you will need to return it as a string in Expanded Form.
+
+def expanded_form(num):
+    str_num = str(num)
+    l = []
+    count = 0
+    for i in range(len(str_num)):
+        if str_num[count] != "0":
+            l.append(str_num[count] + ("0" * (len(str_num[count:]) - 1)))
+            count += 1
+        else:
+            count += 1
+    return " + ".join(l)
 
 
+# TASK - How many lightsabers do you own?
+
+# The only person who owns lightsabers is Zach, by the way. He owns 18, which is an awesome number of 
+# lightsabers. Anyone else owns 0.
+# Note: your function should have a default parameter.
+
+def how_many_light_sabers_do_you_own(name=0):
+    return 18 if name == "Zach" else 0
+
+
+# TASK - Exclusive "or" (xor) Logical Operator
+
+# In some scripting languages like PHP, there exists a logical operator (e.g. &&, ||, and, or, etc.) called the "Exclusive Or" (hence the name of this Kata). 
+# The exclusive or evaluates two booleans. It then returns true if exactly one of the two expressions are true, false otherwise.
+
+def xor(a,b):
+    return False if (a and b) or (not a and not b) else True
+
+
+# TASK - All Star Code Challenge #18
+
+# Create a function called that accepts 2 string arguments and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+
+def str_count(strng, letter):
+    return strng.count(letter)
+
+
+# TASK - Switch it Up!
+
+# When provided with a number between 0-9, return it in words.
+
+def switch_it_up(number):
+    d = {
+        0: "Zero",
+        1: "One",
+        2: "Two",
+        3: "Three",
+        4: "Four",
+        5: "Five",
+        6: "Six",
+        7: "Seven",
+        8: "Eight",
+        9: "Nine"
+    }
+    return d[number]

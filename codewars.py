@@ -2712,7 +2712,7 @@ def areYouPlayingBanjo(name):
 #Create a function which translates a given DNA string into RNA.
 
 def dna_to_rna(dna):
-    return "".join(["U" if i is "T" else i for i in dna])
+    return "".join(["U" if i == "T" else i for i in dna])
 
 
 # TASK - Get the mean of an array
@@ -3335,3 +3335,53 @@ def arr(n=0):
 
 def warn_the_sheep(queue):
     return f"Oi! Sheep number {(len(queue) - queue.index('wolf')) - 1}! You are about to be eaten by a wolf!" if queue.index('wolf') != (len(queue)-1) else 'Pls go away and stop eating my sheep'
+
+
+# TASK - WeIrD StRiNg CaSe
+
+# Write a function toWeirdCase (weirdcase in Ruby) that accepts a string, and returns the same string with all even indexed characters in each word upper cased, and all odd indexed characters in each word 
+# lower cased. The indexing just explained is zero based, so the zero-ith index is even, therefore that character should be upper cased.
+
+def to_weird_case(string):
+    str_l = []
+    for word in string.split():
+        count = 1
+        res_letter = ""
+        for letter in word:
+            if count % 2 != 0:
+                res_letter += letter.upper()
+            else:
+                res_letter += letter.lower()
+            count += 1
+        str_l.append(res_letter)
+    return " ".join(str_l)
+
+
+# TASK - Roman Numerals Decoder
+
+# Create a function that takes a Roman numeral as its argument and returns its value 
+# as a numeric decimal integer. You don't need to validate the form of the Roman numeral.
+
+def solution(roman):
+    decoder = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+    result = int()
+    count = 0
+    res_minus = int()
+
+    for i in roman:
+        result +=  decoder[i]
+
+    for i in range(len(roman) - 1):
+        if decoder[roman[count]] < decoder[roman[count + 1]]:
+            res_minus += decoder[roman[count]] * 2
+        count += 1
+
+    return result - res_minus

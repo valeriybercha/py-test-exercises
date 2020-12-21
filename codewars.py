@@ -3362,7 +3362,7 @@ def to_weird_case(string):
 # Create a function that takes a Roman numeral as its argument and returns its value 
 # as a numeric decimal integer. You don't need to validate the form of the Roman numeral.
 
-def solution(roman):
+def solution65(roman):
     decoder = {
         "I": 1,
         "V": 5,
@@ -3377,7 +3377,7 @@ def solution(roman):
     res_minus = int()
 
     for i in roman:
-        result +=  decoder[i]
+        result += decoder[i]
 
     for i in range(len(roman) - 1):
         if decoder[roman[count]] < decoder[roman[count + 1]]:
@@ -3385,3 +3385,57 @@ def solution(roman):
         count += 1
 
     return result - res_minus
+
+
+# TASK - Sorted? yes? no? how?
+
+# Complete the method which accepts an array of integers, and returns one of the following:
+# "yes, ascending" - if the numbers in the array are sorted in an ascending order
+# "yes, descending" - if the numbers in the array are sorted in a descending order
+# "no" - otherwise
+
+def is_sorted_and_how(arr):
+    c = 0
+    l = []
+    for i in range(len(arr) - 1):
+        if (arr[c] - arr[c + 1]) < 0:
+            l.append("ascending")
+        else:
+            l.append("descending")
+        c += 1
+    print(l)
+
+    if "ascending" in l and "descending" in l:
+        return "no"
+    else:
+        return f"yes, {l[0]}"
+
+
+# TASK - Number Of Occurrences
+
+# Write a function that returns the number of occurrences of an element in an array.
+
+def number_of_occurrences(element, sample):
+    count = 0
+    for i in sample:
+        if i == element:
+            count += 1
+    return count
+
+
+# TASK - Power of two
+
+# Complete the function power_of_two/powerOfTwo (or equivalent, depending on your language)
+# that determines if a given non-negative integer is a power of two.
+
+def power_of_two(x):
+    if (x == 0):
+        return False
+    while x != 1:
+            if (x % 2 != 0):
+                return False
+            x = x // 2      
+    return True
+
+print(power_of_two(4096)) # true
+print(power_of_two(6)) # false

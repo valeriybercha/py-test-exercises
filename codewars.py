@@ -3437,5 +3437,33 @@ def power_of_two(x):
             x = x // 2      
     return True
 
-print(power_of_two(4096)) # true
-print(power_of_two(6)) # false
+
+# TASK - Most digits
+
+# Find the number with the most digits.
+# If two numbers in the argument array have the same number of digits, return the first one in the array.
+
+def find_longest(arr):
+    l = []
+    for i in arr:
+        l.append(len(str(i)))
+    return arr[l.index(max(l))]
+
+
+# TASK - Flatten
+
+# Write a function that flattens an Array of Array objects into a flat Array. Your function must only do one level of flattening.
+
+def flatten(lst):
+    l = []
+    for i in lst:
+        if len(str(i)) == 1:
+            l.append(i)
+        else:
+            for e in i:
+                l.append(e)
+    return l
+
+
+# TASK - 
+

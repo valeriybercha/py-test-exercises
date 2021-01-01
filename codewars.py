@@ -3465,5 +3465,59 @@ def flatten(lst):
     return l
 
 
-# TASK - 
+# TASK - Basic Sequence Practice
 
+# Complete the function that takes an integer n and returns a list/array of length abs(n) + 1 of the arithmetic series explained 
+# above. Whenn < 0 return the sequence with negative terms.
+
+def sum_of_n(n):
+    res_l = []
+    res = 0
+    if n < 0:
+        c = n * -1
+        for i in range(c + 1):
+            res += i
+            res_l.append(res * -1)
+    else:
+        for i in range(n + 1):
+            res += i
+            res_l.append(res)
+    return res_l
+
+
+# TASK - Thinkful - String Drills: Repeater
+
+# Write a function named repeater() that takes two arguments (a string and a number), and returns a new string where the 
+# input string is repeated that many times.
+
+def repeater(string, n):
+    return string * n
+
+
+# TASK - Leap Years
+
+# In this kata you should simply determine, whether a given year is a leap year or not
+
+def isLeapYear(year):
+    if year % 4 == 0:
+        if year % 100 != 0:
+            return True
+        elif year % 400 == 0:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+# TASK - Flatten and sort an array
+
+# Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the 
+# sorted (ascending) order.
+
+def flatten_and_sort(array):
+    res = []
+    for i in array:
+        for e in i:
+            res.append(e)
+    return sorted(res)

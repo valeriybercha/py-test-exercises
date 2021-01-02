@@ -3521,3 +3521,63 @@ def flatten_and_sort(array):
         for e in i:
             res.append(e)
     return sorted(res)
+
+
+# TASK - Number to digit tiers
+
+# Create a function that takes a number and returns an array of strings containing the number cut off at each digit.
+
+def create_array_of_tiers(n):
+    res = []
+    for i in range(len(str(n))):
+        res.append(str(n)[:i + 1])
+    return res
+
+
+# TASK - How sexy is your name?
+
+# How sexy is your name? Write a program that calculates how sexy one's name is according to the criteria below.
+
+def sexy_name(name):
+    scores = {'A': 100, 'B': 14, 'C': 9, 'D': 28, 'E': 145, 'F': 12, 'G': 3,
+              'H': 10, 'I': 200, 'J': 100, 'K': 114, 'L': 100, 'M': 25,
+              'N': 450, 'O': 80, 'P': 2, 'Q': 12, 'R': 400, 'S': 113, 'T': 405,
+              'U': 11, 'V': 10, 'W': 10, 'X': 3, 'Y': 210, 'Z': 23}
+    score = 0
+    for i in name:
+        if i != " ":
+            score += scores[i.upper()]
+        else:
+            score += 0
+
+    if score <= 60:
+        return "NOT TOO SEXY"
+    elif score in range(61, 301):
+        return "PRETTY SEXY"
+    elif score in range(301, 600):
+        return "VERY SEXY"
+    else:
+        return "THE ULTIMATE SEXIEST"
+
+
+# TASK - Who Took The Car Key?
+
+# Given an array of binary numbers, figure out and return the culprit's message to find out who took the missing car key.
+
+def who_took_the_car_key(message):
+    res = []
+    res_l = []
+    for i in message:
+        res_l.append(int(i, 2))
+    for i in res_l:
+        res.append(chr(i))
+    return "".join(res)
+
+
+# TASK - Filter Long Words
+
+# Write a function filter_long_words that takes a string sentence and an integer n.
+#Return a list of all words that are longer than n.
+
+def filter_long_words(sentence, n):
+    return [i for i in sentence.split() if len(i) > n]

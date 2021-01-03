@@ -3581,3 +3581,64 @@ def who_took_the_car_key(message):
 
 def filter_long_words(sentence, n):
     return [i for i in sentence.split() if len(i) > n]
+
+
+# TASK - JavaScript Array Filter
+
+# In Python, there is a built-in filter function that operates similarly to JS's filter. For more information on how to use this function, 
+# visit https://docs.python.org/3/library/functions.html#filter
+
+def get_even_numbers(arr):
+    return [i for i in arr if i % 2 == 0]
+
+
+# TASK - Caffeine Script
+
+# Complete the function caffeineBuzz, which takes a non-zero integer as it's one argument.
+# If the integer is divisible by 3, return the string "Java".
+# If the integer is divisible by 3 and divisible by 4, return the string "Coffee"
+# If the integer is one of the above and is even, add "Script" to the end of the string.
+# Otherwise, return the string "mocha_missing!"
+
+def caffeine_buzz(n):
+    if n % 3 == 0:
+        if n % 4 == 0:
+            if n % 2 == 0:
+                return "CoffeeScript"
+            else:
+                return "Coffee"
+        elif n % 2 == 0:
+            return "JavaScript"
+        else:
+            return "Java"
+    else:
+        return "mocha_missing!"
+
+
+# TASK - Boiled Eggs
+
+# Implement a function, which takes a non-negative integer, representing the number of 
+# eggs to boil. It must return the time in minutes (integer), which it takes to have all the eggs boiled.
+
+def cooking_time(eggs):
+    pot_capacity = eggs // 8
+    if eggs % 8 == 0:
+        return pot_capacity * 5
+    else:
+        return (pot_capacity + 1) * 5
+
+
+# TASK - Parts of a list
+
+# Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
+
+def partlist(arr):
+    res = []
+    count = 1
+    for i in range(len(arr) - 1):
+        res_one = " ".join(arr[:count])
+        res_two = " ".join(arr[count:])
+        res_final = (res_one, res_two)
+        res.append(res_final)
+        count += 1
+    return res

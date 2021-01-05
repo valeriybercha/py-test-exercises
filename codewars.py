@@ -3642,3 +3642,67 @@ def partlist(arr):
         res.append(res_final)
         count += 1
     return res
+
+
+# TASK - Area of a Circle
+
+# Complete the function circleArea so that it will return the area of a circle with the given radius. Round the returned number 
+# to two decimal places (except for Haskell). If the radius is not positive or not a number, return false.
+
+import math
+
+def circle_area(r):
+    if not isinstance(r, str):
+        if r > 0:
+            return round(math.pi * r ** 2, 2)
+        else:
+            return False
+    else:
+        return False
+
+
+# TASK - Complete The Pattern #1 
+
+# You have to write a function pattern which returns the following Pattern(See Pattern & Examples) upto n number of rows. 
+
+def pattern(n):
+    res = []
+    for i in range(1, n + 1):
+        res.append(str(i) * i)
+    return "\n".join(res)
+
+
+# TASK - Mexican Wave
+
+# In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a 
+# string and you must return that string in an array where an uppercase letter is a person standing up. 
+
+def wave(people):
+    res = []
+    for i in range(len(people)):
+        if i == 0:
+            res.append(people[0].upper() + people[1:])
+        elif i == len(people) - 1:
+            res.append(people[:len(people) - 1] + people[-1].upper())
+        else:
+            res.append(people[:i] + people[i].upper() + people[i + 1:])
+    for i in range(len(people)):
+        if people in res:
+            res.remove(people)
+    return res
+
+
+# TASK - Extract the domain name from a URL
+
+# Write a function that when given a URL as a string, parses out just the domain name and returns it as a string.
+
+def domain_name(url):
+    res = []
+    for i in url.split("."):
+        res.append(i)
+    if "www" in url:
+        return res[1]
+    elif "//" in url:
+        return res[0][res[0].find("//") + 2:]
+    else:
+        return res[0]

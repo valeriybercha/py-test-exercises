@@ -3706,3 +3706,45 @@ def domain_name(url):
         return res[0][res[0].find("//") + 2:]
     else:
         return res[0]
+
+
+# TASK - Simple Fun #1: Seats in Theater
+
+# Given the total number of rows and columns in the theater (nRows and nCols, respectively), and the 
+# row and column you're sitting in, return the number of people who sit strictly behind you and in your column or to the 
+# left, assuming all seats are occupied.
+
+def seats_in_theater(tot_cols, tot_rows, col, row):
+    return (tot_rows - row) * (tot_cols - col + 1)
+
+
+# TASK - Sort and Star
+
+# You will be given a vector of strings. You must sort it alphabetically (case-sensitive, and based on the ASCII values of the chars) 
+# and then return the first value.
+# The returned value must be a string, and have "***" between each of its letters.
+
+def two_sort(array):
+    return "***".join([i for i in sorted(array)[0]])
+
+
+# TASK - Surface Area and Volume of a Box
+
+# Write a function that returns the total surface area and volume of a box as an array: [area, volume]
+
+def get_size(w,h,d):
+    return [(2 * w * h + 2 * h * d + 2 * w * d), (w * h * d)]
+
+
+# TASK - Dollars and Cents
+
+# 39.99 becomes $39.99
+
+def format_money(amount):
+    if isinstance(amount, int):
+        return f"${amount}.00"
+    else:
+        if str(amount)[-2] == ".":
+            return f"${round(amount, 2)}0"
+        else:
+            return f"${round(amount, 2)}"

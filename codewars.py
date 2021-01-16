@@ -3748,3 +3748,116 @@ def format_money(amount):
             return f"${round(amount, 2)}0"
         else:
             return f"${round(amount, 2)}"
+    
+
+# TASK - Reverse List Order
+
+# In this kata you will create a function that takes in a list and returns a list with the reverse order.
+
+def reverse_list(l):
+  return l[::-1]
+
+
+# TASK - Grasshopper - Debug
+
+# Your friend is traveling abroad to the United States so he wrote a program to convert fahrenheit to celsius. 
+# Unfortunately his code has some bugs.
+
+def weather_info (temp):
+    c = convert_to_celsius(temp)
+    if c < 0:
+        return (str(c) + " is freezing temperature")
+    else:
+        return (str(c) + " is above freezing temperature")
+    
+def convert_to_celsius(temperature):
+    var_celsius = (temperature - 32) * (5/9)
+    return var_celsius
+
+
+# TASK - Sleigh Authentication
+
+# Your task is to implement the authenticate() method of the sleigh, which takes the name of the person, who wants to 
+# board the sleigh and a secret password. If, and only if, the name equals "Santa Claus" and the password is 
+# "Ho Ho Ho!" (yes, even Santa has a secret password with uppercase and lowercase letters and special characters :D), 
+# the return value must be true. Otherwise it should return false.
+ 
+class Sleigh(object):
+    
+    def authenticate(self, name, password):
+        if ("Santa" or "Clause") in name:
+            if "Ho" in password:
+                if name == "Santa Claus" and password == "Ho Ho Ho!":
+                    return True
+                else:
+                    return False
+        else:
+            return False
+
+
+# TASK - Well of Ideas - Easy Version
+
+# In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are 
+# one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no 
+# good ideas, as is often the case, return 'Fail!'.
+
+def well(x):
+    count = 0
+    for i in x:
+        if i == "good":
+            count += 1
+    if count > 2:
+        return "I smell a series!"
+    elif count in range(1, 3):
+        return "Publish!"
+    else:
+        return "Fail!"
+
+
+# TASK - Student's Final Grade
+
+# Create a function finalGrade, which calculates the final grade of a student depending on two parameters: a 
+# grade for the exam and a number of completed projects.
+
+def final_grade(exam, projects):
+    if exam > 90 or projects > 10:
+            return 100
+    elif exam in range(76, 91):
+        if projects in range(2, 5):
+            return 75
+        elif projects in range(5, 11):
+            return 90
+        else:
+            return 0
+    elif exam in range(51, 76):
+        if projects in range(2, 11):
+            return 75
+        else:
+            return 0
+    else:
+        return 0
+
+
+# TASK - Elapsed Seconds
+
+# Complete the function so that it returns the number of seconds that have elapsed between the start and end times given. 
+
+from datetime import datetime
+
+def elapsed_seconds(start, end):
+    s = start.timetuple()
+    e = end.timetuple()
+    return ((e[0] - s[0]) * 31536000) + ((e[1] - s[1]) * 2592000) + ((e[2] - s[2]) * 86400) + ((e[3] - s[3]) * 3600) + ((e[4] - s[4]) * 60) + (e[5] - s[5])
+
+
+# TASK - Refactored Greeting
+
+# Refactor the following code so that it belongs to a Person class/object. Each Person instance will have a greet 
+# method. The Person instance should be instantiated with a name so that it no longer has to be passed into each greet method call. 
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+    
+    def greet(self, your_name):
+        return "Hello %s, my name is %s" % (your_name, self.name)

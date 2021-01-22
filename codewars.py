@@ -3861,3 +3861,486 @@ class Person:
     
     def greet(self, your_name):
         return "Hello %s, my name is %s" % (your_name, self.name)
+
+
+# TASK - Grasshopper - Debug sayHello
+
+#The starship Enterprise has run into some problem when creating a program to greet everyone as they come aboard. It 
+# is your job to fix the code and get the program working again!
+
+def say_hello(name):
+    return f"Hello, {name}"
+
+
+# TASK - Function 2 - squaring an argument
+
+# Now you have to write a function that takes an argument and returns the square of it.
+
+def square(n):
+    return n * n
+
+
+# TASK - Will there be enough space?
+
+# You have to write a function that accepts three parameters:
+# cap is the amount of people the bus can hold excluding the driver.
+# on is the number of people on the bus.
+# wait is the number of people waiting to get on to the bus.
+# If there is enough space, return 0, and if there isn't, return the number of passengers he can't take.
+
+def enough(cap, on, wait):
+    return 0 if on + wait <= cap else (on + wait) - cap
+
+
+# TASK - Area or Perimeter
+
+# You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.
+# If it is a square, return its area. If it is a rectangle, return its perimeter.
+
+def area_or_perimeter(l , w):
+    return l * w if l == w else l * 2 + w * 2
+
+
+# TASK - Grasshopper - If/else syntax debug
+
+# While making a game, your partner, Greg, decided to create a function to check if the user is still alive called 
+# checkAlive/CheckAlive/check_alive. Unfortunately, Greg made some errors while creating the function.
+
+def check_alive(health):
+    return health > 0
+
+
+# TASK - Squash the bugs
+
+# Simple challenge - eliminate all bugs from the supplied code so that the code runs and outputs the expected value. 
+# Output should be the length of the longest word, as a number.
+
+def find_longest(string):
+    spl = string.split()
+    print(spl)
+    longest = 0
+    i=0
+    while i < len(spl):
+        if (len(spl[i]) > longest): longest = len(spl[i])
+        i += 1
+    return longest
+
+
+# TASK - Regular Ball Super Ball
+
+# Create a class Ball.
+# Ball objects should accept one argument for "ball type" when instantiated.
+# If no arguments are given, ball objects should instantiate with a "ball type" of "regular."
+
+class Ball(object):
+    
+    def __init__(self, ball_type = "regular"):
+        self.ball_type = ball_type
+
+
+# TASK - Round up to the next multiple of 5
+
+# Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+
+def round_to_next5(n):
+    count = n
+    for i in range(n, n + 100):
+        if count % 5 == 0:
+            return count
+            break
+        else:
+            count += 1
+
+
+# TASK - Find the middle element
+
+# As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical 
+# element that lies between the other two elements.
+
+def gimme(input_array):
+    l = [max(input_array), min(input_array)]
+    return [input_array.index(i) for i in input_array if i not in l][0]
+
+
+# TASK - Building Strings From a Hash
+
+# Complete the solution so that it takes the object (JavaScript/CoffeeScript) or hash (ruby) passed in and generates a human 
+# readable string from its key/value pairs.
+# The format should be "KEY = VALUE". Each key/value pair should be separated by a comma except for the last pair.
+
+def solution(pairs):
+    l = []
+    for k, v in pairs.items():
+        l.append(f"{k} = {v}")
+    return ",".join(sorted(l))
+
+
+# TASK - Greet Me
+
+# Write a method that takes one argument as name and then greets that name, capitalized and ends with an exclamation point.
+
+def greet(name): 
+    return f"Hello {name.title()}!"
+
+
+# TASK - Predict your age!
+
+# My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
+
+import math
+
+def predict_age(age_1, age_2, age_3, age_4, age_5, age_6, age_7, age_8):
+    l = [age_1, age_2, age_3, age_4, age_5, age_6, age_7, age_8]
+    res_l = []
+    for i in l:
+        res_l.append(i * i)
+    return int(math.sqrt(sum(res_l)) // 2)
+
+
+# TASK - Fix string case
+
+# n this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert 
+# that string to either lowercase only or uppercase only based on:
+# make as few changes as possible.
+# if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+
+def solve(s):
+    upper = 0
+    lower = 0
+    for i in s:
+        if i.islower():
+            lower += 1
+        else:
+            upper += 1
+    if upper > lower:
+        return s.upper()
+    elif upper < lower:
+        return s.lower()
+    else:
+        return s.lower()
+
+
+# TASK - Take a Number And Sum Its Digits Raised To The Consecutive Powers And ....¡Eureka!!
+
+# The number 89 is the first integer with more than one digit that fulfills the property partially introduced 
+# in the title of this kata. What's the use of saying "Eureka"? Because this sum gives the same number.
+
+def sum_dig_pow(a, b):
+    print(a, b)
+    res_l = []
+    for i in range(a, b + 1):
+        bp = [int(b) for b in str(i)]
+        bp_res = 0
+        count = 1
+        for a in bp:
+            bp_res += (a ** count)
+            count += 1
+        if i == bp_res:
+            res_l.append(i)
+    return res_l
+
+
+# TASK - Count characters in your string
+
+# The main idea is to count all the occurring characters in a string. If you have a string like aba, then the 
+# result should be {'a': 2, 'b': 1}.
+
+def count(string):
+    res_dict = {}
+    for i in string:
+        res_dict[i] = string.count(i)
+    return res_dict
+
+
+# TASK - CamelCase Method
+
+# Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or camelCase in Java) for strings. 
+# All words must have their first letter capitalized without spaces.
+
+def camel_case(string):
+    l = []
+    for i in string.split():
+        l.append(i.capitalize())
+    return "".join(l)
+
+
+# TASK - Thinkful - Logic Drills: Traffic light
+
+# You're writing code to control your town's traffic lights. You need a function to handle each change 
+# from green, to yellow, to red, and then to green again.
+
+def update_light(current):
+    if current == "green":
+        return "yellow"
+    elif current == "yellow":
+        return "red"
+    elif current == "red":
+        return "green"
+
+
+# TASK - Quarter of the year
+
+# Given a month as an integer from 1 to 12, return to which quarter of the year it belongs as an integer number.
+
+def quarter_of(month):
+    if month <= 3:
+        return 1
+    elif month <= 6:
+        return 2
+    elif month <= 9:
+        return 3
+    else:
+        return 4
+
+
+# TASK - No zeros for heros
+
+# Numbers ending with zeros are boring.
+# They might be fun in your world, but not here.
+# Get rid of them. Only the ending ones.
+
+def no_boring_zeros(n):
+    s = []
+    if n == 0:
+        return 0
+    else:
+        for i in str(n):
+            s.append(i)
+        c = -1
+        if s[c] == "0":
+            while s[c] == "0":
+                c += -1
+            r = str(n)
+            return int(r[:c + 1])
+        else:
+            return n
+
+
+# TASK - Filter out the geese
+
+# Write a function, gooseFilter / goose-filter / goose_filter /GooseFilter, that takes an array of 
+# strings as an argument and returns a filtered array containing the same elements but with the 'geese' removed.
+
+geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+
+def goose_filter(birds):
+    return [i for i in birds if i not in geese]
+
+
+# TASK - Check the exam
+
+# The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The 
+# second one contains a student's submitted answers.
+# The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for 
+# each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
+
+def check_exam(arr1, arr2):
+    score = 0
+    for i in range(len(arr1)):
+        if arr1[i] == arr2[i]:
+            score += 4
+        elif arr1[i] != arr2[i]:
+            if arr1[i] == "" or arr2[i] == "":
+                score += 0
+            else:
+                score -= 1
+    if score <= 0:
+        return 0
+    else:
+        return score
+
+
+# TASK - Get Nth Even Number
+
+# Return the Nth Even Number
+
+def nth_even(n):
+    return 2 * (n - 1)
+
+
+# TASK - Is this my tail?
+
+# Some new animals have arrived at the zoo. The zoo keeper is concerned that perhaps the animals do not have the 
+# right tails. To help her, you must correct the broken function to make sure that the second argument (tail), is the same 
+# as the last letter of the first argument (body) - otherwise the tail wouldn't fit!
+
+def correct_tail(body, tail):
+    return body[-1] == tail
+
+
+# TASK - Capitalization and Mutability
+
+# Unfortunately, they have now left and the code they gave you doesn't work. Fix the helper function they wrote so that it works 
+# as intended (i.e. make the first character in the string "word" upper case).
+
+def capitalize_word(word):
+    return word.capitalize()
+
+
+# TASK - Plural
+
+# We need a simple function that determines if a plural is needed or not. It should take a number, and return true if a plural 
+# should be used with that number or false if not. This would be useful when printing out a string such as 5 minutes, 14 apples, 
+# or 1 sun. 
+
+def plural(n):
+    return n != 1
+
+
+# TASK - Grasshopper - Check for factor
+
+# This function should test if the factor is a factor of base.
+# Return true if it is a factor or false if it is not.
+
+def check_for_factor(base, factor):
+    return base % factor == 0
+
+
+# TASK - Grasshopper - Terminal game move function
+
+# In this game, the hero moves from left to right. The player rolls the dice and moves the number of spaces indicated by 
+# the dice two times.
+
+def move(position, roll):
+    return roll * 2 + position
+
+
+# TASK - Holiday VIII - Duty Free
+
+# The purpose of this kata is to work out just how many bottles of duty free whiskey you would have to buy such that the saving 
+# over the normal high street price would effectively cover the cost of your holiday. 
+
+def duty_free(price, discount, holiday_cost):
+    return holiday_cost // ((price * ((discount / 100) + 1)) - price)
+
+
+# TASK - 101 Dalmatians - squash the bugs, not the dogs!
+
+# By repairing the function provided, you will find out exactly how you should respond, depending on the number of 
+# dogs he has.
+
+def how_many_dalmatians(n):
+    dogs = ["Hardly any", "More than a handful!", "Woah that's a lot of dogs!", "101 DALMATIONS!!!"]
+    if n <= 10:
+        return dogs[0]
+    elif n <= 50:
+        return dogs[1]
+    elif n == 101:
+        return dogs[3]
+    else:
+        return dogs[2]
+
+
+# TASK - Palindrome Strings
+
+# A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward. 
+# This includes capital letters, punctuation, and word dividers.
+
+def is_palindrome(string):
+    rev = str(string)[::-1]
+    return int(rev) == string if type(string) == int else rev == string
+
+
+# TASK - get character from ASCII Value
+
+# Write a function which takes a number and returns the corresponding ASCII char for that value
+
+def get_char(c):
+    return chr(c)
+
+
+# TASK - Simple validation of a username with regex
+
+# Write a simple regex to validate a username. Allowed characters are:
+# lowercase letters,
+# numbers,
+# underscore
+# Length should be between 4 and 16 characters (both included).
+
+import re
+
+def validate_usr(username):
+    res = re.match("^[a-z0-9_]{4,16}$", username)
+    if res:
+        return True
+    else:
+        return False
+
+
+# TASK - Grasshopper - Terminal game combat function
+
+# Create a combat function that takes the player's current health and the amount of damage recieved, and returns 
+# the player's new health. Health can't be less than 0.
+
+def combat(health, damage):
+    return 0 if (health - damage) < 0 else health - damage
+
+
+# TASK - Exclamation marks series #11: Replace all vowel to exclamation mark in the sentence
+
+# Replace all vowel to exclamation mark in the sentence. aeiouAEIOU is vowel.
+
+def replace_exclamation(s):
+    vowels = "aeiouAEIOU"
+    res = []
+    for i in s:
+        if i in vowels:
+            res.append("!")
+        else:
+            res.append(i)
+    return "".join(res)
+
+
+# TASK - To square(root) or not to square(root)
+
+#To square(root) or not to square(root)
+# Write a method, that will get an integer array as parameter and will process every number from this array.
+
+import math
+
+def square_or_square_root(arr):
+    res = []
+    for i in arr:
+        if int(math.sqrt(i)) ** 2 == i:
+            res.append(int(math.sqrt(i)))
+        else:
+            res.append(i ** 2)
+    return res
+
+
+# TASK - Printing Array elements with Comma delimiters
+
+def print_array(arr):
+    return f'{",".join(str(i) for i in arr)}'
+
+
+# TASK - Sum of Triangular Numbers
+
+# Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
+
+def sum_triangular_numbers(n):
+    count = 0
+    res = 0
+    for i in range(1, n+1):
+        count += i
+        res += count
+    return res
+
+
+# TASK - Sum of Minimums!
+
+# Given a 2D list of size m * n. Your task is to find the sum of minimum value in each row.
+
+def sum_of_minimums(numbers):
+    count = 0
+    for i in numbers:
+        count += min(i)
+    return count
+
+
+# TASK - Form The Largest 
+
+# Given a number , Return _The Maximum number _ could be formed from the digits of the number given . 
+
+def max_number(n):
+    return int("".join(sorted(i for i in str(n))[::-1]))

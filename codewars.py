@@ -4344,3 +4344,126 @@ def sum_of_minimums(numbers):
 
 def max_number(n):
     return int("".join(sorted(i for i in str(n))[::-1]))
+
+
+# TASK - Cat years, Dog years
+
+# Cat Years
+# 15 cat years for first year
+# +9 cat years for second year
+# +4 cat years for each year after that
+# Dog Years
+# 15 dog years for first year
+# +9 dog years for second year
+# +5 dog years for each year after that
+
+def human_years_cat_years_dog_years(human_years):
+    if human_years == 1:
+        return [human_years, human_years * 15, human_years * 15]
+    elif human_years == 2:
+        return[human_years, 15 + 9, 15 + 9]
+    else:
+        return [human_years, 15 + 9 + ((human_years - 2) * 4), 15 + 9 + ((human_years - 2) * 5)]
+
+
+# TASK - Remove duplicates from list
+
+# Define a function that removes duplicates from an array of numbers and returns it as a result.
+# The order of the sequence has to stay the same.
+
+def distinct(seq):
+    res_d = dict()
+    for i in seq:
+        res_d[i] = seq.count(i)
+    res = []
+    for i in res_d:
+        res.append(i)
+    return res
+
+
+# TASK - L1: Bartender, drinks!
+
+# Complete the function that receives as input a string, and produces outputs accordingly
+
+def get_drink_by_profession(param):
+    if param.title() == "Jabroni":
+        return "Patron Tequila"
+    elif param.title() == "School Counselor":
+        return "Anything with Alcohol"
+    elif param.title() == "Programmer":
+        return "Hipster Craft Beer"
+    elif param.title() == "Bike Gang Member":
+        return "Moonshine"
+    elif param.title() == "Politician":
+        return "Your tax dollars"
+    elif param.title() == "Rapper":
+        return "Cristal"
+    else:
+        return "Beer"
+
+
+# TASK - noobCode 01: SUPERSIZE ME.... or rather, this integer! 
+
+# Write a function that rearranges an integer into its largest possible value. 
+
+def super_size(n):
+    return int("".join(sorted(str(n))[::-1]))
+
+
+# TASK - Reversing Words in a String
+
+# You need to write a function that reverses the words in a given string. A word can also fit an empty string.
+
+def reverse(st):
+    res = []
+    l = st.split()
+    for i in l:
+        x = i.replace(" ", "")
+        res.append(x)
+    return " ".join(res[::-1])
+
+
+# TASK - Basic Training: Add item to an Array
+
+# Add the value "codewars" to the websites array.
+# After your code executes the websites array should == ["codewars"]
+# The websites array has already been defined for you
+
+websites = []
+websites.append("codewars")
+
+
+# TASK - Swap Values
+
+# I would like to be able to pass an array with two elements to my swapValues function to swap the values.
+# However it appears that the values aren't changing.
+
+def swap_values(args): 
+    [args[0], args[1]] = [args[1], args[0]]
+
+
+# TASK - Training JS #7: if..else and ternary operator
+
+# Complete function saleHotdogs/SaleHotDogs/sale_hotdogs, function accept 1 parameters:n, n is 
+# the number of customers to buy hotdogs, different numbers have different prices (refer to the following table), 
+# return a number that the customer need to pay how much money.
+
+def sale_hotdogs(n):
+    if n < 5:
+        return n * 100
+    elif n >= 5 and n < 10:
+        return n * 95
+    elif n >= 10:
+        return n * 90
+
+
+# TASK - 5 without numbers !!
+
+# Write a function that always returns 5
+# Sounds easy right? Just bear in mind that you can't use any of the following characters: 0123456789*+-/
+
+import math
+
+def unusual_five():
+    l = ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "b"]
+    return math.sqrt(len(l))

@@ -4467,3 +4467,64 @@ import math
 def unusual_five():
     l = ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "b"]
     return math.sqrt(len(l))
+
+
+# TASK - Twice as old
+
+# Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old).
+
+def twice_as_old(dad_years_old, son_years_old):
+    return dad_years_old - son_years_old * 2 if (son_years_old * 2) < dad_years_old else son_years_old * 2 - dad_years_old
+
+
+# TASK - Difference of Volumes of Cuboids
+
+# In this simple exercise, you will create a program that will take two lists of integers, a and b. Each list will consist 
+# of 3 positive integers above 0, representing the dimensions of cuboids a and b. You must find the difference of the cuboids' 
+# volumes regardless of which is bigger.
+
+def find_difference(a, b):
+    res_a = 1
+    for i in a:
+        res_a *= i
+    res_b = 1
+    for i in b:
+        res_b *= i
+    return res_a - res_b if res_a > res_b else res_b - res_a
+
+
+# TASK - Hex to Decimal
+
+# Complete the function which converts hex number (given as a string) to a decimal number.
+
+def hex_to_dec(s):
+    return int(s, 16)
+
+
+# TASK - Kata Example Twist
+
+# Add the value "codewars" to the array websites/Websites 1,000 times.
+
+websites = []
+for i in range(1000):
+    websites.append("codewars")
+
+
+# TASK - Smallest unused ID
+
+# You've got much data to manage and of course you use zero-based and non-negative ID's to make each data item unique!
+
+def next_id(arr):
+    if len(arr)> 0:
+        l = [i for i in range(0, max(arr) + 1)]
+        print(arr)
+        print(l)
+        res = []
+        for i in l:
+            if i not in arr:
+                res.append(i)
+            else:
+                res.append(max(arr) + 1)
+        return min(res)
+    else:
+        return 0

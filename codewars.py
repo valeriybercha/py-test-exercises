@@ -4528,3 +4528,62 @@ def next_id(arr):
         return min(res)
     else:
         return 0
+    
+
+# TASK - Averages of numbers
+
+# Get the averages of these numbers
+# Write a method, that gets an array of integer-numbers and return an array of the averages of each integer-number and 
+# his follower, if there is one.
+
+def averages(arr):
+    if arr != None:
+        if len(arr) > 1:
+            c = 0
+            res = []
+            for i in range(len(arr) - 1):
+                x = (arr[c] + arr[c + 1]) / 2
+                if x == int(x):
+                    res.append(int(x))
+                else:
+                    res.append(x)
+                c += 1
+            return res
+        else:
+            return []
+    else:
+        return []
+
+
+# TASK - Find the nth Digit of a Number
+
+# Complete the function that takes two numbers as input, num and nth and return the nth digit of num (counting from right to left).
+
+def find_digit(num, nth):
+    if nth > 0:
+        return int([i for i in str(abs(num))[::-1]][nth - 1]) if len(str(num)) >= nth else 0
+    else:
+        return -1
+
+
+# TASK - Ordered Count of Characters
+
+# Count the number of occurrences of each character and return it as a list of tuples in order of appearance. For empty 
+# output return an empty list.
+
+def ordered_count(inp):
+    res = []
+    res_d = {}
+    for i in inp:
+        res_d[i] = inp.count(i)
+    for i in res_d:
+        res.append((i, res_d[i]))
+    return res
+
+
+# TASK - Making Copies
+
+# Write a function that takes a list (in Python) or array (in other languages) of numbers, and makes a copy of it.
+
+def copy_list(l):
+    return [i for i in l]

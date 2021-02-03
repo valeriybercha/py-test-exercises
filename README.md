@@ -7,3 +7,4 @@ The best way of learning something is practising. Some of my test exercises whil
 * [Codewars](https://github.com/valeriybercha/py-test-exercises/blob/master/codewars.py)
 * [HackerRank](https://github.com/valeriybercha/py-test-exercises/blob/master/hackerRank_python.py)
 * [Microsoft Learn](https://github.com/valeriybercha/py-test-exercises/tree/master/msft-learn)
+* [Edabit](https://github.com/valeriybercha/py-test-exercises/blob/master/edabit.py)

@@ -47,3 +47,77 @@ def find_perimeter(l, w):
 def convert(min):
     return min * 60
 
+
+# TASK - Area of a Triangle
+
+# Write a function that takes the base and height of a triangle and return its area.
+
+def tri_area(base, height):
+    return (base * height) / 2
+
+
+# TASK - Convert Hours into Seconds
+
+# Write a function that converts hours into seconds.
+
+def how_many_seconds(hours):
+    return hours * 60 * 60
+
+
+# TASK - Maximum Edge of a Triangle
+
+# Create a function that finds the maximum range of a triangle's third edge, where 
+# the side lengths are all integers.
+
+def next_edge(side1, side2):
+    return (side1 + side2) - 1
+
+
+# TASK - Return the Remainder from Two Numbers
+
+# There is a single operator in Python, capable of providing the remainder of a 
+# division operation. Two numbers are passed as parameters. The first parameter 
+# divided by the second parameter will have a remainder, possibly zero. Return that value.
+
+def remainder(num1, num2):
+    return num1 % num2
+
+
+# TASK - Return a String as an Integer
+
+# Create a function that takes a string and returns it as an integer.
+
+def string_int(str):
+    return int(str)
+
+
+# TASK - Convert Age to Days
+
+# Create a function that takes the age and return the age in days.
+
+def calc_age(num):
+    return num * 365
+
+
+# TASK - Power Calculator
+
+# Create a function that takes voltage and current and returns the calculated power.
+
+def circuit_power(voltage, current):
+    return voltage * current
+
+
+# TASK - Sum of Polygon Angles
+
+# Given an n-sided regular polygon n, return the total sum of internal angles (in degrees).
+
+def sum_polygon(n):
+    return (n - 2) * 180
+
+
+# TASK - To the Power of _____
+
+# Create a function that takes a base number and an exponent number and returns the calculation
+
+def calculate_exponent(base, exponent):
+    return base ** exponent

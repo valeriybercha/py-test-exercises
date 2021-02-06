@@ -5,6 +5,7 @@
 * [Take your first steps with Python](https://github.com/valeriybercha/py-test-exercises/blob/master/msft-learn/python-first-steps.py)
 * [Learn Python basics with Wonder Woman](https://github.com/valeriybercha/py-test-exercises/blob/master/msft-learn/python-basics-with-wonder-woman.py)
 * [Discover the role of Python in space exploration](https://github.com/valeriybercha/py-test-exercises/blob/master/msft-learn/ArtemisRock.ipynb)
+* [Classify Space Rocks](https://github.com/valeriybercha/py-test-exercises/tree/master/msft-learn/ClassifyingSpaceRocks)
 
 My badges so far:
 

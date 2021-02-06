@@ -121,3 +121,149 @@ def sum_polygon(n):
 
 def calculate_exponent(base, exponent):
     return base ** exponent
+
+
+# TASK - Word without First Character
+
+# Create a function that takes a word and returns the new word without including the first character.
+
+def new_word(str):
+    return str[1:]
+
+
+# TASK - Reverse the Case
+
+# Given a string, create a function to reverse the case. All lower-cased letters should be upper-cased, and vice versa.
+
+def reverse_case(message):
+    res = []
+    for i in message:
+        if i.islower():
+            res.append(i.upper())
+        else:
+            res.append(i.lower())
+    return "".join(res)
+
+
+# TASK - Hiding the Card Number
+
+# Write a function that takes a credit card number and only displays the last four characters. The rest of the 
+# card number must be replaced by ************.
+
+def card_hide(card):
+    return "*" * len(card[:-4]) + card[-4:]
+
+
+# TASK - Alphabet Soup
+
+# Create a function that takes a string and returns a string with its letters in alphabetical order.
+
+def alphabet_soup(word):
+    return "".join(sorted([i for i in word]))
+
+
+# TASK - Letters Only
+
+# Write a function that removes any non-letters from a string, returning a well-known film title.
+
+def letters_only(str):
+    l = [chr(i) for i in range(97, 122)]
+    res = []
+    for i in str:
+        if i.lower() in l:
+            res.append(i)
+    return "".join(res)
+
+
+# TASK - Sort Numbers in Descending Order
+
+# reate a function that takes any non-negative number as an argument and returns it with its digits in descending order. 
+# Descending order is when you sort from highest to lowest.
+
+def sort_descending(num):
+    return int("".join(sorted([i for i in str(num)])[::-1]))
+
+
+# TASK - Return the Middle Character(s) of a String
+
+# Create a function that takes a string and returns the middle character(s). If the word's length is odd, return the middle
+# character. If the word's length is even, return the middle two characters.
+
+def get_middle(word):
+    if len(word) % 2 == 0:
+        return word[len(word) // 2 - 1 : len(word) // 2 + 1]
+    else:
+        return word[(len(word) - 1) // 2]
+
+    
+# TASK - Finding Nemo
+
+# You're given a string of words. You need to find the word "Nemo", and return a string like this: "I found 
+# Nemo at [the order of the word you find nemo]!".
+# If you can't find Nemo, return "I can't find Nemo :(".
+
+def find_nemo(sentence):
+    if "Nemo" in sentence.split():
+        return "I found Nemo at {}!".format(sentence.split().index("Nemo") + 1)
+    else:
+        return "I can't find Nemo :("
+
+
+# TASK - Reverse the Odd Length Words
+
+# Given a string, reverse all the words which have odd length. The even length words are not changed.
+
+def reverse_odd(text):
+    res = []
+    for i in text.split():
+        if len(i) % 2 != 0:
+            res.append(i[::-1])
+        else:
+            res.append(i)
+    return " ".join(res)
+
+
+# TASK - Game of Thrones: Character Titles
+
+# Write a function that takes a string and returns a string with the correct case for character titles in the Game of Thrones series.
+# The words and, the, of and in should be lowercase.
+# All other words should have the first character as uppercase and the rest lowercase.
+
+def correct_title(sentence):
+    res = []
+    sntnc = ""
+    not_titled = ["and", "the", "of", "in"]
+    
+    for i in sentence:
+        if not i.islower():
+            sntnc += i.lower()
+        else:
+            sntnc += i
+    
+    for i in sntnc.split():
+        if "-" in i:
+            new_i = []
+            x = i.split("-")
+            for n in x:
+                if n in not_titled:
+                    new_i.append(n)
+                else:
+                    new_i.append(n.title())
+            res.append("-".join(new_i))
+        else:
+            if i in not_titled:
+                res.append(i)
+            else:
+                res.append(i.title())
+    
+    pre_res = " ".join(res)
+    f = 0
+    final_res = ""
+    
+    if "'" in pre_res:
+        f += pre_res.index("'")
+        final_res = pre_res.replace(pre_res[f + 1], pre_res[f + 1].lower())
+    else:
+        final_res = pre_res
+
+    return final_res

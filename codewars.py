@@ -4587,3 +4587,50 @@ def ordered_count(inp):
 
 def copy_list(l):
     return [i for i in l]
+
+
+# TASK - Vowel remover
+
+# Create a function called shortcut to remove all the lowercase vowels in a given string.
+
+def shortcut(s):
+    vowels = ["a", "e", "i", "o", "u"]
+    return "".join([i for i in s if i not in vowels])
+
+
+# TASK - Determine offspring sex based on genes XX and XY chromosomes
+
+# Determine if the sex of the offspring will be male or female based on the X or Y chromosome present in the male's sperm.
+
+def chromosome_check(sperm):
+    return 'Congratulations! You\'re going to have a son.' if "Y" in sperm else 'Congratulations! You\'re going to have a daughter.'
+
+
+# TASK - Drink about
+
+# Make a function that receive age, and return what they drink.
+# Rules:
+# Children under 14 old.
+# Teens under 18 old.
+# Young under 21 old.
+# Adults have 21 or more.
+
+def people_with_age_drink(age):
+    if age <= 13:
+        return "drink toddy"
+    elif age in range(14, 18):
+        return "drink coke"
+    elif age in range (18, 21):
+        return "drink beer"
+    else:
+        return "drink whisky"]
+    
+
+# TASK - Find the Difference in Age between Oldest and Youngest Family Members
+
+# You will be given an array of all the family members' ages, in any order. The ages will be given in whole numbers, so a baby 
+# of 5 months, will have an ascribed ‘age’ of 0. Return a new array (a tuple in Python) with [youngest age, oldest age, difference
+#  between the youngest and oldest age].
+
+def difference_in_ages(ages):
+    return (min(ages), max(ages), max(ages) - min(ages))

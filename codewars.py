@@ -4623,7 +4623,7 @@ def people_with_age_drink(age):
     elif age in range (18, 21):
         return "drink beer"
     else:
-        return "drink whisky"]
+        return "drink whisky"
     
 
 # TASK - Find the Difference in Age between Oldest and Youngest Family Members
@@ -4634,3 +4634,51 @@ def people_with_age_drink(age):
 
 def difference_in_ages(ages):
     return (min(ages), max(ages), max(ages) - min(ages))
+
+
+# TASK - Return the Missing Element
+
+# Write a function that accepts a sequence of unique integers between 0 and 9 (inclusive), and returns the missing element. 
+
+def get_missing_element(seq): 
+    compare = [i for i in range(0, 10)]
+    res = 0
+    for i in compare:
+        if i not in seq:
+            res += i
+        else:
+            res += 0
+    return res
+
+
+# TASK - Simple beads count
+
+# Two red beads are placed between every two blue beads. There are N blue beads. After looking at the arrangement below work out the 
+# number of red beads.
+
+def count_red_beads(n):
+    if n <= 2:
+        return 0
+    else:
+        return (n-1) * 2
+
+
+# TASK - Digitize
+
+# Given a non-negative integer, return an array / a list of the individual digits in order.
+
+def digitize(n):
+    return [int(i) for i in str(n)]
+
+
+# TASK - Maximum Product
+
+# Given an array of integers , Find the maximum product obtained from multiplying 2 adjacent numbers in the array.
+
+def adjacent_element_product(array):
+    res = []
+    c = 0
+    for i in range(len(array) - 1):
+        res.append(array[c] * array[c + 1])
+        c += 1
+    return max(res)

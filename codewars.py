@@ -4682,3 +4682,49 @@ def adjacent_element_product(array):
         res.append(array[c] * array[c + 1])
         c += 1
     return max(res)
+
+
+# TASK - Remove the time
+
+# You're re-designing a blog and the blog's posts have the following format for showing the date and time a post was made:
+# Weekday Month Day, time e.g., Friday May 2, 7pm
+# Write a function, shortenToDate, that takes the Website date/time in its original string format, and returns the shortened format.
+
+def shorten_to_date(long_date):
+    return " ".join(long_date.split()[:3])[:-1]
+
+
+# TASK - Convert to Binary
+
+# Given a non-negative integer n, write a function to_binary/ToBinary which returns that number in a binary format.
+
+def to_binary(n):
+    return int(bin(n)[2:])
+
+
+# TASK - Thinkful - Dictionary drills: Order filler
+
+# You've decided to write a function fillable() that takes three arguments: a dictionary stock representing all the 
+# merchandise you have in stock, a string merch representing the thing your customer wants to buy, and an integer n representing 
+# the number of units of merch they would like to buy. Your function should return True if you have the merchandise in stock to 
+# complete the sale, otherwise it should return False.You've decided to write a function fillable() that takes three arguments: 
+# a dictionary stock representing all the merchandise you have in stock, a string merch representing the thing your customer wants 
+# to buy, and an integer n representing the number of units of merch they would like to buy. Your function should return True if 
+# you have the merchandise in stock to complete the sale, otherwise it should return False.
+
+def fillable(stock, merch, n): 
+    if merch in stock.keys():
+        if stock[merch] >= n:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+# TASK - Name Shuffler
+
+# Write a function that returns a string in which firstname is swapped with last name.
+
+def name_shuffler(str_):
+    return " ".join(str_.split()[::-1])

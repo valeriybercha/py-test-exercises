@@ -4728,3 +4728,112 @@ def fillable(stock, merch, n):
 
 def name_shuffler(str_):
     return " ".join(str_.split()[::-1])
+
+
+# TASK - Last
+
+# Find the last element of the given argument(s).
+
+def last(*args):
+    res_l = []
+    for i in args:
+        res_l.append(i)
+    if len(res_l) == 1:
+        if type(res_l[0]) == int:
+            return res_l[0]
+        else:
+            return res_l[0][-1]
+    else:
+        return args[-1]
+
+
+# TASK - Substituting Variables Into Strings: Padded Numbers
+
+# Complete the solution so that it returns a formatted string. The return value should equal "Value is VALUE" 
+# where value is a 5 digit padded number. 
+
+def solution(value):
+    return f"Value is {'0' * (5 - len(str(value)))}" + str(value)
+
+
+# TASK - Sum of array singles
+
+# In this Kata, you will be given an array of numbers in which two numbers occur once and the rest occur only 
+# twice. Your task will be to return the sum of the numbers that occur only once. 
+
+def repeats(arr):
+    count_list = []
+    c = 0
+    for i in range(len(arr)):
+        count_list.append(arr.count(arr[c]))
+        c += 1
+    position_list = []
+    p = 0
+    for i in count_list:
+        if i == 1:
+            position_list.append(p)
+        p += 1
+    res_l = []
+    for i in position_list:
+        res_l.append(arr[i])
+    return sum(res_l)
+
+
+# TASK - Find the vowels
+
+# We want to know the index of the vowels in a given word, for example, there are two vowels in the 
+# word super (the second and fourth letters).
+
+def vowel_indices(word):
+    vowels = ["a", "e", "i", "o", "u", "y"]
+    count = 1
+    res = []
+    for i in word:
+        if i.lower() in vowels:
+            res.append(count)
+        count += 1
+    return res
+
+
+# TASK - Triple Trouble
+
+# Create a function that will return a string that combines all of the letters of the three inputed 
+# strings in groups. Taking the first letter of all of the inputs and grouping them next to each 
+# other. Do this for every letter, see example below!
+
+def triple_trouble(one, two, three):
+    res = ""
+    for i in range(len(one)):
+        res += one[i]
+        res += two[i]
+        res += three[i]
+    return res
+
+
+# TASK - Super Duper Easy
+
+# Make a function that returns the value multiplied by 50 and increased by 6. If the value entered is 
+# a string it should return "Error".
+
+def problem(a):
+    return a * 50 + 6 if type(a) == int or type(a) == float else "Error"
+
+
+# TASK - Thinkful - Number Drills: Pixelart planning
+
+# Your function should take two arguments: the size of the wall in millimeters and the size of a 
+# pixel in millimeters. It should return True if you can fit an exact number of pixels on 
+# the wall, otherwise it should return False. For example is_divisible(4050, 27) should 
+# return True, but is_divisible(4066, 27) should return False.
+
+def is_divisible(wall_length, pixel_size):
+    return wall_length % pixel_size == 0
+
+
+# TASK - Grasshopper - Function syntax debugging
+
+# A student was working on a function and made some syntax mistakes while coding. 
+# Help them find their mistakes and fix them.
+
+def main(verb, noun):
+    return verb + noun

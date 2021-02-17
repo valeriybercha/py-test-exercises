@@ -4837,3 +4837,105 @@ def is_divisible(wall_length, pixel_size):
 
 def main(verb, noun):
     return verb + noun
+
+
+# TASK - Grasshopper - Basic Function Fixer
+
+# I created this function to add five to any number that was passed in to it and return the new 
+# value. It doesn't throw any errors but it returns the wrong number.
+
+def add_five(num):
+    total = num + 5
+    return total
+
+
+# TASK - Exclamation marks series #1: Remove a exclamation mark from the end of string
+
+# Remove a exclamation mark from the end of string. For a beginner kata, you can assume 
+# that the input data is always a string, no need to verify it.
+
+def remove(s):
+    if len(s) > 0:
+        if s[-1] == "!":
+            return s[:-1]
+        else:
+            return s
+    else:
+        return ""
+
+
+# TASK - Bin to Decimal
+
+# Complete the function which converts a binary number (given as a string) to a 
+# decimal number.
+
+def bin_to_decimal(inp):
+    return int(inp, 2)
+
+
+# TASK - Sum The Strings
+
+# Create a function that takes 2 positive integers in form of a string as an input, and 
+# outputs the sum (also as a string)
+
+def sum_str(a, b):
+    if a == "":
+        if b == "":
+            a = 0
+            b = 0
+            return str(a + b)
+        else:
+            a = 0
+            return str(a + int(b))
+    else:
+        if b == "":
+            b = 0
+            return str(int(a) + int(b))
+        else:
+            return str(int(a) + int(b))
+
+
+# TASK - Formatting decimal places #0
+
+# Each number should be formatted that it is rounded to two decimal places. You don't need 
+# to check whether the input is a valid number because only valid numbers are used in the tests.
+
+def two_decimal_places(n):
+    return round(n, 2)
+
+
+# TASK - Welcome to the City
+
+# Create a method sayHello/say_hello/SayHello that takes as input a name, city, and state 
+# to welcome a person. Note that name will be an array consisting of one or more values that 
+# should be joined together with one space between each, and the length of the name array 
+# in test cases will vary.
+
+def say_hello(name, city, state):
+    return f"Hello, {' '.join([i for i in name])}! Welcome to {city}, {state}!"
+
+
+# TASK - What's the real floor?
+
+# With the 1st floor being replaced by the ground floor and the 13th floor being removed, 
+# the numbers move down to take their place. In case of above 13, they move down by 
+# two because there are two omitted numbers below them.
+
+def get_real_floor(n):
+    if n in range(0, 2):
+        return 0
+    elif n in range(2, 14):
+        return n - 1
+    elif n >= 14:
+        return n - 2
+    else:
+        return n
+
+
+# TASK - Powers of 2
+
+# Complete the function that takes a non-negative integer n as input, and returns a list 
+# of all the powers of 2 with the exponent ranging from 0 to n (inclusive).
+
+def powers_of_two(n):
+    return [2 ** i for i in range(0, n + 1)]

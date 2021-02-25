@@ -4939,3 +4939,65 @@ def get_real_floor(n):
 
 def powers_of_two(n):
     return [2 ** i for i in range(0, n + 1)]
+
+
+# TASK - Lario and Muigi Pipe ProblemLario and Muigi Pipe Problem
+
+# Given the a list of numbers, return the list so that the values increment by 1 for 
+# each index up to the maximum value
+
+def pipe_fix(nums):
+	return [i for i in range(min(nums), max(nums) + 1)]
+
+
+# TASK - SpeedCode #2 - Array Madness
+
+# Given two integer arrays a, b, both of length >= 1, create a program that returns 
+# true if the sum of the squares of each element in a is strictly greater than 
+# the sum of the cubes of each element in b.
+
+def array_madness(a,b):
+    return sum([i ** 2 for i in a]) > sum([i ** 3 for i in b])
+
+
+# TASK - Incorrect division method
+
+# This method, which is supposed to return the result of dividing its first argument 
+# by its second, isn't always returning correct values. Fix it.
+
+def divide_numbers(x,y):
+    return x // y if x % y == 0 else x / y
+
+
+# TASK - Regexp Basics - is it a digit?
+
+# Implement String#digit? (in Java StringUtils.isDigit(String)), which should return 
+# true if given object is a digit (0-9), false otherwise.
+
+def is_digit(n):
+    if n.isdigit():
+        if int(n) in range(0, 10):
+            return True
+        else:
+            return False
+    else:
+        return False
+
+    
+# TASK - Exclamation marks series #6: Remove n exclamation marks in the sentence from left to right
+
+# Remove n exclamation marks in the sentence from left to right. n is positive integer.
+
+def remove(s, n):
+    res = ""
+    count = 0
+    for i in s:
+        if i == "!":
+            if count != n:
+                res += ""
+                count += 1
+            else:
+                res += i
+        else:
+            res += i
+    return res

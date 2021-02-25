@@ -266,3 +266,44 @@ def subtractProductAndSum(n):
     for i in str_n:
         mult *= i
     return mult - sum(str_n)
+
+
+# TASK 15 - Check If Two String Arrays are Equivalent
+
+# Given two string arrays word1 and word2, return true if the two arrays represent the same 
+# string, and false otherwise.
+
+def arrayStringsAreEqual(word1, word2):
+        """
+        :type word1: List[str]
+        :type word2: List[str]
+        :rtype: bool
+        """
+        w_1 = ""
+        w_2 = ""
+        for i in word1:
+            w_1 += i
+        for i in word2:
+            w_2 += i
+        return w_1 == w_2
+
+
+# TASK 16 -
+
+def mergeAlternately(word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: str
+        """
+        res = ""
+        l = 0
+        if word1 >= word2:
+            l = len(word1)
+        else:
+            l = len(word2)
+
+        for i in range(1, l * 2 + 1):
+            pass
+
+print(mergeAlternately("ab", "pqrs"))

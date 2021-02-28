@@ -288,22 +288,58 @@ def arrayStringsAreEqual(word1, word2):
         return w_1 == w_2
 
 
-# TASK 16 -
+# TASK 16 - Merge Strings Alternately
+
+# You are given two strings word1 and word2. Merge the strings by adding letters in alternating 
+# order, starting with word1. If a string is longer than the other, append the additional letters 
+# onto the end of the merged string.
 
 def mergeAlternately(word1, word2):
-        """
-        :type word1: str
-        :type word2: str
-        :rtype: str
-        """
-        res = ""
-        l = 0
-        if word1 >= word2:
-            l = len(word1)
-        else:
-            l = len(word2)
+    """
+    :type word1: str
+    :type word2: str
+    :rtype: str
+    """
+    res = ""
+    count = 0
+    if len(word1) > len(word2):
+        count += len(word1)
+        for i in range(count):
+            if i < len(word2):
+                res += word1[i]
+                res += word2[i]
+            else:
+                res += word1[i]
+    else:
+        count += len(word2)
+        for i in range(count):
+            if i < len(word1):
+                res += word1[i]
+                res += word2[i]
+            else:
+                res += word2[i]
+    return res
 
-        for i in range(1, l * 2 + 1):
-            pass
 
-print(mergeAlternately("ab", "pqrs"))
+# TASK 17 - Count Items Matching a Rule
+
+# You are given an array items, where each items[i] = [typei, colori, namei] describes the type, color, 
+# and name of the ith item. You are also given a rule represented by two strings, ruleKey and ruleValue.
+
+def countMatches(items, ruleKey, ruleValue):
+    """
+    :type items: List[List[str]]
+    :type ruleKey: str
+    :type ruleValue: str
+    :rtype: int
+    """
+    count = 0
+    ruleDict = {
+        "type": 0,
+        "color": 1,
+        "name": 2
+    }
+    for i in items:
+        if i[ruleDict[ruleKey]] == ruleValue:
+            count += 1
+    return count

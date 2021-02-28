@@ -5001,3 +5001,43 @@ def remove(s, n):
         else:
             res += i
     return res
+
+
+# TASK - Find Multiples of a Number
+
+# n this simple exercise, you will build a program that takes a value, integer, 
+# and returns a list of its multiples up to another value, limit . If limit is a multiple of integer
+
+def find_multiples(integer, limit):
+    return [i for i in range(integer, limit + 1) if i % integer == 0]
+
+
+# TASK - Remove First and Last Character Part Two
+
+# This is a spin off of my first kata. You are given a list of character sequences as a comma 
+# separated string. Write a function which returns another string containing all the character sequences 
+# except the first and the last ones, separated by spaces. If the input string is empty, or the 
+# removal of the first and last items would cause the string to be empty, return a null value.
+
+def array(string):
+    if len(string.split(",")) > 2:
+        return " ".join(string.split(",")[1:-1])
+
+
+# TASK - The Wide-Mouthed frog! 
+
+# Your goal in this kata is to create complete the mouth_size method this method take one argument 
+# animal which corresponds to the animal encountered by frog. If this one is an alligator 
+# (case insensitive) return small otherwise return wide. 
+
+def mouth_size(animal):
+    return "small" if animal.lower() == "alligator" else "wide"
+
+
+# TASK - Enumerable Magic #3 - Does My List Include This?
+
+# Create a method that accepts a list and an item, and returns true if the item belongs to the list, 
+# otherwise false.
+
+def include(arr,item):
+    return item in arr

@@ -5041,3 +5041,52 @@ def mouth_size(animal):
 
 def include(arr,item):
     return item in arr
+
+
+# TASK - Enumerable Magic #25 - Take the First N Elements
+
+# Create a method take that accepts a list/array and a number n, and returns a list/array 
+# array of the first n elements from the list/array.
+
+def take(arr,n):
+    return arr[:n]
+
+
+# TASK - How many stairs will Suzuki climb in 20 years?
+
+# The sum of all the stairs logged in a year will be used for estimating the number he might climb in 20.
+# 20_year_estimate = one_year_total * 20
+
+def stairs_in_20(stairs):
+    return sum([sum(i) for i in stairs]) * 20
+
+
+# TASK - Tip Calculator
+
+# Complete the function, which calculates how much you need to tip based on the total amount of 
+# the bill and the service. 
+
+def calculate_tip(amount, rating):
+    tip_ratings = {
+        "terrible": 1.0,
+        "poor": 1.05,
+        "good": 1.10,
+        "great": 1.15,
+        "excellent": 1.20
+    }
+    
+    if rating.lower() in tip_ratings:
+        tip = (amount * tip_ratings[rating.lower()]) - amount
+        print(tip)
+        return round(tip) if tip <= int(tip) else int(tip) + 1
+    else:
+        return "Rating not recognised"
+
+ 
+# TASK - What is between?
+
+# Complete the function that takes two integers (a, b, where a < b) and return an array of all integers 
+# between the input parameters, including them.
+
+def between(a,b):
+    return [i for i in range(a, b + 1)]

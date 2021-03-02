@@ -5090,3 +5090,63 @@ def calculate_tip(amount, rating):
 
 def between(a,b):
     return [i for i in range(a, b + 1)]
+
+
+# TASK - Arithmetic Sequence!
+
+# You're going to write a function that's going to return the value in the nth index of an arithmetic sequence.(That is, 
+# adding a constant to move to the next element in the "set").
+
+def nthterm(first, n, c):
+    res = []
+    count = first
+    for i in range(n + 1):
+        res.append(count)
+        count += c
+    return res[-1]
+
+
+# TASK - Regexp Basics - is it a vowel?
+
+# Implement the function which should return true if given object is a vowel (meaning a, e, i, o, u), and false otherwise.
+
+def is_vowel(s): 
+    return s.lower() in ("a", "e", "i", "o", "u")
+
+
+# TASK - Halving Sum
+
+# Given a positive integer n, calculate the following sum:
+#n + n/2 + n/4 + n/8 + ...
+# All elements of the sum are the results of integer division.
+
+def halving_sum(n): 
+    res = n
+    res_l = [n]
+    c = 0
+    while res >= 1:
+        res = n // 2
+        res_l.append(res)
+        n = res
+    return sum(res_l)
+
+
+# TASK - Limit string length - 1
+
+# The function must return the truncated version of the given string up to the given limit 
+# followed by "..." if the result is shorter than the original. Return the same string if 
+# nothing was truncated.
+
+def solution(st, limit): 
+    return st[:limit] + "..." if len(st) > limit else st
+
+
+# TASK - Sort Out The Men From Boys 
+
+# Given an array/list [] of n integers , Separate The even numbers from the odds , or Separate 
+# the men from the boys
+
+def men_from_boys(arr):
+    even = sorted(set([i for i in arr if i % 2 == 0]))
+    odd = sorted(set([i for i in arr if i % 2 != 0]), reverse=True)
+    return even + odd

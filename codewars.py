@@ -5150,3 +5150,50 @@ def men_from_boys(arr):
     even = sorted(set([i for i in arr if i % 2 == 0]))
     odd = sorted(set([i for i in arr if i % 2 != 0]), reverse=True)
     return even + odd
+
+
+# TASK - Find the position!
+
+# When provided with a letter, return its position in the alphabet.
+#Input :: "a"
+# Ouput :: "Position of alphabet: 1"
+
+def position(alphabet):
+    return f"Position of alphabet: {ord(alphabet) - 96}"
+
+
+# TASK - Return the day 
+
+# Complete the function which returns the weekday according to the input number
+
+def whatday(num):
+    days = {
+        1: "Sunday",
+        2: "Monday",
+        3: "Tuesday",
+        4: "Wednesday",
+        5: "Thursday",
+        6: "Friday",
+        7: "Saturday"
+    }
+    return days[num] if num in range(1, 8) else "Wrong, please enter a number between 1 and 7"
+
+
+# TASK - Replace all dots
+
+# The code provided is supposed replace all the dots . in the specified String str with dashes -
+
+def replace_dots(str):
+    return str.replace(".", "-")
+
+
+# TASK - For UFC Fans (Total Beginners): Conor McGregor vs George Saint Pierre
+
+# f the winner is George Saint Pierre he will obviously say:
+# "I am not impressed by your performance."
+# If the winner is Conor McGregor he will most undoubtedly say:
+# "I'd like to take this chance to apologize.. To absolutely NOBODY!"
+
+def quote(fighter):
+    name = " ".join([i.lower() for i in fighter.split()])
+    return "I'd like to take this chance to apologize.. To absolutely NOBODY!" if name == "conor mcgregor" else "I am not impressed by your performance."

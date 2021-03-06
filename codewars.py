@@ -5197,3 +5197,99 @@ def replace_dots(str):
 def quote(fighter):
     name = " ".join([i.lower() for i in fighter.split()])
     return "I'd like to take this chance to apologize.. To absolutely NOBODY!" if name == "conor mcgregor" else "I am not impressed by your performance."
+
+
+# TASK - Take the Derivative
+
+# Your function should multiply the two numbers, and then subtract 1 from the exponent. 
+# Then, it has to print out an expression (like 28x^7). "^1" should not be truncated when exponent = 2.
+
+def derive(coefficient, exponent): 
+    return f"{coefficient * exponent}x^{exponent - 1}"
+
+
+# TASK - Regex count lowercase letters
+
+# Your task is simply to count the total number of lowercase letters in a string.
+
+def lowercase_count(strng):
+    count = 0
+    for i in strng:
+        if i.islower():
+            count += 1
+    return count
+
+
+# TASK - Is it a palindrome?
+
+# Write function isPalindrome that checks if a given string (case insensitive) is a palindrome.
+
+def is_palindrome(s):
+    return s.lower() == s[::-1].lower()
+
+
+# TASK - Grasshopper - Array Mean
+
+# Find the mean (average) of a list of numbers in an array.
+
+def find_average(nums):
+    return sum(nums) / len(nums) if len(nums) > 0 else 0
+
+
+# TASK - Basic Calculator
+
+# Write a function called calculate that takes 3 values. The first and third values are numbers. 
+# The second value is a character. If the character is "+" , "-", "*", or "/", the function will 
+# return the result of the corresponding mathematical function on the two numbers. If the string 
+# is not one of the specified characters, the function should return null (throw an 
+# ArgumentException in C#).
+
+def calculate(num1, operation, num2): 
+    if operation == "+":
+        return num1 + num2
+    elif operation == "-":
+        return num1 - num2
+    elif operation == "*":
+        return num1 * num2
+    elif operation == "/" and num2 != 0:
+        return num1 / num2
+
+
+# TASK - Regexp Basics - is it a letter?
+
+# Complete the code which should return true if the given object is a single ASCII letter (lower 
+# or upper case), false otherwise.
+
+def is_letter(s):
+    if len(s) == 1:
+        if ord(s.lower()) in range(97, 123):
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+# TASK - Return the first M multiples of N
+
+# Implement a function, multiples(m, n), which returns an array of the first m multiples of 
+# the real number n. Assume that m is a positive integer.
+
+def multiples(m, n):
+    count = 0
+    nbr = 1
+    res = []
+    while count != m:
+        res.append(n * nbr)
+        count += 1
+        nbr += 1
+    return res
+
+
+# TASK - Smallest value of an array
+
+# Write a function that can return the smallest value of an array or the index of that 
+# value. The function's 2nd parameter will tell whether it should return the value or the index.
+
+def find_smallest(numbers,to_return):
+    return min(numbers) if to_return == "value" else numbers.index(min(numbers))

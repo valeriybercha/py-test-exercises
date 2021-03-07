@@ -343,3 +343,49 @@ def countMatches(items, ruleKey, ruleValue):
         if i[ruleDict[ruleKey]] == ruleValue:
             count += 1
     return count
+
+
+# TASK 18 - Count the Number of Consistent Strings
+
+# You are given a string allowed consisting of distinct characters and an array of strings words. A string 
+# is consistent if all characters in the string appear in the string allowed.
+# Return the number of consistent strings in the array words.
+
+def countConsistentStrings(allowed, words):
+    """
+    :type allowed: str
+    :type words: List[str]
+    :rtype: int
+    """
+    count = 0
+    for word in words:
+        res = []
+        for letter in word:
+            if letter in allowed:
+                res.append(True)
+            else:
+                res.append(False)
+        if False in res:
+            count += 0
+        else:
+            count += 1
+    return count
+
+
+# TASK 19 - Find the Highest Altitude
+
+# You are given an integer array gain of length n where gain[i] is the net gain in altitude between points 
+# i​​​​​​ and i + 1 for all (0 <= i < n). Return the highest altitude of a point.
+
+def largestAltitude(gain):
+    """
+    :type gain: List[int]
+    :rtype: int
+    """
+    altitudes = [0]
+    biker = 0
+    for i in gain:
+        alt = biker + i
+        altitudes.append(alt)
+        biker = alt
+    return max(altitudes)

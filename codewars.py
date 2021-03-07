@@ -5293,3 +5293,96 @@ def multiples(m, n):
 
 def find_smallest(numbers,to_return):
     return min(numbers) if to_return == "value" else numbers.index(min(numbers))
+
+
+# TASK - How old will I be in 2099?
+
+# Your task is to write a function that takes two parameters: the year of birth and the year to 
+# count years in relation to. As Philip is getting more curious every day he may soon want to 
+# know how many years it was until he would be born, so your function needs to work with both dates 
+# in the future and in the past.
+
+def calculate_age(year_of_birth, current_year):
+    if year_of_birth < current_year:
+        if current_year - year_of_birth == 1:
+            return f"You are {current_year - year_of_birth} year old."
+        else:
+            return f"You are {current_year - year_of_birth} years old."
+    elif year_of_birth > current_year:
+        if year_of_birth - current_year == 1:
+            return f"You will be born in {year_of_birth - current_year} year."
+        else:
+            return f"You will be born in {year_of_birth - current_year} years."
+    else:
+        return 'You were born this very year!'
+    
+
+# TASK - Grader
+
+# Create a function that takes a number as an argument and returns a grade based on that number.
+
+def grader(score):
+    if score == 0.6:
+        return "D"
+    elif score == 0.7:
+        return "C"
+    elif score == 0.8:
+        return "B"
+    elif score >= 0.9 and score <= 1:
+        return "A"
+    else:
+        return "F"
+
+
+# TASK - Parse float
+
+# Write function parse_float which takes a string/list and returns a number or 'none' if conversion is not possible.
+
+def parse_float(string):
+    if type(string) == list:
+        return None
+    elif string.isalpha():
+        return None
+    else:
+        return float(string)
+
+
+# TASK - Grasshopper - Combine strings
+
+# Create a function named (combine_names) that accepts two parameters (first and last name). The function 
+# should return the full name.
+
+def combine_names(first, last):
+    return first + " " + last
+
+
+# TASK - Javascript filter - 1
+
+# While developing a website, you detect that some of the members have troubles logging in. Searching through 
+# the code you find that all logins ending with a "_" make problems. So you want to write a function that 
+# takes an array of pairs of login-names and e-mails, and outputs an array of all login-name, e-mails-pairs 
+# from the login-names that end with "_".
+
+def search_names(logins):
+        
+    def search(x):
+        if "_" in x[0][-1]:
+            return True
+        else:
+            return False
+    
+    f = filter(search, logins)
+    res = []
+    for i in f:
+        res.append(i)
+    return res
+
+
+# TASK - Factorial
+
+# Yor task is to write function factorial
+
+import math
+
+def factorial(n):
+    return math.factorial(n)

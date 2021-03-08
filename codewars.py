@@ -5386,3 +5386,72 @@ import math
 
 def factorial(n):
     return math.factorial(n)
+
+
+# TASK - Miles per gallon to kilometers per liter
+
+# Create an application that will display the number of kilometers per liter (output) based on the number of miles 
+# per imperial gallon (input).
+
+def converter(mpg):
+    return round((mpg / 4.54609188) * 1.609344, 2)
+
+
+# TASK - UEFA EURO 2016
+
+# Finish the uefaEuro2016() function
+
+def uefa_euro_2016(teams, scores):
+    if scores[0] > scores[1]:
+        return f"At match {teams[0]} - {teams[1]}, {teams[0]} won!"
+    elif scores[0] < scores[1]:
+        return f"At match {teams[0]} - {teams[1]}, {teams[1]} won!"
+    else:
+        return f"At match {teams[0]} - {teams[1]}, teams played draw."
+
+
+# TASK - Are arrow functions odd?
+
+# Time to test your basic knowledge in functions! Return the odds from a list
+
+def odds(arr):
+    def odd(x):
+        if x % 2 != 0:
+            return True
+        else:
+            return False
+    l = list(filter(odd, arr))
+    return l
+
+
+# TASK - CSV representation of array
+
+# Create a function that returns the CSV representation of a two-dimensional 
+# numeric array.
+
+def to_csv_text(array):
+    res = []
+    for i in array:
+        res.append(",".join(str(k) for k in i))
+    return "\n".join(res)
+
+
+# TASK - NBA full 48 minutes average
+
+# Write a function that takes two arguments, ppg (points per game) and mpg (minutes per game) and returns a straight 
+# extrapolation of ppg per 48 minutes rounded to the nearest tenth. Return 0 if 0.
+
+def nba_extrap(ppg, mpg):
+    return round(ppg / mpg * 48, 1) if mpg != 0 else 0
+
+
+# TASK - Hex Hash Sum
+
+# Every character of the string should be converted to the hex value of its ascii code, then the result should 
+# be the sum of the numbers in the hex strings (ignore letters).
+
+def hex_hash(code):
+    text_binary = code.encode(encoding='utf_8')
+    text_hex = text_binary.hex()
+    res = [int(i) for i in text_hex if i.isdigit()]
+    return sum(res)

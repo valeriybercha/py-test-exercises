@@ -5455,3 +5455,272 @@ def hex_hash(code):
     text_hex = text_binary.hex()
     res = [int(i) for i in text_hex if i.isdigit()]
     return sum(res)
+
+
+# TASK - Moves in squared strings (I)
+
+# This kata is the first of a sequence of four about "Squared Strings".
+# You are given a string of n lines, each substring being n characters long: For example:
+# s = "abcd\nefgh\nijkl\nmnop"
+# We will study some transformations of this square of strings.
+# Vertical mirror: vert_mirror (or vertMirror or vert-mirror)
+# vert_mirror(s) => "dcba\nhgfe\nlkji\nponm"
+# Horizontal mirror: hor_mirror (or horMirror or hor-mirror)
+# hor_mirror(s) => "mnop\nijkl\nefgh\nabcd"
+
+def vert_mirror(strng):
+    return "\n".join([i[::-1] for i in strng.split("\n")])
+def hor_mirror(strng):
+    return "\n".join(strng.split("\n")[::-1])
+def oper(fct, s):
+    return vert_mirror(s) if fct == vert_mirror else hor_mirror(s)
+
+
+# TASK - Alphabet war
+
+# Write a function that accepts fight string consists of only small letters and return who 
+# wins the fight. When the left side wins return Left side wins!, when the right side wins 
+# return Right side wins!, in other case return Let's fight again!.
+
+def alphabet_war(fight):
+    left_side = {
+        "w": 4,
+        "p": 3,
+        "b": 2,
+        "s": 1
+    }
+
+    right_side = {
+        "m": 4,
+        "q": 3,
+        "d": 2,
+        "z": 1
+    }
+
+    left_side_result = 0
+    right_side_result = 0
+
+    for letter in left_side:
+        c = fight.count(letter)
+        left_side_result += c * left_side[letter]
+
+    for letter in right_side:
+        c = fight.count(letter)
+        right_side_result += c * right_side[letter]
+    
+    print(left_side_result)
+    print(right_side_result)
+
+    if left_side_result > right_side_result:
+        return "Left side wins!"
+    elif left_side_result < right_side_result:
+        return "Right side wins!"
+    else:
+        return "Let's fight again!"
+
+
+# TASK - Love vs friendship
+
+# If　a = 1, b = 2, c = 3 ... z = 26
+#Then l + o + v + e = 54
+# and f + r + i + e + n + d + s + h + i + p = 108
+# So friendship is twice stronger than love :-)
+
+def words_to_marks(s):
+    letters_dict = {}
+    for i in range(97, 123):
+        letters_dict[chr(i)] = i - 96
+    
+    res = 0
+    for i in letters_dict:
+        c = s.count(i)
+        res += c * letters_dict[i]
+    return res
+
+
+# TASK - Pre-FizzBuzz Workout #1
+
+# This is the first step to understanding FizzBuzz.
+# Your inputs: a positive integer, n, greater than or equal to one. n is provided,
+# you have NO CONTROL over its value.
+# Your expected output is an array of positive integers from 1 to n (inclusive).
+# Your job is to write an algorithm that gets you from the input to the output.
+
+def pre_fizz(n):
+    return [i for i in range(1, n + 1)]
+
+
+# TASK - Add Length
+
+# Your task is to write a function that takes a String and returns an Array/list 
+# with the length of each word added to each element .
+
+def add_length(str_):
+    res = []
+    for i in str_.split():
+        res.append(" ".join([i, str(len(i))]))
+    return res
+
+
+# TASK - Classic Hello World
+
+# You are given a method called main, make it print Hello World! and don't return anything
+
+class Solution:
+    def main(self):
+        print("Hello World!")
+    
+
+# TASK - repeatIt
+
+# Create a function that takes a string and an integer (n).
+# The function should return a string that repeats the input string n number of times.
+# If anything other than a string is passed in you should return "Not a string".
+
+def repeat_it(string,n):
+    return string * n if type(string) == str else "Not a string"
+
+
+# TASK - Thinkful - Number Drills: Blue and red marbles
+
+# You've decided to write a function, guessBlue() to help automatically calculate whether you 
+# should guess "blue" or "red". The function should take four arguments:
+# the number of blue marbles you put in the bag to start
+# the number of red marbles you put in the bag to start
+# the number of blue marbles pulled out so far (always lower than the starting number of blue marbles)
+# the number of red marbles pulled out so far (always lower than the starting number of red marbles)
+# guessBlue() should return the probability of drawing a blue marble, expressed as a float.
+
+def guess_blue(blue_start, red_start, blue_pulled, red_pulled):
+    return (blue_start - blue_pulled) / ((blue_start - blue_pulled) + (red_start - red_pulled))
+
+
+# TASK - Validate Credit Card Number
+
+# Given a positive integer of up to 16 digits, return true if it is a valid credit card number, 
+# and false if it is not.
+# Here is the algorithm:
+# Double every other digit, scanning from right to left, starting from the second digit (from the right).
+# Another way to think about it is: if there are an even number of digits, double every other digit starting 
+# with the first; if there are an odd number of digits, double every other digit starting with the second
+# If a resulting number is greater than 9, replace it with the sum of its own digits (which is the same as subtracting 
+# 9 from it)
+# Sum all of the final digits
+# Finally, take that sum and divide it by 10. If the remainder equals zero, the original credit card number is valid
+
+def validate(n):
+    scan = []
+    for i in range(1, len(str(n)) + 1):
+        if len(str(n)) % 2 == 0:
+            if i % 2 == 0:
+                scan.append(int(str(n)[i - 1]))
+            else:
+                if int(str(n)[i - 1]) * 2 >= 9:
+                    scan.append((int(str(n)[i - 1]) * 2) - 9)
+                else:
+                    scan.append(int(str(n)[i - 1]) * 2)
+        else:
+            if i % 2 != 0:
+                scan.append(int(str(n)[i - 1]))
+            else:
+                if int(str(n)[i - 1]) * 2 >= 9:
+                    scan.append((int(str(n)[i - 1]) * 2) - 9)
+                else:
+                    scan.append(int(str(n)[i - 1]) * 2)
+    return sum(scan) % 10 == 0
+
+
+# TASK - IP Validation
+
+# Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered 
+# valid if they consist of four octets, with values between 0 and 255, inclusive.
+# Input to the function is guaranteed to be a single string.
+
+def is_valid_IP(strng):
+    res = []
+    if len(strng.split(".")) == 4:
+        for i in strng.split("."):
+            if i.isdigit():
+                if len(i) > 1 and i[0] == "0":
+                    res.append("False")
+                else:
+                    if int(i) in range(0, 256):
+                        res.append(int(i))
+                    else:
+                        res.append("False")
+            else:
+                res.append("False")
+    else:
+        return False
+
+    if "False" in res:
+        return False
+    else:
+        return True
+
+
+# TASK - Multiple of index
+
+# Return a new array consisting of elements which are multiple of their own index in input array (length > 1).
+
+def multiple_of_index(arr):
+    res = []
+    c = 1
+    for i in arr[1:]:
+        if i % c == 0:
+            res.append(i)
+        c += 1
+    return res
+
+
+# TASK - Alan Partridge II - Apple Turnover
+
+# Your job is simple, if (x) squared is more than 1000, return 'It's hotter than the sun!!', else, return 
+# 'Help yourself to a honeycomb Yorkie for the glovebox.'.
+
+def apple(x):
+    temp = 0
+    if type(x) == str:
+        temp += int(x)
+    else:
+        temp += x
+    if temp ** 2 >= 1000:
+        return "It's hotter than the sun!!"
+    else:
+        return "Help yourself to a honeycomb Yorkie for the glovebox."
+
+
+# TASK - String cleaning
+
+# Your harried co-workers are looking to you for a solution to take this garbled text and remove all of the 
+# numbers. Your program will take in a string and clean out all numeric characters, and return a string
+# with spacing and special characters ~#$%^&!@*():;"'.,? all intact.
+
+def string_clean(s):
+    """
+    Function will return the cleaned string
+    """
+    cleaned_string = ""
+    clean_from = "0123456789"
+    for i in s:
+        if i not in clean_from:
+            cleaned_string += i
+    return cleaned_string
+
+
+# TASK - Leonardo Dicaprio and Oscars
+
+# if oscar was (integer) 88, you have to return "Leo finally won the oscar! Leo is happy".
+# if oscar was 86, you have to return "Not even for Wolf of wallstreet?!"
+# if it was not 88 or 86 (and below 88) you should return "When will you give Leo an Oscar?"
+# if it was over 88 you should return "Leo got one already!"
+
+def leo(oscar):
+    if oscar == 88:
+        return "Leo finally won the oscar! Leo is happy"
+    elif oscar == 86:
+        return "Not even for Wolf of wallstreet?!"
+    elif oscar == 87 or oscar < 86:
+        return "When will you give Leo an Oscar?"
+    else:
+        return "Leo got one already!"

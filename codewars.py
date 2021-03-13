@@ -5724,3 +5724,77 @@ def leo(oscar):
         return "When will you give Leo an Oscar?"
     else:
         return "Leo got one already!"
+
+
+# TASK - Find the Integral
+
+# Create a function that finds the integral of the expression passed.
+# In order to find the integral all you need to do is add one to the exponent (the second argument), 
+# and divide the coefficient (the first argument) by that new number.
+
+def integrate(coefficient, exponent):
+    return f"{coefficient // (exponent + 1)}x^{exponent + 1}"
+
+
+# TASK - Object Oriented Piracy
+
+# Taking into account that an average crew member on board adds 1.5 units to the draft, a ship that 
+# has a draft of more than 20 without crew is considered worthy to loot. Any ship weighing that much must have a lot of booty!
+
+class Ship:
+    def __init__(self, draft, crew):
+        self.draft = draft
+        self.crew = crew
+    
+    def is_worth_it(self):
+        res = self.draft - self.crew * 1.5
+        if res >= 20:
+            return True
+        else:
+            return False
+
+
+# TASK - Name Your Python!
+
+# For those of us who are not very familiar with Python, let's handle the very basic challenge of creating a class named Python. 
+# We want to give our Pythons a name, so it should take a name argument that we can retrieve later. 
+
+class Python:
+    def __init__(self, name):
+        self.name = name
+
+
+# TASK - Sum of Multiples
+
+# Find the sum of all multiples of n below m
+
+def sum_mul(n, m):
+    result = 0
+    if n <= 0 or m <= 0:
+        return "INVALID"    
+    elif n < m:
+        for i in range(n, m):
+            if i % n == 0:
+                result += i
+        return result
+    elif n == m and (n != 0 and m != 0):
+        return 0
+    elif n > m:
+        return 0
+    
+
+# TASK - Collatz Conjecture Length
+
+# The Collatz Conjecture states that for any natural number n, if n is even, divide it by 2. If n is odd, multiply it by 3 
+# and add 1. If you repeat the process continuously for n, n will eventually reach 1.
+
+def collatz(n):
+    count = 1
+    while n != 1:
+        if n % 2 == 0:
+            res = n // 2
+        else:
+            res = n * 3 + 1
+        n = res
+        count += 1
+    return count

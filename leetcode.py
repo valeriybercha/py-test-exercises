@@ -389,3 +389,83 @@ def largestAltitude(gain):
         altitudes.append(alt)
         biker = alt
     return max(altitudes)
+
+
+# TASK 20 -  To Lower Case
+
+# Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
+
+def toLowerCase(str):
+    """
+    :type str: str
+    :rtype: str
+    """
+    return str.lower()
+
+
+# TASK 21 - Find Numbers with Even Number of Digits
+
+# Given an array nums of integers, return how many of them contain an even number of digits.
+
+def findNumbers(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    count = 0
+    for i in nums:
+        if len(str(i)) % 2 == 0:
+            count += 1
+    return count
+
+
+# TASK 22 - Flipping an Image
+
+# Given an n x n binary matrix image, flip the image horizontally, then invert it, and return the 
+# resulting image.
+# To flip an image horizontally means that each row of the image is reversed.
+
+def flipAndInvertImage(image):
+    """
+    :type image: List[List[int]]
+    :rtype: List[List[int]]
+    """
+    reverse_row = []
+    for elem in image:
+        reverse_row.append(elem[::-1])
+    invert_image = []
+    for item in reverse_row:
+        invert = []
+        for number in item:
+            if number == 1:
+                invert.append(0)
+            else:
+                invert.append(1)
+        invert_image.append(invert)
+    return invert_image
+
+
+# TASK 23 - Maximum 69 Number
+
+# Given a positive integer num consisting only of digits 6 and 9.
+# Return the maximum number you can get by changing at most one digit (6 becomes 9, and 9 
+# becomes 6).
+
+def maximum69Number(num):
+    """
+    :type num: int
+    :rtype: int
+    """
+    res = ""
+    res_l = []
+    str_num = str(num)
+    for i in range(len(str_num)):
+        if str_num[i] == "9":
+            res = str_num[:i] + "6" + str_num[i + 1:]
+        elif str_num[i] == "6":
+            res = str_num[:i] + "9" + str_num[i + 1:]
+        res_l.append(int(res))
+    if num > max(res_l):
+        return num
+    else:
+        return max(res_l)

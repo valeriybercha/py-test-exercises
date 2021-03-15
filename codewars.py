@@ -5798,3 +5798,138 @@ def collatz(n):
         n = res
         count += 1
     return count
+
+
+# TASK - Is it a number?
+
+# Given a string s, write a method (function) that will return true if its a valid single integer or floating 
+# number or false if its not.
+
+def isDigit(string):
+    try:
+        if "." in string:
+            return type(float(string)) == float
+        else:
+            return type(int(string)) == int
+    except:
+        return False
+
+
+# TASK - How do I compare numbers?
+
+# What could be easier than comparing integer numbers? However, the given piece of code doesn't recognize 
+# some of the special numbers for a reason to be found. Your task is to find the bug and eliminate it.
+
+def what_is(x):
+    if x == 42:
+        return 'everything'
+    elif x == 42 * 42:
+        return 'everything squared'
+    else:
+        return 'nothing'
+
+
+# TASK - Find The Duplicated Number in a Consecutive Unsorted List
+
+# You are given an array of n+1 integers 1 through n. In addition there is a single duplicate integer.
+# The array is unsorted.
+# An example valid array would be [3, 2, 5, 1, 3, 4]. It has the integers 1 through 5 and 3 is 
+# duplicated. [1, 2, 4, 5, 5] would not be valid as it is missing 3.
+# You should return the duplicate value as a single integer.
+
+def find_dup(arr):
+    res = dict()
+    for i in arr:
+        res[i] = arr.count(i)
+    for k, v in res.items():
+        if v == 2:
+            return k 
+
+
+# TASK - Reverse a Number
+
+# Given a number, write a function to output its reverse digits. (e.g. given 123 the answer is 321)
+# Numbers should preserve their sign; i.e. a negative number should still be negative when reversed.
+
+def reverse_number(n):
+    if n > 0:
+        return int(str(n)[::-1])
+    else:
+        return int(str(abs(n))[::-1]) * -1
+
+
+# TASK - Find the Capitals
+
+# Complete the method that takes a sequence of objects with two keys each: country or state, and capital. 
+# Keys may be symbols or strings.
+# The method should return an array of sentences declaring the state or country and its capital.
+
+def capital(capitals): 
+    res_l = []
+    res = ""
+    for i in capitals:
+        if "state" in i.keys():
+                res = "The capital of " + i["state"] + " is " + i["capital"]
+        else:
+            res = "The capital of " + i["country"] + " is " + i["capital"]
+        res_l.append(res)
+    return res_l
+
+
+# TASK - get ascii value of character
+
+# Get ASCII value of a character.
+
+def get_ascii(c):
+    return ord(c)
+
+
+# TASK - Closest elevator
+
+# Given 2 elevators (named "left" and "right") in a building with 3 floors (numbered 0 to 2), write 
+# a function elevator accepting 3 arguments (in order):
+# left - The current floor of the left elevator
+# right - The current floor of the right elevator
+# call - The floor that called an elevator
+# It should return the name of the elevator closest to the called floor ("left"/"right").
+
+def elevator(left, right, call):
+    if abs(left - call) < abs(right - call):
+        return "left"
+    else:
+        return "right"
+
+
+# TASK - simple calculator 
+
+# You are required to create a simple calculator that returns the result of addition, subtraction, 
+# multiplication or division of two numbers.
+# Your function will accept three arguments:
+# The first and second argument should be numbers.
+# The third argument should represent a sign indicating the operation to perform on these two numbers.
+
+def calculator(x,y,op):
+    return eval(f"{x}{op}{y}") if op in "+-*/" and (type(x) == int and type(y) == int) else 'unknown value'
+
+
+# TASK - No Loops 2 - You only need one
+
+# You will be given an array (a) and a value (x). All you need to do is check whether the provided array 
+# contains the value, without using a loop.
+
+def check(a, x): 
+    return x in a
+
+
+# TASK - Exclamation marks series #4: Remove all exclamation marks from sentence but ensure a exclamation 
+# mark at the end of string
+
+# Remove all exclamation marks from sentence but ensure a exclamation mark at the end of string. For a beginner 
+# kata, you can assume that the input data is always a non empty string, no need to verify it.
+
+def remove(s):
+    res = ""
+    for i in s:
+        if i != "!":
+            res += i
+    return res + "!"

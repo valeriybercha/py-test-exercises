@@ -5933,3 +5933,140 @@ def remove(s):
         if i != "!":
             res += i
     return res + "!"
+
+
+# TASK - Head, Tail, Init and Last
+
+# Your job is to implement these functions in your given language. Make sure it doesn't edit the array; that 
+# would cause problems! Here's a cheat sheet:Your job is to implement these functions in your given language. 
+# Make sure it doesn't edit the array; that would cause problems! Here's a cheat sheet:
+# | HEAD | <----------- TAIL ------------> |
+# [  1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
+# | <----------- INIT ------------> | LAST |
+
+def head(arr):
+    return arr[0]
+
+def tail(arr):
+    return arr[1:]
+
+def init(arr):
+    return arr[:-1]
+
+def last(arr):
+    return arr[-1]
+
+
+# TASK - Remove Duplicates
+
+# You are to write a function called unique that takes an array of integers and returns the array with 
+# duplicates removed. It must return the values in the same order as first seen in the given array. Thus 
+# no sorting should be done, if 52 appears before 10 in the given array then it should also be that 52 
+# appears before 10 in the returned array.
+
+def unique(integers):
+    d = {}
+    for i in integers:
+        d[i] = integers.count(i)
+    res = []
+    for i in d:
+        res.append(i)
+    return res
+
+
+# TASK - Vampire Numbers
+
+# Create a function that can receive two 'fangs' and determine if the product of the two is a valid 
+# vampire number.
+
+def vampire_test(x, y):
+    x_l = [i for i in str(abs(x))]
+    y_l = [i for i in str(abs(y))]
+    res_x_l = x_l + y_l
+    d_x_l = {}
+    for i in res_x_l:
+        d_x_l[i] = res_x_l.count(i)
+    
+    res = str(abs(x * y))
+    res_d = {}
+    for i in res:
+        res_d[i] = res.count(i)
+    
+    if x < 0 and y < 0:
+        return False
+    else:
+        if d_x_l == res_d:
+            return True
+        else:
+            return False
+        
+
+# TASK - Sum of Odd Cubed Numbers
+
+# Find the sum of the odd numbers within an array, after cubing the initial integers. The function should 
+# return undefined/None/nil/NULL if any of the values aren't numbers. 
+
+def cube_odd(arr):
+    res = 0
+    for i in arr:
+        try:
+            if not type(i) == bool:
+                if i % 2 != 0:
+                    res += i ** 3
+            else:
+                return None
+        except:
+            return None
+    return res
+
+
+# TASK - FIX: Get Full Name
+
+# The code provided is supposed return a person's Full Name given their first and last names.
+# But it's not working properly.
+
+class Dinglemouse(object):
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+    
+    def get_full_name(self):
+        if len(self.first_name) == 0:
+            return self.last_name
+        elif len(self.last_name) == 0:
+            return self.first_name
+        elif len(self.first_name) == 0 and len(self.last_name) == 0:
+            return ""
+        else:
+            return self.first_name + ' ' + self.last_name
+
+
+# TASK - Alphabet symmetry
+
+# Consider the word "abode". We can see that the letter a is in position 1 and b is in position 
+# 2. In the alphabet, a and b are also in positions 1 and 2. Notice also that d and e in abode 
+# occupy the positions they would occupy in the alphabet, which are positions 4 and 5.
+# Given an array of words, return an array of the number of letters that occupy their positions 
+# in the alphabet for each word. For example,
+
+def solve(arr):
+    res = []
+    l = [chr(i) for i in range(97, 123)]
+    for elem in arr:
+        count = 0
+        for i in range(len(elem)):
+            if i == l.index(elem.lower()[i]):
+                count += 1
+        res.append(count)
+    return res
+
+
+# TASK - Milk and Cookies for Santa
+
+# Complete the function function that accepts a Date object, and returns true if it's Christmas 
+# Eve (December 24th), false otherwise.
+
+from datetime import date
+
+def time_for_milk_and_cookies(dt):
+    return dt.day == 24 and dt.month == 12

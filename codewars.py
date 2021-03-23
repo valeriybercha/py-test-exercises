@@ -6070,3 +6070,75 @@ from datetime import date
 
 def time_for_milk_and_cookies(dt):
     return dt.day == 24 and dt.month == 12
+
+
+# TASK - Balanced Number (Special Numbers Series #1 ) 
+
+# Balanced number is the number that * The sum of all digits to the left of the middle digit(s) and the sum of all digits to the 
+# right of the middle digit(s) are equal*.
+
+def balanced_num(number):
+    l_side = []
+    r_side = []
+    
+    l_side = [int(i) for i in str(number)[:(len(str(number)) - 1) // 2]]
+    r_side = [int(i) for i in str(number)[(len(str(number)) + 2) // 2:]]
+    
+    if sum(l_side) == sum(r_side):
+        return "Balanced"
+    else:
+        return "Not Balanced"
+
+
+# TASK - Number of Decimal Digits
+
+# Determine the total number of digits in the integer (n>=0) given as input to the function. For example, 9 is a single digit, 
+# 66 has 2 digits and 128685 has 6 digits. Be careful to avoid overflows/underflows.
+
+def digits(n):
+    return len(str(n))
+
+
+# TASK - Simple consecutive pairs
+
+# In this Kata your task will be to return the count of pairs that have consecutive numbers as follows:
+# pairs([1,2,5,8,-4,-3,7,6,5]) = 3
+# The pairs are selected as follows [(1,2),(5,8),(-4,-3),(7,6),5]
+# --the first pair is (1,2) and the numbers in the pair are consecutive; Count = 1
+# --the second pair is (5,8) and are not consecutive
+# --the third pair is (-4,-3), consecutive. Count = 2
+# --the fourth pair is (7,6), also consecutive. Count = 3. 
+# --the last digit has no pair, so we ignore.
+
+def pairs(ar):
+    l = []
+    half = 0
+    res_count = 0
+    count = 0
+    if len(ar) % 2 == 0:
+        l = ar
+        half = len(ar) // 2
+    else:
+        l = ar[:-1]
+        half = (len(ar) - 1) // 2
+    l_res = []
+    for i in range(half):
+        l_res.append((l[count], l[count + 1]))
+        count += 2
+    for i in l_res:
+        if (i[0] == i[1] + 1) or (i[0] == i[1] - 1):
+            res_count += 1
+    return res_count
+
+
+# TASK - Minimize Sum Of Array (Array Series #1) 
+
+# Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product.
+
+def min_sum(arr):
+    res = []
+    for i in range(len(arr) // 2):
+        res.append(max(arr) * min(arr))
+        arr.remove(max(arr))
+        arr.remove(min(arr))
+    return sum(res)

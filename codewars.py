@@ -6142,3 +6142,430 @@ def min_sum(arr):
         arr.remove(max(arr))
         arr.remove(min(arr))
     return sum(res)
+
+
+# TASK - Find out whether the shape is a cube
+
+def cube_checker(volume, side):
+    if side > 0:
+        if volume > 0:
+            return volume % side == 0
+        else:
+            return False
+    else:
+        return False
+
+
+# TASK - STRONGN Strong Number (Special Numbers Series #2) 
+
+# Strong number is the number that the sum of the factorial of its digits is equal to number itself.
+# For example: 145, since
+# 1! + 4! + 5! = 1 + 24 + 120 = 145
+# So, 145 is a Strong number.
+
+def strong_num(number):
+    l = [int(i) for i in str(number)]
+    res_l = []
+    for i in l:
+        res = 1
+        for e in range(1, i + 1):
+            res *= e
+        res_l.append(res)
+    return "STRONG!!!!" if sum(res_l) == number else "Not Strong !!"
+
+
+# TASK - Build a square
+
+# I will give you an integer. Give me back a shape that is as long and wide as the integer. The integer 
+# will be a whole number between 1 and 50.
+
+def generateShape(integer):
+    l = []
+    for i in range(integer):
+        l.append("+" * integer)
+    return "\n".join(l)
+
+
+# TASK - Divide and Conquer
+
+# Given a mixed array of number and string representations of integers, add up the string integers 
+# and subtract this from the total of the non-string integers.
+# Return as a number.
+
+def div_con(x):
+    s = 0
+    i = 0
+    for e in x:
+        if type(e) == str:
+            s += int(e)
+        else:
+            i += e
+    return i - s
+
+
+# TASK - Array element parity
+
+# In this Kata, you will be given an array of integers whose elements have both a negative and a 
+# positive value, except for one integer that is either only negative or only positive. Your 
+# task will be to find that integer. 
+
+def solve(arr):
+    res = []
+    for i in range(len(arr)):
+        if (arr[i] * -1) in arr:
+            res.append(0)
+        else:
+            res.append(1)
+    ind = 0
+    for i in res:
+        if i != 0:
+            ind = res.index(i)
+    return arr[ind]
+
+
+# TASK - ToLeetSpeak
+
+# Your task is to write a function toLeetSpeak that converts a regular english sentence to Leetspeak.
+# More about LeetSpeak You can read at wiki -> https://en.wikipedia.org/wiki/Leet
+# Consider only uppercase letters (no lowercase letters, no numbers) and spaces.
+
+def to_leet_speak(str):
+    leet = {
+      "A" : '@',
+      "B" : '8',
+      "C" : '(',
+      "D" : 'D',
+      "E" : '3',
+      "F" : 'F',
+      "G" : '6',
+      "H" : '#',
+      "I" : '!',
+      "J" : 'J',
+      "K" : 'K',
+      "L" : '1',
+      "M" : 'M',
+      "N" : 'N',
+      "O" : '0',
+      "P" : 'P',
+      "Q" : 'Q',
+      "R" : 'R',
+      "S" : '$',
+      "T" : '7',
+      "U" : 'U',
+      "V" : 'V',
+      "W" : 'W',
+      "X" : 'X',
+      "Y" : 'Y',
+      "Z" : '2'
+    }
+    
+    res = ""
+    for i in str:
+        if i in leet:
+            res += leet[i]
+        else:
+            res += i
+    return res
+
+
+# TASK - shorter concat [reverse longer]
+
+# Given 2 strings, a and b, return a string of the form: shorter+reverse(longer)+shorter.
+# In other words, the shortest string has to be put as prefix and as suffix of the reverse 
+# of the longest.
+
+def shorter_reverse_longer(a,b):
+    if len(a) < len(b):
+        return a + b[::-1] + a
+    else:
+        return b + a[::-1] + b 
+
+
+# TASK - Filter the number
+
+# Oh no! The number has been mixed up with the text. Your goal is to retreive the number 
+# from the text, can you return the number back to it's original state?
+
+def filter_string(string):
+    num = ""
+    for i in string:
+        if i.isdigit():
+            num += i
+    return int(num)
+
+
+# TASK - Sum of Cubes
+
+# Write a function that takes a positive integer n, sums all the cubed values from 1 to n, 
+# and returns that sum.
+# Assume that the input n will always be a positive integer.
+
+def sum_cubes(n):
+    res = 0
+    for i in range(1, n + 1):
+        res += i ** 3
+    return res
+
+
+# TASK - Char Code Calculation
+
+# Given a string, turn each character into its ASCII character code and join 
+# them together to create a number - let's call this number total1:
+# 'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+# Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
+# Then return the difference between the sum of the digits in total1 and total2.
+
+def calc(x):
+    total1 = ""
+    total2 = ""
+    for i in x:
+        total1 += str(ord(i))
+    total2 = total1.replace("7", "1")
+    tot1 = [int(i) for i in total1]
+    tot2 = [int(i) for i in total2]
+    return sum(tot1) - sum(tot2)
+
+
+# TASK - Automorphic Number (Special Numbers Series #6)
+
+# A number is called Automorphic number if and only if its square ends in the same digits as the number itself. 
+
+def automorphic(n):
+    print(n ** 2)
+    return "Automorphic" if str(n ** 2)[len(str(n)) * -1:] == str(n) else "Not!!"
+
+
+# TASK - Birthday I - Cake
+
+# You will work out the number of candles that will fall from the provided string (y). You must add up the 
+# character ASCII code of each even indexed (assume a 0 based indexing) character in y, with the alphabetical 
+# position of each odd indexed character in y to give the string a total.
+# example: 'abc' --> a=97, b=2, c=99 --> y total = 198.
+# If the carpet catches fire, return 'Fire!', if not, return 'That was close!'.
+
+def cake(candles,debris):
+    res = 0
+    for i in range(len(debris)):
+        if i % 2 == 0:
+            res += ord(debris[i])
+        else:
+            res += ord(debris[i]) - 96
+    if candles == 0:
+        return "That was close!"
+    else:
+        num = (res / candles) * 100
+        if num > 70:
+            return "Fire!"
+        else:
+            return 'That was close!'
+
+
+# TASK - Largest Elements
+
+# Write a program that outputs the top n elements from a list.
+
+def largest(n, xs):
+    res = []
+    for i in range(n):
+        res.append(max(xs))
+        xs.remove(max(xs))
+    return sorted(res)
+
+
+# TASK - Simple Fun #152: Invite More Women?
+
+#  King Arthur and his knights are having a New Years party. Last 
+# year Lancelot was jealous of Arthur, because Arthur had a date 
+# and Lancelot did not, and they started a duel.
+# To prevent this from happening again, Arthur wants to make sure 
+# that there are at least as many women as men at this year's party. 
+# He gave you a list of integers of all the party goers.
+# Arthur needs you to return true if he needs to invite more women 
+# or false if he is all set.
+
+def invite_more_women(arr):
+    return arr.count(1) > arr.count(-1)
+
+
+# TASK - Sum even numbers
+
+# Complete the function that takes a sequence of numbers as single parameter. 
+# Your function must return the sum of the even values of this sequence.
+# Only numbers without decimals like 4 or 4.0 can be even.
+# The input is a sequence of numbers: integers and/or floats. 
+
+def sum_even_numbers(seq): 
+    return sum([i for i in seq if i % 2 == 0])
+
+
+# TASK - Counting Array Elements
+
+# Write a function that takes an array and counts the number of each unique element present.
+
+def count(array):
+    res = {}
+    for i in array:
+        res[i] = array.count(i)
+    return res
+
+
+# TASK - Lost number in number sequence
+
+# An ordered sequence of numbers from 1 to N is given. One number might have deleted from it, 
+# then the remaining numbers were mixed. Find the number that was deleted.
+
+def find_deleted_number(arr, mixed_arr):
+    for i in arr:
+        if not i in mixed_arr:
+            return i
+        else:
+            return 0
+
+
+# TASK - esreveR
+
+# Write a function reverse which reverses a list (or in clojure's case, any list-like data 
+# structure)
+
+def reverse(lst):
+    empty_list = list()
+    count = -1
+    for i in range(len(lst)):
+        empty_list.append(lst[count])
+        count -= 1
+    return empty_list
+
+
+# TASK - Even numbers in an array
+
+# Given an array of digital numbers, return a new array of length number containing the last 
+# even numbers from the original array (in the same order). The original array will be 
+# not empty and will contain at least "number" even numbers.
+
+def even_numbers(arr,n):
+    return [i for i in arr if i % 2 == 0][::-1][:n][::-1]
+
+
+# TASK - Search for letters
+
+# Create a function which accepts one arbitrary string as an argument, and return a string of 
+# length 26.
+# The objective is to set each of the 26 characters of the output string to either '1' or '0' 
+# based on the fact whether the Nth letter of the alphabet is present in the input (independent 
+# of its case).
+# So if an 'a' or an 'A' appears anywhere in the input string (any number of times), set the first
+# character of the output string to '1', otherwise to '0'. if 'b' or 'B' appears in the string, 
+# set the second character to '1', and so on for the rest of the alphabet.
+
+def change(st):
+    res = ""
+    alphabet = []
+    for i in range(97, 123):
+        alphabet.append(chr(i))
+    for i in alphabet:
+        if i in st.lower():
+            res += "1"
+        else:
+            res += "0"
+    return res
+
+
+# TASK - Currying functions: multiply all elements in an array
+
+# To complete this Kata you need to make a function multiplyAll/multiply_all which takes an array 
+# of integers as an argument. This function must return another function, which takes a single 
+# integer as an argument and returns a new array.
+# The returned array should consist of each of the elements from the first array multiplied by 
+# the integer.
+
+def multiply_all(arr):
+    def second(num):
+        return [i * num for i in arr]
+    return second
+
+
+# TASK - All unique
+
+# Write a program to determine if a string contains only unique characters. Return true if it 
+# does and false otherwise.
+# The string may contain any of the 128 ASCII characters. Characters are case-sensitive, e.g. 
+# 'a' and 'A' are considered different characters.
+
+def has_unique_chars(string):
+    res = {}
+    for i in string:
+        res[i] = string.count(i)
+    if 2 in res.values():
+        return False
+    else:
+        return True
+
+
+# TASK - Multiply characters
+
+# Here we have a function that help us spam our hearty laughter. But is not working! I need you to 
+# find out why...
+
+def spam(number):
+    return 'hue' * number
+
+
+# TASK - Find Count of Most Frequent Item in an Array
+
+# Complete the function to find the count of the most frequent item of an array. You can assume that
+# input is an array of integers. For an empty array return 0
+
+def most_frequent_item_count(collection):
+    if len(collection) == 0:
+        return 0
+    else:
+        d = {}
+        for i in collection:
+            d[i] = collection.count(i)
+        res = []
+        for i in d.values():
+            res.append(i)
+        return max(res)
+
+
+# TASK - Monotone travel
+
+# You're given a list of compareable elements
+# Your job is to check whether for any x all successors are greater or equal to x
+
+def is_monotone(heights):
+    if len(heights) == 0:
+        return True
+    else:
+        c = 1
+        l = []
+        for i in range(len(heights) - 1):
+            if heights[c] >= heights[0]:
+                l.append(1)
+            else:
+                l.append(0)
+            c += 1
+        if 0 in l:
+            return False
+        else:
+            return True
+
+
+# TASK - Word values
+
+# Given a string "abc" and assuming that each letter in the string has a value equal to its position 
+# in the alphabet, our string will have a value of 1 + 2 + 3 = 6. This means that: a = 1, b = 2, c = 3 ....z = 26.
+# You will be given a list of strings and your task will be to return the values of the strings as explained above 
+# multiplied by the position of that string in the list. For our purpose, position begins with 1.
+
+def name_value(my_list):
+    l = []
+    c = 1
+    for words in my_list:
+        res = 0
+        for letter in words:
+            if letter.isalpha():
+                res += (ord(letter) - 96)
+        l.append(res * c)
+        c += 1
+    return l

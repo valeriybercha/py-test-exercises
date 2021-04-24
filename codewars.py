@@ -6569,3 +6569,82 @@ def name_value(my_list):
         l.append(res * c)
         c += 1
     return l
+
+
+# TASK - Twisted Sum
+
+# Find the sum of the digits of all the numbers from 1 to N (both ends included).
+
+def compute_sum(n):
+    res = 0
+    for i in range(1, n + 1):
+        if len(str(i)) == 1:
+            res += i
+        else:
+            for e in str(i):
+                res += int(e)
+    return res
+
+
+# TASK - Small enough? - Beginner
+
+# You will be given an array and a limit value. You must check that all values 
+# in the array are below or equal to the limit value. If they are, return true. 
+# Else, return false.
+
+def small_enough(array, limit):
+    res = []
+    for i in array:
+        if i <= limit:
+            res.append(1)
+        else:
+            res.append(0)
+    if 0 in res:
+        return False
+    else:
+        return True
+
+
+# TASK - Simple Fun #74: Growing Plant
+
+# Each day a plant is growing by upSpeed meters. Each night that plant's height 
+# decreases by downSpeed meters due to the lack of sun heat. Initially, plant 
+# is 0 meters tall. We plant the seed at the beginning of a day. We want to 
+# know when the height of the plant will reach a certain level.
+
+def growing_plant(upSpeed, downSpeed, desiredHeight):
+    days = 0
+    grow = 0
+    day_night = 1
+    if desiredHeight == 0:
+        return 1
+    else:
+        while grow < desiredHeight:
+            if day_night % 2 != 0:
+                grow += upSpeed
+            else:
+                grow -= downSpeed
+            days += 1
+            day_night += 1
+        if days % 2 == 0:
+            return days / 2
+        else:
+            return int(days / 2) + 1
+
+
+# TASK - Squares sequence
+
+# 
+
+def squares(x, n):
+    res = [x]
+    if n <= 0:
+        return []
+    for i in range(n - 1):
+        c = x * x
+        res.append(c)
+        x = c    
+    return res
+
+
+print(squares(3, 3))

@@ -6634,7 +6634,9 @@ def growing_plant(upSpeed, downSpeed, desiredHeight):
 
 # TASK - Squares sequence
 
-# 
+# Complete the function that returns an array of length n, starting 
+# with the given number x and the squares of the previous number. If n is negative 
+# or zero, return an empty array/list.
 
 def squares(x, n):
     res = [x]
@@ -6647,4 +6649,57 @@ def squares(x, n):
     return res
 
 
-print(squares(3, 3))
+# TASK - Coding Meetup #1 - Higher-Order Functions Series - Count the number of JavaScript 
+# developers coming from Europe
+# You will be given an array of objects (hashes in ruby) representing data about developers 
+# who have signed up to attend the coding meetup that you are organising for the first time.
+# Your task is to return the number of JavaScript developers coming from Europe.
+
+def count_developers(lst):
+    count = 0
+    for elem in lst:
+        if "Europe" in elem.values() and "JavaScript" in elem.values():
+            count += 1
+    return count
+
+
+# TASK - max diff - easy
+
+# You must implement a function that return the difference between the biggest and the smallest 
+# value in a list(lst) received as parameter.
+# The list(lst) contains integers, that means it may contain some negative numbers.
+# If the list is empty or contains a single element, return 0.
+# The list(lst) is not sorted.
+
+def max_diff(lst):
+    return max(lst) - min(lst) if len(lst) > 0 else 0
+
+
+# TASK - Product Of Maximums Of Array (Array Series #2) 
+
+# Given an array/list [] of integers , Find the product of the k maximal numbers.
+
+def max_product(lst, n_largest_elements):
+    l = []
+    res = 1
+    for i in range(n_largest_elements):
+        l.append(max(lst))
+        lst.remove(max(lst))
+    for i in l:
+        res *= i
+    return res
+
+
+# TASK - Indexed capitalization
+
+# Given a string and an array of integers representing indices, capitalize 
+# all letters at the given indices. 
+
+def capitalize(s,ind):
+    res = ""
+    for i in range(len(s)):
+        if i in ind:
+            res += s[i].upper()
+        else:
+            res += s[i].lower()
+    return res

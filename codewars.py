@@ -6703,3 +6703,52 @@ def capitalize(s,ind):
         else:
             res += s[i].lower()
     return res
+
+
+# TASK - Nth power rules them all!
+
+# You are provided with an array of positive integers and an additional integer n (n > 1).
+# Calculate the sum of each value in the array to the nth power. Then subtract the sum 
+# of the original array.
+
+def modified_sum(a, n):
+    res = 0
+    for i in a:
+        res += i ** n
+        res -= i
+    return res
+
+
+# TASK - Maximum Triplet Sum (Array Series #7) 
+
+# Given an array/list [] of n integers , find maximum triplet sum in the array Without duplications.
+
+def max_tri_sum(numbers):
+    l_numbers = [i for i in set(numbers)]
+    res = 0
+    for i in range(3):
+        res += max(l_numbers)
+        l_numbers.remove(max(l_numbers))
+    return res
+
+
+# TASK - Person Class Bug
+
+# The following code was thought to be working properly, however when the code tries to access the 
+# age of the person instance it fails. 
+
+class Person():
+    def __init__(self, first_name, last_name, age):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.full_name = first_name + " " + last_name
+
+
+# TASK - Float Precision
+
+# Update the solution method to round the argument value to the closest precision of two. The argument will 
+# always be a float.
+
+def solution(number):
+    return round(number, 2)

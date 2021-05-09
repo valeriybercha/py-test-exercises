@@ -6752,3 +6752,61 @@ class Person():
 
 def solution(number):
     return round(number, 2)
+
+
+# TASK - Say hello!
+
+# Write a function to greet a person. Function will take name as input and greet the person by 
+# saying hello. Return null/nil/None if input is empty string or null/nil/None.
+
+def greet(name):
+    return f"hello {name}!" if name else None
+
+
+# TASK - The old switcheroo
+
+# Write a function
+# vowel_2_index
+# that takes in a string and replaces all the vowels [a,e,i,o,u] with their respective positions within that string. 
+
+def vowel_2_index(string):
+    res = ""
+    for i in range(len(string)):
+        if string[i].lower() in "aeiou":
+            res += str(i + 1)
+        else:
+            res += string[i]
+    return res
+
+
+# TASK - Pluck
+
+# Implement a function which takes a sequence of objects and a property name, and returns a sequence containing the named 
+# property of each object.
+
+def pluck(objs, name): 
+    res = []
+    for d in objs:
+        if name in d:
+            res.append(d[name])
+        else:
+            res.append(None)
+    return res
+
+
+# TASK - Longest vowel chain
+
+# The vowel substrings in the word codewarriors are o,e,a,io. The longest of these has a length of 2. Given a lowercase string 
+# that has alphabetic characters only (both vowels and consonants) and no spaces, return the length of the longest vowel 
+# substring. Vowels are any of aeiou. 
+
+def solve(s):
+    count = 0
+    res = []
+    for i in s:
+        if i in "aeiou":
+            count += 1
+        else:
+            res.append(count)
+            count = 0
+    return max(res)

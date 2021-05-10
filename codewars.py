@@ -6810,3 +6810,68 @@ def solve(s):
             res.append(count)
             count = 0
     return max(res)
+
+
+# TASK - Disarium Number (Special Numbers Series #3)
+
+# Disarium number is the number that The sum of its digits powered with their respective 
+# positions is equal to the number itself.
+
+def disarium_number(number):
+    num_list = [int(i) for i in str(number )]
+    res = 0
+    for i in range(len(num_list)):
+        res += (num_list[i] ** (i + 1))
+    return "Disarium !!" if res == number else "Not !!"
+
+
+# TASK - Counting in the Amazon
+
+#  The Arara are an isolated tribe found in the Amazon who count in pairs. For example one to eight is as follows:
+# 1 = anane
+# 2 = adak
+# 3 = adak anane
+# 4 = adak adak
+# 5 = adak adak anane
+# 6 = adak adak adak
+# 7 = adak adak adak anane
+# 8 = adak adak adak adak
+# Take a given number and return the Arara's equivalent. 
+
+def count_arara(n):
+    res = []
+    if n % 2 == 0:
+        for i in range(n // 2):
+            res.append('adak')
+    else:
+        for i in range((n - 1) // 2):
+            res.append('adak')
+        res.append('anane')
+    return " ".join(res)
+
+
+# TASK - Find Screen Size
+
+# Given an integer width and a string ratio written as WIDTH:HEIGHT, output the screen dimensions as a string 
+# written as WIDTHxHEIGHT.
+# Note: The calculated height should be represented as an integer. If the height is fractional, truncate it.
+
+def find_screen_height(width, ratio):
+    return f"{width}x{int(width / (int(ratio.split(':')[0]) / int(ratio.split(':')[1])))}"
+
+
+# TASK - All Inclusive?
+
+# Output of function contain_all_rots(strng, arr) (or containAllRots or contain-all-rots):
+# a boolean true if all rotations of strng are included in arr (C returns 1)
+# false otherwise (C returns 0)
+
+def contain_all_rots(strng, arr):
+    res = []
+    if strng.isdigit():
+        return True
+    else:
+        for i in arr:
+            if sorted(strng) == sorted(i):
+                res.append(1)
+        return res.count(1) == len(strng)

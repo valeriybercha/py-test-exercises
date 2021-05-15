@@ -6875,3 +6875,190 @@ def contain_all_rots(strng, arr):
             if sorted(strng) == sorted(i):
                 res.append(1)
         return res.count(1) == len(strng)
+
+
+# TASK - My Languages
+
+# You are given a dictionary/hash/object containing some languages and your 
+# test results in the given languages. Return the list of languages where your 
+# test score is at least 60, in descending order of the results.
+# Note: the scores will always be unique (so no duplicate values).
+
+def my_languages(results):
+    res = []
+    sorted_values = sorted(results.values(), reverse=True)
+    sorted_dict = {}
+    for v in sorted_values:
+        for k in results.keys():
+            if results[k] == v:
+                sorted_dict[k] = results[k]
+    return [i for i in sorted_dict if sorted_dict[i] >= 60]       
+
+
+# TASK - Nth Smallest Element (Array Series #4) 
+
+# Given an array/list [] of integers , Find the Nth smallest element in this array 
+# of integers
+
+def nth_smallest(arr, pos):
+    for i in range(pos - 1):
+        arr.remove(min(arr))
+    return min(arr)
+
+
+# TASK - Numbers in strings
+
+# In this Kata, you will be given a string that has lowercase letters and numbers. 
+# Your task is to compare the number groupings and return the largest number. Numbers 
+# will not have leading zeros. 
+
+def solve_23(s):
+    res = []
+    str_num = ""
+    for i in s:
+        if i.isdigit():
+            str_num += i
+        else:
+            str_num = ""
+        res.append(str_num)
+    final_res = []
+    for i in res:
+        if i.isdigit():
+            final_res.append(int(i))
+    return max(final_res)
+
+
+# TASK - Naughty or Nice?
+
+# Santa needs you to write two functions. Both of the functions accept a sequence of 
+# objects. The first one returns a sequence containing only the names of the nice people, 
+# and the other returns a sequence containing only the names of the naughty people. Return an 
+# empty sequence [] if the result from either of the functions contains no names.
+
+def get_nice_names(people):
+    res = []
+    for i in people:
+        if i['was_nice']:
+            res.append(i['name'])
+    return res
+
+def get_naughty_names(people):
+    res = []
+    for i in people:
+        if not i['was_nice']:
+            res.append(i['name'])
+    return res
+
+
+# TASK - Credit card issuer checking
+
+# Given a credit card number we can determine who the issuer/vendor is with a few basic knowns.
+# Complete the function get_issuer() that will use the values shown below to determine the card 
+# issuer for a given card number. If the number cannot be matched then the function should return 
+# the string Unknown.
+
+def get_issuer(number):
+    if len(str(number)) == 15:
+        if str(number)[:2] == "34" or str(number)[:2] == "37":
+            return "AMEX"
+        else:
+            return "Unknown"
+    elif len(str(number)) == 16:
+        if str(number)[:4] == "6011":
+            return "Discover"
+        elif int(str(number)[:2]) in range(51, 56):
+            return "Mastercard"
+        elif str(number)[0] == "4":
+            return "VISA"
+        else:
+            return "Unknown"
+    elif len(str(number)) == 13:
+        if str(number)[0] == "4":
+            return "VISA"
+        else:
+            return "Unknown"
+    else:
+        return "Unknown"
+
+
+# TASK - How many arguments\
+
+# Create a function args_count, that returns the count of passed arguments
+
+def args_count(*args, **kwargs):
+    count = 0
+    for i in args:
+        count += 1
+    for i in kwargs:
+        count += 1
+    return count
+
+
+# TASK - Count all the sheep on farm in the heights of New Zealand
+
+# Every Friday and Saturday night, farmer counts amount of sheep returned 
+# back to his farm (sheep returned on Friday stay and don't leave for a weekend).
+# Sheep return in groups each of the days -> you will be given two arrays with 
+# these numbers (one for Friday and one for Saturday night). Entries are always 
+# positive ints, higher than zero.
+# Farmer knows the total amount of sheep, this is a third parameter. You need 
+# to return the amount of sheep lost (not returned to the farm) after final sheep 
+# counting on Saturday.
+# Example 1: Input: {1, 2}, {3, 4}, 15 --> Output: 5
+# Example 2: Input: {3, 1, 2}, {4, 5}, 21 --> Output: 6
+
+def lost_sheep(friday,saturday,total):
+    counter = 0
+    for i in friday:
+        counter += i
+    for i in saturday:
+        counter += i
+    return total - counter
+
+
+# TASK - List to Array
+
+# Linked lists are data structures composed of nested or chained objects, each 
+# containing a single value and a reference to the next object. 
+
+class LinkedList:
+    def __init__(self, value=0, next=None):
+        self.value = value
+        self.next = next
+
+    def list_to_array(node):
+        arr = []
+        curr = node
+        while (curr != None):
+            arr.append(curr.value)
+            curr = curr.next
+        return arr
+
+
+# TASK - Remove duplicate words
+
+# Your task is to remove all duplicate words from a string, leaving only 
+# single (first) words entries.
+
+def remove_duplicate_words(s):
+    d = {}
+    for i in s.split():
+        d[i] = s.split().count(i)
+    return " ".join(d.keys())
+
+
+# TASK - Partial Word Searching
+
+# Write a method that will search an array of strings for all strings 
+# that contain another string, ignoring capitalization. Then return an 
+# array of the found strings. 
+
+def word_search(query, seq):
+    res = []
+    for i in seq:
+        if query.lower() in i.lower():
+            res.append(i)
+    if len(res) == 0:
+        return ["None"]
+    else:
+        return res

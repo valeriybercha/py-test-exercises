@@ -7062,3 +7062,759 @@ def word_search(query, seq):
         return ["None"]
     else:
         return res
+
+
+# TASK - NATO Phonetic Alphabet
+
+# In this kata, we're going to create the function nato that takes a 
+# word and returns a string that spells the word using the NATO phonetic alphabet.
+# There should be a space between each word in the returned string, and the first 
+# letter of each word should be capitalized.
+# For those of you that don't want your fingers to bleed, this kata already 
+# has a dictionary typed out for you.
+  
+def nato(word):
+    letters =  {
+    "A": "Alpha",  "B": "Bravo",   "C": "Charlie",
+    "D": "Delta",  "E": "Echo",    "F": "Foxtrot",
+    "G": "Golf",   "H": "Hotel",   "I": "India",
+    "J": "Juliett","K": "Kilo",    "L": "Lima",
+    "M": "Mike",   "N": "November","O": "Oscar",
+    "P": "Papa",   "Q": "Quebec",  "R": "Romeo",
+    "S": "Sierra", "T": "Tango",   "U": "Uniform",
+    "V": "Victor", "W": "Whiskey", "X": "X-ray",
+    "Y": "Yankee", "Z": "Zulu"
+    }
+    nato_word = []
+    for letter in word:
+        nato_word.append(letters[letter.upper()])
+    return " ".join(nato_word)
+
+
+# TASK - Find sum of top-left to bottom-right diagonals
+
+# Given a square matrix (i.e. an array of subarrays), find the sum of 
+# values from the first value of the first array, the second value of 
+# the second array, the third value of the third array, and so on...
+
+def diagonal_sum(array):
+    c = 0
+    res = 0
+    for i in array:
+        res += i[c]
+        c += 1
+    return res
+
+
+# TASK - Simple Fun #37: House Numbers Sum
+
+# For the given sequence of houses determine the sum that the boy 
+# will get. It is guaranteed that there will always be at least 
+# one 0 house on the path.
+
+def house_numbers_sum(inp):
+    return sum(inp[:inp.index(0)])
+
+
+# TASK - Responsible Drinking
+
+# Your fellow coders have bought you several drinks tonight in 
+# the form of a string. Return a string suggesting how many 
+# glasses of water you should drink to not be hungover.
+
+def hydrate(drink_string): 
+    res = 0
+    for i in drink_string.split():
+        if i.isdigit():
+            res += int(i)
+    g = ""
+    if res == 1:
+        g = "glass"
+    else:
+        g = "glasses"
+    return f"{res} {g} of water"
+
+
+# TASK - Return a sorted list of objects
+
+# You'll be passed an array of objects (list) - you must sort them in descending 
+# order based on the value of the specified property (sortBy). 
+
+def sort_list(sort_by, lst):
+    r = []
+    res = []
+    for d in lst:
+        r.append(d[sort_by])
+    for i in sorted(set(r), reverse=True):
+        for d in lst:
+            if i == d[sort_by]:
+                res.append(d)
+    return res
+
+
+# TASK - Good vs Evil
+
+# Middle Earth is about to go to war. The forces of good will have many battles with the 
+# forces of evil. Different races will certainly be involved. Each race has a certain 
+# worth when battling against others. On the side of good we have the following races, 
+# with their associated worth:
+    # Hobbits: 1
+    # Men: 2
+    # Elves: 3
+    # Dwarves: 3
+    # Eagles: 4
+    # Wizards: 10
+# On the side of evil we have:
+    # Orcs: 1
+    # Men: 2
+    # Wargs: 2
+    # Goblins: 2
+    # Uruk Hai: 3
+    # Trolls: 5
+    # Wizards: 10
+# Although weather, location, supplies and valor play a part in any battle, if you add 
+# up the worth of the side of good and compare it with the worth of the side of evil, the 
+# side with the larger worth will tend to win.
+
+def goodVsEvil(good, evil):
+    good_res = 0
+    evil_res = 0
+    
+    good_d = {
+        "Hobbits": 1,
+        "Men": 2,
+        "Elves": 3,
+        "Dwarves": 3,
+        "Eagles": 4,
+        "Wizards": 10
+    }
+
+    good_l = ["Hobbits",
+            "Men",
+            "Elves",
+            "Dwarves",
+            "Eagles",
+            "Wizards"]
+
+    evil_d = { 
+        "Orcs": 1,
+        "Men": 2,
+        "Wargs": 2,
+        "Goblins": 2,
+        "Uruk Hai": 3,
+        "Trolls": 5,
+        "Wizards": 10
+    }
+
+    evil_l = [
+        "Orcs",
+        "Men",
+        "Wargs",
+        "Goblins",
+        "Uruk Hai",
+        "Trolls",
+        "Wizards"
+    ]
+
+    for i in range(len(good.split())):
+        if good.split()[i] == "0":
+            good_res += 0
+        else:
+            good_res += (good_d[good_l[i]] * int(good.split()[i]))
+
+    for i in range(len(evil.split())):    
+        if evil.split()[i] == "0":
+            evil_res += 0
+        else:
+            evil_res += (evil_d[evil_l[i]] * int(evil.split()[i]))
+
+    if good_res > evil_res:
+        return "Battle Result: Good triumphs over Evil"
+    elif good_res < evil_res:
+        return "Battle Result: Evil eradicates all trace of Good"
+    else:
+        return "Battle Result: No victor on this battle field"
+
+    
+# TASK - Special Number (Special Numbers Series #5)
+
+# A number is a Special Number if it’s digits only consist 0, 1, 2, 3, 4 or 5
+# Given a number determine if it special number or not . 
+
+def special_number(number):
+    str_num = [i for i in str(number)]
+    res = []
+    for i in str_num:
+        if int(i) in range(0, 6):
+            res.append(True)
+        else:
+            res.append(False)
+    if False in res:
+        return "NOT!!"
+    else:
+        return "Special!!"
+
+
+# TASK - Jumping Number (Special Numbers Series #4)
+
+# Jumping number is the number that All adjacent digits in it differ by 1.
+# Given a number, Find if it is Jumping or not.
+
+def jumping_number(number):
+    if len(str(number)) == 1:
+        return "Jumping!!"
+    else:
+        res = []
+        c = 1
+        num_to_check = int(str(number)[0])
+        for i in range(len(str(number)) - 1):
+            if num_to_check - int(str(number)[c]) == 1:
+                res.append(True)
+            elif int(str(number)[c]) - num_to_check == 1:
+                res.append(True)
+            else:
+                res.append(False)
+            num_to_check = int(str(number)[c])
+            c += 1
+        if False in res:
+            return"Not!!"
+        else:
+            return "Jumping!!"
+
+
+# TASK - Unique string characters
+
+# In this Kata, you will be given two strings a and b and your task will 
+# be to return the characters that are not common in the two strings.
+# Notice also that you return the characters from the first string concatenated with 
+# those from the second string.
+
+def solve(a,b):
+    res = ""
+    for i in a:
+        if not i in b:
+            res += i
+    for i in b:
+        if not i in a:
+            res += i
+    return res
+    
+
+# TASK - Tidy Number (Special Numbers Series #9)
+
+# A Tidy number is a number whose digits are in non-decreasing order.
+# Given a number, Find if it is Tidy or not . 
+
+def tidyNumber(n):
+    res = []
+    c = 1
+    numb = int(str(n)[0])
+    for i in range(len(str(n)) - 1):
+        if int(str(n)[c]) >= numb:
+            res.append(True)
+        else:
+            res.append(False)
+        numb = int(str(n)[c])
+        c += 1
+    if False in res:
+        return False
+    else:
+        return True
+
+
+# TASK - Building blocks
+
+# Write a class Block that creates a block (Duh..)
+#Requirements
+# The constructor should take an array as an argument, this will contain 3 integers 
+# of the form [width, length, height] from which the Block should be created.
+
+class Block:
+    def __init__(self, arr):
+        self.arr = arr
+
+    def get_width(self):
+        return self.arr[0]
+    
+    def get_length(self):
+        return self.arr[1]
+    
+    def get_height(self):
+        return self.arr[2]
+    
+    def get_surface_area(self):
+        return 2 * self.get_width() * self.get_length() + 2 * self.get_length() * self.get_height() + 2 * self.get_height() * self.get_width()
+    
+    def get_volume(self):
+        return self.get_width() * self.get_height() * self.get_length()
+
+
+# TASK - Two fighters, one winner.
+
+# Create a function that returns the name of the winner in a fight between two fighters.
+# Each fighter takes turns attacking the other and whoever kills the other first is 
+# victorious. Death is defined as having health <= 0.# 
+# Each fighter will be a Fighter object/instance. See the Fighter class below in 
+# your chosen language.
+# Both health and damagePerAttack (damage_per_attack for python) will be integers 
+# larger than 0. You can mutate the Fighter objects.
+
+class Fighter(object):
+    def __init__(self, name, health, damage_per_attack):
+        self.name = name
+        self.health = health
+        self.damage_per_attack = damage_per_attack
+
+def declare_winner(fighter1, fighter2, first_attacker):
+    dam = 0
+    while fighter1.health >= 0 and fighter2.health >= 0:
+        if first_attacker == fighter1.name:
+            dam = fighter2.health - fighter1.damage_per_attack
+            fighter2.health = dam
+            first_attacker = fighter2.name
+        else:
+            dam = fighter1.health - fighter2.damage_per_attack
+            fighter1.health = dam
+            first_attacker = fighter1.name
+    
+    if fighter1.health <= 0:
+        return fighter2.name
+    else:
+        return fighter1.name
+
+
+# TASK - Classy Classes
+
+# Your task is to complete this Class, the Person class has been created. You must fill 
+# in the Constructor method to accept a name as string and an age as number, complete 
+# the get Info property and getInfo method/Info getter which should return johns age is 34
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.info = f"{self.name}s age is {self.age}"
+
+
+# TASK - Bumps in the Road
+
+# Your car is old, it breaks easily. The shock absorbers are gone and you think it can 
+# handle about 15 more bumps before it dies totally.
+# Unfortunately for you, your drive is very bumpy! Given a string showing either flat road 
+# ("_") or bumps ("n"), work out if you make it home safely. 15 bumps or under, return 
+# "Woohoo!", over 15 bumps return "Car Dead".
+
+def bumps(road):
+    return "Woohoo!" if road.count("n") <= 15 else "Car Dead"
+
+
+# TASK - Switcheroo
+
+# Given a string made up of letters a, b, and/or c, switch the position of letters a and b 
+# (change a to b and vice versa). Leave any incidence of c untouched.
+
+def switcheroo(s):
+    res_list = []
+    for i in s:
+        if i == "a":
+            res_list.append("b")
+        elif i == "b":
+            res_list.append("a")
+        else:
+            res_list.append(i)
+    return "".join(res_list)
+
+
+# TASK - Simple remove duplicates
+
+# In this Kata, you will remove the left-most duplicates from a list of integers and return the result.
+
+def solve(arr): 
+    reverse_arr = arr[::-1]
+    d = {}
+    for i in reverse_arr:
+        d[i] = reverse_arr.count(i)
+    return [i for i in d.keys()][::-1]
+
+
+# TASK - Alternate case
+
+# Write function alternateCase which switch every letter in string from upper to lower and from lower 
+# to upper. E.g: Hello World -> hELLO wORLD
+
+def alternate_case(s):
+    res = ""
+    for i in s:
+        if i.islower():
+            res += i.upper()
+        else:
+            res += i.lower()
+    return res
+    
+
+# TASK - Return substring instance count
+
+# Complete the solution so that it returns the number of times the search_text is found within the full_text. 
+
+def solution(full_text, search_text):
+    return full_text.count(search_text)
+
+
+# TASK - Cat and Mouse - Easy Version
+
+# You will be given a string (x) featuring a cat 'C' and a mouse 'm'. The rest of the string will be made up of '.'.
+# You need to find out if the cat can catch the mouse from it's current position. The cat can jump over 
+# three characters. So:
+# C.....m returns 'Escaped!' <-- more than three characters between
+# C...m returns 'Caught!' <-- as there are three characters between the two, the cat can jump.
+
+def cat_mouse(x):
+    return "Escaped!" if x.count(".") > 3 else "Caught!"
+
+
+# TASK - Coding Meetup #2 - Higher-Order Functions Series - Greet developers
+
+# You will be given an array of objects (associative arrays in PHP) representing data about developers who have signed up to attend the next coding meetup that you are organising.
+# Your task is to return an array where each object will have a new property 'greeting' with the following string value:
+# Hi < firstName here >, what do you like the most about < language here >?
+
+def greet_developers(lst): 
+    res = []
+    for d in lst:
+        res_d = {}
+        for k, v in d.items():
+            res_d[k] = v
+        res_d["greeting"] = f"Hi {d['firstName']}, what do you like the most about {d['language']}?"
+        res.append(res_d)
+    return res
+
+
+# TASK - Sum of all arguments
+
+# Write a function that finds the sum of all its arguments.
+
+def sum_args(*args):
+    res = 0
+    for i in args:
+        res += i
+    return res
+
+
+# TASK - Compare Strings by Sum of Chars
+
+# Compare two strings by comparing the sum of their values (ASCII character code).
+# For comparing treat all letters as UpperCase
+# null/NULL/Nil/None should be treated as empty strings
+# If the string contains other characters than letters, treat the whole string as 
+# it would be empty
+# Your method should return true, if the strings are equal and false if they are not equal.
+
+def compare(s1,s2):
+    if s1 == "" or s2 == "":
+        return True
+    else:
+        s1_sum = 0
+        s2_sum = 0
+        for i in s1:
+            if ord(i.upper()) in range(65, 90):
+                s1_sum += ord(i.upper())
+        for i in s2:
+            if ord(i.upper()) in range(65, 90):
+                s2_sum += ord(i.upper())
+        return s1_sum == s2_sum
+
+
+# TASK - Interview Question (easy)
+
+# You receive the name of a city as a string, and you need to return a string that shows 
+# how many times each letter shows up in the string by using asterisks (*).
+
+def get_strings(city):
+    d = {}
+    res = []
+    for l in city.lower():
+        if not l == " ":
+            d[l] = "*" * city.lower().count(l)
+    for elem in d:
+        s = ""
+        s += elem
+        s += ":"
+        s += d[elem]
+        res.append(s)
+    return ",".join(res)
+
+
+# TASK - Candy problem
+
+# Your job is to find out how much candy each child has, and give them each additional candy 
+# until they too have as much as the child(ren) with the most candy. You also want to keep 
+# a total of how much candy you've handed out because reasons."
+
+def candies(s):
+    if len(s) > 1:
+        res = 0
+        for i in s:
+            res += (max(s) - i)
+        return res
+    else:
+        return -1
+
+
+# TASK - Arithmetic List!
+
+# In this kata, you will write an arithmetic list which is basically a list that contains 
+# consecutive terms in the sequence.
+# You will be given three parameters :
+# first the first term in the sequence
+# c the constant that you are going to ADD ( since it is an arithmetic sequence...)
+# l the number of terms that should be returned
+# In this kata, you will write an arithmetic list which is basically a list that contains 
+# consecutive terms in the sequence.
+# You will be given three parameters :
+# first the first term in the sequence
+# c the constant that you are going to ADD ( since it is an arithmetic sequence...)
+# l the number of terms that should be returned
+
+def seqlist(first,c,l):
+    res = []
+    for i in range(l):
+        res.append(first)
+        first += c
+    return res
+
+
+# TASK - Convert an array of strings to array of numbers
+
+# Create the function that takes as a parameter a sequence of numbers represented 
+# as strings and outputs a sequence of numbers.
+
+def to_float_array(arr): 
+    res = []
+    for i in arr:
+        if "." in i:
+            res.append(float(i))
+        else:
+            res.append(int(i))
+    return res
+
+
+# TASK - Formatting decimal places #1
+
+# Each floating-point number should be formatted that only the first two decimal places 
+# are returned. You don't need to check whether the input is a valid number because only
+# valid numbers are used in the tests. 
+
+def two_decimal_places(number):
+    return float(str(number)[:str(number).index(".")] + "." + str(number)[str(number).index(".") + 1 : str(number).index(".") + 3])
+
+
+# TASK - Numbers to Letters
+
+# Given an array of numbers (in string format), you must return a string. The numbers correspond 
+# to the letters of the alphabet in reverse order: a=26, z=1 etc. You should also account for '!', 
+# '?' and ' ' that are represented by '27', '28' and '29' respectively.
+
+def switcher(arr):
+    d = {"27": "!", "28": "?", "29": " ", }
+    for i in range(97, 123):
+        d[str(123 - i)] = chr(i)
+    res = ""
+    for i in arr:
+        res += d[i]
+    return res
+
+
+# TASK - Coding Meetup #3 - Higher-Order Functions Series - Is Ruby coming?
+
+# You will be given an array of objects (associative arrays in PHP) representing data about developers who 
+# have signed up to attend the next coding meetup that you are organising.
+
+def is_ruby_coming(lst): 
+    res = 0
+    for d in lst:
+        if d["language"] == "Ruby":
+            res += 1
+    if res >= 1:
+        return True
+    else:
+        return False
+
+
+# TASK - Maximum Gap (Array Series #4)
+
+# Given an array/list [] of integers , Find The maximum difference between the successive elements 
+# in its sorted form. 
+
+def max_gap(numbers):
+    sorted_list = sorted(numbers)
+    res = []
+    c = 0
+    for i in range(len(sorted_list) - 1):
+        res.append(sorted_list[c + 1] - sorted_list[c])
+        c += 1
+    return max(res)
+
+
+# TASK - Basic Math (Add or Subtract)
+
+# In this kata, you will do addition and subtraction on a given string. The return value must be also a string.
+
+def calculate(s):
+    res = []
+    for i in s:
+        if i.isdigit():
+            res.append(i)
+        else:
+            if i == "p":
+                res.append("+")
+            elif i == "m":
+                res.append("-")
+    return str(eval("".join(res)))
+
+
+# TASK - Sum of Intervals
+
+# Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the 
+# sum of all the interval lengths. Overlapping intervals should only be counted once. 
+
+def sum_of_intervals(intervals):
+    res = []
+    for i in intervals:
+        for e in range(min(i), max(i)):
+            res.append(e)
+    sorted_l = sorted(set(res))
+    return len(sorted_l)
+
+
+# TASK - Series of integers from m to n
+
+# Write a function that accepts two arguments and generates a sequence containing the integers from 
+# the first argument to the second inclusive. 
+
+def generate_integers(m, n): 
+    return [i for i in range(m, n + 1)]
+
+
+# TASK - Case swapping
+
+# Given a string, swap the case for each of the letters.
+
+def swap(string_):
+    res = ""
+    for i in string_:
+        if i.islower():
+            res += i.upper()
+        else:
+            res += i.lower()
+    return res
+
+
+# TASK - Populate hash with array keys and default value
+
+# Complete the function so that it takes an array of keys and a default 
+# value and returns a hash (Ruby) / dictionary (Python) with all keys set to the default value. 
+
+def populate_dict(keys, default):
+    d = {}
+    for i in keys:
+        d[i] = default
+    return d
+
+
+# TASK - Converting integer to currency format
+
+# Write a function that takes an integer in input and outputs a string with currency format.
+# Integer in currency format is expressed by a string of number where every three characters 
+# are separated by comma. 
+
+def to_currency(price):
+    reversed_price = str(price)[::-1]
+    l = []
+    c = 0    
+    for i in range(1, len(reversed_price) + 1):
+        if i % 3 == 0:
+            l.append(reversed_price[c])
+            l.append(",")
+
+        else:
+            l.append(reversed_price[c])
+        c += 1
+    return "".join(l[::-1])[1:] if len(reversed_price) % 3 == 0 else "".join(l[::-1])
+
+
+# TASK - ATM
+
+# There is enough money available on ATM in nominal value 10, 20, 50, 100, 200 and 500 dollars.
+# You are given money in nominal value of n with 1<=n<=1500.
+# Try to find minimal number of notes that must be used to repay in dollars, or output -1 if it is impossible.
+
+def solve(n):
+    c = 0
+    while n > 0:
+        c += 1
+        res = n
+        if res >= 500:
+            n = res - 500
+        elif res >= 200:
+            n = res - 200
+        elif res >= 100:
+            n = res - 100
+        elif res >= 50:
+            n = res - 50    
+        elif res >= 20:
+            n = res - 20
+        elif res >= 10:
+            n = res - 10
+        elif res < 10:
+            n = -1
+    if n == 0:
+        return c
+    else:
+        return -1
+
+
+# TASK - Split In Parts
+
+# The aim of this kata is to split a given string into different strings of equal size (note size of 
+# strings is passed to the method)
+
+def split_in_parts(s, part_length): 
+    print(len(s))
+    res = ""
+    c = 0
+    for i in range(1, len(s) + 1):
+        if i % part_length == 0:
+            res += s[c]
+            res += " "
+        else:
+            res += s[c]
+        c += 1
+    return res[:-1] if len(s) % part_length == 0 else res
+
+
+# TASK - Retrieve array value by index with default
+
+# Complete the solution. It should try to retrieve the value of the array at the index provided. 
+# If the index is out of the array's max bounds then it should return the default value instead. 
+
+def solution(items, index, default_value):
+    try:
+        if items[index]:
+            return items[index]
+    except:
+        return default_value
+
+
+# TASK - Simple Fun #2: Circle of Numbers
+
+# Consider integer numbers from 0 to n - 1 written down along the circle in such a way that 
+# the distance between any two neighbouring numbers is equal (note that 0 and n - 1 are neighbouring, too).
+
+def circle_of_numbers(n, fst):
+    res = fst + n // 2
+    if res > n:
+        return (fst + n // 2) - n
+    elif res == n:
+        return 0
+    else:
+        return res

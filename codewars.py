@@ -195,26 +195,6 @@ def sequence_sum(begin_number, end_number, step):
     return res
 
 
-# TASK -
-
-# def factorial(n):
-#     print(n)
-#     f = n
-#     res = n
-#     try:
-#         if n in range(0, 13):
-#             if n == 0:
-#                 return 1
-#             else:
-#                 for i in range(n):
-#                     res *= n
-#                     n -= 1
-#                 return int(res / f)
-#     except:
-#
-#
-# print(factorial(3)) #6
-
 # TASK - Convert boolean values to strings 'Yes' or 'No'
 
 # Complete the method that takes a boolean value and return a "Yes" string for true, or a "No" string for false.
@@ -7818,3 +7798,291 @@ def circle_of_numbers(n, fst):
         return 0
     else:
         return res
+
+
+# TASK - Help Bob count letters and digits.
+
+# He needs you to create a method that can determine how many letters and digits are in a given string.
+
+def count_letters_and_digits(s):
+    return sum([1 for i in s if i.isalnum()])
+
+
+# TASK - All Star Code Challenge #22
+
+# Create a function that takes an integer argument of seconds and converts the value into a string 
+# describing how many hours and minutes comprise that many seconds.
+
+def to_time(seconds):
+    hours = seconds // 3600
+    minutes = 0
+    if hours == 0:
+        minutes = seconds // 60
+    else:
+        minutes = (seconds - (hours * 3600)) // 60
+    return f"{hours} hour(s) and {minutes} minute(s)"
+
+
+# TASK - Simple string characters
+
+# In this Kata, you will be given a string and your task will be to return a list of ints detailing 
+# the count of uppercase letters, lowercase, numbers and special characters, as follows.
+
+def solve(s):
+    uppercase = 0
+    lowercase = 0
+    numbers = 0
+    specials = 0
+    for i in s:
+        if i.isupper():
+            uppercase += 1
+        elif i.islower():
+            lowercase += 1
+        elif i.isdigit():
+            numbers += 1
+        else:
+            specials += 1
+    return [uppercase, lowercase, numbers, specials]
+
+
+# TASK - Coding Meetup #4 - Higher-Order Functions Series - Find the first Python developer
+
+# You will be given an array of objects (associative arrays in PHP) representing data about
+# developers who have signed up to attend the next coding meetup that you are organising. 
+# The list is ordered according to who signed up first.
+# Your task is to return one of the following strings
+# < firstName here >, < country here > of the first Python developer who has signed up; or
+# There will be no Python developers if no Python developer has signed up.
+
+def get_first_python(users):
+    for i in users:
+        if i["language"] == "Python":
+            return f"{i['first_name']}, {i['country']}"
+    return "There will be no Python developers"
+
+
+# TASK - Find min and max
+
+# Implement a function that returns the minimal and the maximal value of a list (in this order).
+
+def get_min_max(seq): 
+    return min(seq), max(seq)
+
+
+# TASK - Find all occurrences of an element in an array
+
+# Given an array (a list in Python) of integers and an integer n, find all occurrences of n 
+# in the given array and return another array containing all the index positions of n in the given array.
+# If n is not in the given array, return an empty array [].
+#Assume that n and all values in the given array will always be integers.
+
+def find_all(array, n):
+    res = []
+    for i in range(len(array)):
+        if array[i] == n:
+            res.append(i)
+    return res
+
+
+# TASK - Array Leaders (Array Series #3)
+
+# An element is leader if it is greater than The Sum all the elements to its right side.
+
+def array_leaders(numbers):
+    res = []
+    for i in range(len(numbers)):
+        if numbers[i] > sum(numbers[i + 1:]):
+            res.append(numbers[i])
+    return res
+
+
+# TASK - makeBackronym
+
+# Complete the function to create backronyms. Transform the given string (without spaces) to a backronym, 
+# using the preloaded dictionary and return a string of words, separated with a single space (but no trailing spaces).
+
+def make_backronym(acronym):
+    res = []
+    for i in acronym:
+        res.append(dictionary[i.upper()])
+    return " ".join(res)
+
+
+# TASK - Extra Perfect Numbers (Special Numbers Series #7)
+
+# Given a positive integer N , Return the extra perfect numbers in range from 1 to N .
+
+def extra_perfect(n):
+    return [i for i in range(1, n + 1) if i % 2 != 0]
+
+
+# TASK - Valid Spacing
+
+# Your task is to write a function called valid_spacing() or validSpacing() which 
+# checks if a string has valid spacing. The function should return either True or False. 
+
+def valid_spacing(s):
+    count = 0
+    for i in s:
+        if i == " ":
+            count += 1
+    return count == len(s.split()) - 1
+
+
+# TASK - Digital cypher
+
+# Digital Cypher assigns to each letter of the alphabet unique number. Instead of letters 
+# in encrypted word we write the corresponding number. Then we add to each obtained digit 
+# consecutive digits from the key.
+
+def encode(message, key):
+    res = []
+    multiply = len(message) // len(str(key)) + 1
+    l = [int(i) for i in str(key)] * multiply
+    c = 0
+    for i in message:
+        res.append((ord(i) - 96) +  l[c])
+        c += 1
+    return res
+
+
+# TASK - String to integer conversion
+
+# It should make the conversion if the given string only contains a single integer 
+# value (and possibly spaces - including tabs, line feeds... - at both ends)
+# For all other strings (including the ones representing float values), it should return NaN
+
+def my_parse_int(string):
+    try:
+        return int(string)
+    except:
+        return "NaN"
+
+
+# TASK - Sorting Dictionaries
+
+# Create a function that returns a sorted list of (key, value) tuples (Javascript: arrays of 
+# 2 items).
+# The list must be sorted by the value and be sorted largest to smallest.
+
+def sort_dict(d):
+    res = []
+    dic = {}
+    for i in d:
+        dic[d[i]] = i
+    sorted_d = sorted(dic, reverse=True)
+    for i in sorted_d:
+        res.append((dic[i], i))
+    return res
+
+
+# TASK - Spacify
+
+# Modify the spacify function so that it returns the given string with spaces inserted between each character. 
+
+def spacify(string):
+    res = ""
+    for i in string:
+        res += i
+        res += " "
+    return res[:-1]
+
+
+# TASK - Product of Array Items
+
+# Calculate the product of all elements in an array.
+# If the array is empty or None, return None.
+
+def product(numbers):
+    if numbers:
+        res = 1
+        for i in numbers:
+            res *= i
+        return res
+    else:
+        return None
+
+
+# TASK - Spoonerize Me
+
+# Your task is to create a function that takes a string of two words, separated by a space: 
+# words and returns a spoonerism of those words in a string, as in the above example.
+
+def spoonerize(words):
+    return words.split()[1][0] + words.split()[0][1:] + " " + words.split()[0][0] + words.split()[1][1:]
+
+
+# TASK - Remove All The Marked Elements of a List
+
+# Define a method/function that removes from a given array of integers all the values contained 
+# in a second array.
+
+class List:
+    def remove_(self, integer_list, values_list):
+        res = []
+        for i in integer_list:
+            if not i in values_list:
+                res.append(i)
+        return res
+
+
+# TASK - Difference Of Squares
+
+# Find the difference between the sum of the squares of the first n natural numbers 
+# (1 <= n <= 100) and the square of their sum.
+
+def difference_of_squares(n):
+    num = 0
+    num_sq = 0
+    for i in range(1, n + 1):
+        num += i
+        num_sq += i ** 2
+    return (num ** 2) - num_sq
+
+
+# TASK - Inspiring Strings
+
+# When given a string of space separated words, return the word with the longest length. 
+# If there are multiple words with the longest length, return the last instance of the 
+# word with the longest length.
+
+def longest_word(string_of_words):
+    l = [len(i) for i in string_of_words.split()]
+    res = []
+    for i in string_of_words.split():
+        if len(i) == max(l):
+            res.append(i)
+    if len(res) == 1:
+        return res[0]
+    else:
+        return res[-1]
+
+
+# TASK - Summy
+
+# Write a function that takes a string which has integers inside it separated 
+# by spaces, and your task is to convert each integer in the string into an integer 
+# and return their sum.
+
+def summy(string_of_ints):
+    sum_of_ints = sum([int(i) for i in string_of_ints.split()])
+    return sum_of_ints
+
+
+# TASK - The Office I - Outed
+
+# Given an object (meet) containing team member names as keys, and their happiness rating 
+# out of 10 as the value, you need to assess the overall happiness rating of the group. 
+# If <= 5, return 'Get Out Now!'. Else return 'Nice Work Champ!'.
+
+def outed(meet, boss):
+    res = 0
+    for i in meet:
+        if i == boss:
+            res += meet[i] * 2
+        else:
+            res += meet[i]
+    if res / len(meet) <= 5:
+        return 'Get Out Now!'
+    else:
+        return 'Nice Work Champ!'

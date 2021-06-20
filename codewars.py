@@ -8086,3 +8086,127 @@ def outed(meet, boss):
         return 'Get Out Now!'
     else:
         return 'Nice Work Champ!'
+
+
+# TASK - Does my number look big in this?
+
+# A Narcissistic Number is a positive number which is the sum of its 
+# own digits, each raised to the power of the number of digits in a 
+# given base. In this Kata, we will restrict ourselves to decimal (base 10).
+
+def narcissistic( value ):
+    return sum([int(i) ** len(str(value)) for i in str(value)]) == value
+
+
+# TASK - Find the unique number
+
+# There is an array with some numbers. All numbers are equal except for one. Try to find it!
+
+def find_uniq(arr):
+    return list(set(arr))[[arr.count(list(set(arr))[0]), arr.count(list(set(arr))[1])].index(1)]
+
+
+# TASK - Break camelCase
+
+# Complete the solution so that the function will break up camel casing, using a space 
+# between words.
+
+def solution(s):
+    res = ""
+    for i in s[::-1]:
+        if i.isupper():
+            res += i 
+            res += " "
+        else:
+            res += i
+    return res[::-1]
+
+
+# TASK - Give me a Diamond
+
+# You need to return a string that looks like a diamond shape when printed on the screen, 
+# using asterisk (*) characters. Trailing spaces should be removed, and every line must 
+# be terminated with a newline character (\n).
+
+def diamond(n):
+    res_l = []
+    if n % 2 == 0 or n <= 0:
+        return None
+    else:
+        for i in range(1, n + 1):
+            res = ""
+            if i % 2 != 0:
+                res += (" " * ((n - i) // 2))
+                res += "*" * i
+                res += "\n"
+            res_l.append(res)
+        return "".join(res_l) + "".join(res_l[:-1][::-1])
+
+
+# TASK - Return a string's even characters.
+
+# Write a function that returns a sequence (index begins with 1) of all the even characters 
+# from a string. If the string is smaller than two characters or longer than 100 characters, 
+# the function should return "invalid string".
+
+def even_chars(st): 
+    res = []
+    if len(st) in range(2, 101):
+        for i in range(1, len(st) + 1):
+            if i % 2 == 0:
+                res.append(st[i - 1])
+        return res
+    else:
+        return "invalid string"
+
+
+# TASK - Reverse the bits in an integer
+
+# Write a function that reverses the bits in an integer.
+# For example, the number 417 is 110100001 in binary. Reversing the binary is 100001011
+# which is 267
+
+def reverse_bits(n):
+    return int(bin(n)[2:][::-1], base=2)
+
+
+# TASK - Odd-Even String Sort
+
+# Given a string S. You have to return another string such that even-indexed and odd-indexed 
+# characters of S are grouped and groups are space-separated (see sample below)
+
+def sort_my_string(S):
+    c = 0
+    odd = ""
+    even = ""
+    for i in S:
+        if c % 2 == 0:
+            even += i
+            c += 1
+        else:
+            odd += i
+            c += 1
+    return even + " " + odd
+
+
+# TASK - Evens and Odds
+
+# his kata is about converting numbers to their binary or hexadecimal representation:
+# If a number is even, convert it to binary.
+# If a number is odd, convert it to hex.
+
+def evens_and_odds(n):
+    return bin(n)[2:] if n % 2 == 0 else hex(n)[2:]
+
+
+# TASK - What's my golf score?
+
+# Complete the function which accepts two strings and calculates the golf score of a game. 
+# Both strings will be of length 18, and each character in the string will be a number between 
+# 1 and 9 inclusive. 
+
+def golf_score_calculator(par_string, score_string):
+    res = 0
+    for i in range(len(par_string)):
+        res += (int(score_string[i]) - int(par_string[i]))
+    return res

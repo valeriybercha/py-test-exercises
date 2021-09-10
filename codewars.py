@@ -8210,3 +8210,1238 @@ def golf_score_calculator(par_string, score_string):
     for i in range(len(par_string)):
         res += (int(score_string[i]) - int(par_string[i]))
     return res
+
+
+# TASK - Unlimited Sum
+
+# Write a function sum that accepts an unlimited number of integer arguments, and adds all of 
+# them together.
+# The function should reject any arguments that are not integers, and sum the remaining integers.
+
+def sum(*args):
+    res = 0
+    for i in args:
+        if type(i) == int:
+            res += i
+    return res
+
+
+# TASK - Coding Meetup #6 - Higher-Order Functions Series - Can they code in the same language?
+
+# Your task is to return either:
+# true if all developers in the list code in the same language; or
+# false otherwise.
+
+def is_same_language(lst): 
+    count = 0
+    lang = lst[0]['language']
+    for d in lst:
+        if d['language'] == lang:
+            count += 1
+    if len(lst) == count:
+        return True
+    else:
+        return False
+
+
+# TASK - Sum of integers in string
+
+# Your task in this kata is to implement a function that calculates the sum of the integers 
+# inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy 
+# dog", the sum of the integers is 3635.
+
+def sum_of_integers_in_string(s):
+    res = []
+    r = ""
+    for i in range(len(s)):
+        if s[i].isdigit():
+            r += s[i]
+        else:
+            res.append(r)
+            r = ""
+    res.append(r)
+    res_l = [int(i) for i in res if i.isdigit()]
+    r = 0
+    for i in res_l:
+        r += i 
+    return r
+
+
+# TASK - The Office IV - Find a Meeting Room
+
+# In this kata, you will be given an array. Each value represents a meeting room. Your 
+# job? Find the first empty one and return its index (N.B. There may be more than one empty 
+# room in some test cases). 
+
+def meeting(rooms):
+    try:
+        return min([rooms.index(i) for i in rooms if i == "O"])
+    except:
+        return "None available!"
+
+
+# TASK - Who is the killer?
+
+# Given a dictionary with all the names of the suspects and everyone that they have seen on that day
+
+def killer(suspect_info, dead):
+    res = []
+    for suspect in suspect_info:
+        count = 0
+        for people in dead:
+            if people in suspect_info[suspect]:
+                count += 1
+        res.append(count)
+    keys = list(suspect_info.keys())
+    return keys[res.index(len(dead))]
+
+
+# TASK - String matchup
+
+# Given two arrays of strings, return the number of times each string of the second array appears in the 
+# first array.
+
+def solve(a,b):
+    res = []
+    for i in b:
+        res.append(a.count(i))
+    return res
+
+
+# TASK - Holiday III - Fire on the boat
+
+# You will be provided a string that lists many boat related items. If any of these items are "Fire" you must spring into 
+# action. Change any instance of "Fire" into "~~". Then return the string.
+
+def fire_fight(s):
+    res = []
+    for i in s.split():
+        if i == "Fire":
+            res.append("~~")
+        else:
+            res.append(i)
+    return " ".join(res)
+
+
+# TASK - Narcissistic Numbers 
+
+# A Narcissistic Number is a number of length n in which the sum of its digits to the power of n is equal to the original 
+# number. If this seems confusing, refer to the example below.
+# Ex: 153, where n = 3 (number of digits in 153)
+# 13 + 53 + 33 = 153
+
+def is_narcissistic(i):
+    return sum([int(e) ** len(str(i)) for e in str(i)]) == i
+
+
+# TASK - Life Path Number
+
+# A person's Life Path Number is calculated by adding each individual number in that person's date of birth, until it is 
+# reduced to a single digit number.
+
+def life_path_number(birthdate):
+    year = birthdate.split("-")[0]
+    month = birthdate.split("-")[1]
+    date = birthdate.split("-")[2]
+    while len(year) != 1:
+        temp = sum([int(i) for i in year])
+        year = str(temp)
+    while len(month) != 1:
+        temp = sum([int(i) for i in month])
+        month = str(temp)
+    while len(date) != 1:
+        temp = sum([int(i) for i in date])
+        date = str(temp)
+    result = int(year) + int(month) + int(date)
+    while len(str(result)) != 1:
+        temp = sum([int(i) for i in str(result)])
+        result = str(temp)
+    return int(result)
+
+
+# TASK - SevenAte9
+
+# Write a function that removes every lone 9 that is inbetween 7s.
+
+def seven_ate9(str_):
+    for i in range(len(str_) // 3):
+        temp = str_.replace("797", "77")
+        str_ = temp
+    return str_
+
+
+# TASK - Valid Phone Number
+
+# Write a function that accepts a string, and returns true if it is in the form 
+# of a phone number.
+# Assume that any integer from 0-9 in any of the spots will produce a valid phone number.
+
+def validPhoneNumber(phoneNumber):
+    if not phoneNumber[0] == "(":
+        return False
+    if not phoneNumber[4] == ")":
+        return False
+    if not phoneNumber[5] == " ":
+        return False
+    if not phoneNumber[9] == "-":
+        return False
+    return True
+
+
+# TASK - Make the Deadfish swim
+
+# Write a simple parser that will parse and run Deadfish.
+# Deadfish has 4 commands, each 1 character long:
+# i increments the value (initially 0)
+# d decrements the value
+# s squares the value
+# o outputs the value into the return array
+# Invalid characters should be ignored.
+
+def parse(data):
+    res = []
+    data_res = 0
+    for i in data:
+        if i == "i":
+            data_res += 1
+        elif i == "d":
+            data_res -= 1
+        elif i == "s":
+            data_res **= 2
+        elif i == "o":
+            res.append(data_res)
+    return res
+
+
+# TASK - Sums of Parts
+
+# The function parts_sums (or its variants in other languages) 
+# will take as parameter a list ls and return a list of the sums of its parts as defined above.
+
+def parts_sums(ls):
+    if ls == []:
+        return [0]
+    else:
+        c = 0
+        calc = sum(ls)
+        res = [calc]
+        for i in range(len(ls) - 1):
+            temp = calc - ls[c] 
+            res.append(temp)
+            calc = temp
+            c += 1
+        res.append(0)
+        return res
+
+
+# TASK - Matrix Addition
+
+# Write a function that accepts two square matrices (N x N two dimensional arrays), and return the sum 
+# of the two. Both matrices being passed into the function will be of size N x N (square), containing only integers.
+
+def matrix_addition(a, b):
+    res = []
+    for l in range(len(a)):
+        res_l = []
+        for i in range(len(a[0])):
+            res_l.append(a[l][i] + b[l][i])
+        res.append(res_l)
+    return res
+
+
+# TASK - Playing with passphrases
+
+# Everyone knows passphrases. One can choose passphrases from poems, songs, movies names and so on but frequently they 
+# can be guessed due to common cultural references. You can get your passphrases stronger by different means. One is the following:
+#choose a text in capital letters including or not digits and non alphabetic characters,
+# shift each letter by a given number but the transformed letter must be a letter (circular shift),
+# replace each digit by its complement to 9,
+# keep such as non alphabetic and non digit characters,
+# downcase each letter in odd position, upcase each letter in even position (the first character is in position 0),
+# reverse the whole result
+
+def play_pass(s, n):
+    res = ""
+    c = 0
+    for i in s:
+        if i.isalpha():
+            let = ""
+            if (ord(i.lower()) + n) in range(97, 123):
+                let = chr(ord(i) + n)
+            else:
+                let = chr(ord(i) + n - 122 + 96)
+            if c % 2 == 0:
+                res += let.upper()
+            else:
+                res += let.lower()
+            
+        elif i.isdigit():
+            res += str(9 - int(i))
+        else:
+            res += i
+        c += 1
+    return res[::-1]
+
+
+# TASK - The Vowel Code
+
+# Step 1: Create a function called encode() to replace all the lowercase vowels in a given string with numbers according 
+# to the following pattern:
+# a -> 1
+# e -> 2
+# i -> 3
+# o -> 4
+# u -> 5
+
+# Step 2: Now create a function called decode() to turn the numbers back into vowels according to the same pattern 
+# shown above.
+
+def encode(st):
+    res = ""
+    vowels = "aeiou"
+    for i in st:
+        if i in vowels:
+            if i.islower():
+                res += str(vowels.index(i) + 1)
+        else:
+            res += i
+    return res
+
+def decode(st):
+    res = ""
+    vowels = "aeiou"
+    for i in st:
+        if i.isdigit():
+            res += vowels[int(i) - 1]
+        else:
+            res += i
+    return res
+
+
+# TASK - Consonant value
+
+# Given a lowercase string that has alphabetic characters only and no spaces, return the highest value of consonant substrings. 
+# Consonants are any letters of the alphabet except "aeiou".
+# We shall assign the following values: a = 1, b = 2, c = 3, .... z = 26.
+
+def solve(s):
+    res_l = []
+    res = 0
+    vowels = "aeiou"
+    for i in s:
+        if not i in vowels:
+            res += (ord(i) - 96)
+        else:
+            res = 0
+        res_l.append(res)
+    return max(res_l)
+
+
+# TASK - Word a10n (abbreviation)
+
+# The word i18n is a common abbreviation of internationalization in the developer community, used instead of typing the whole word and 
+# trying to spell it correctly. Similarly, a11y is an abbreviation of accessibility.
+# Write a function that takes a string and turns any and all "words" (see below) within that string of length 4 or greater into an 
+# abbreviation, following these rules:
+# A "word" is a sequence of alphabetical characters. By this definition, any other character like a space or hyphen (eg. "elephant-ride") 
+# will split up a series of letters into two words (eg. "elephant" and "ride").
+# The abbreviated version of the word should have the first letter, then the number of removed characters, then the last letter (eg. 
+# "elephant ride" => "e6t r2e").
+
+def abbreviate(s):
+    l = []
+    word = ""
+    res = ""
+    for i in s:
+        if i.isalpha():
+            word += i
+        else:
+            l.append(word)
+            l.append(i)
+            word = ""
+    l.append(word)
+    for e in l:
+        if len(e) >= 4:
+            res += e[0] + str(len(e) - 2) + e[-1]
+        else:
+            res += e
+    return res
+
+
+# TASK - Data Reverse
+
+# A stream of data is received and needs to be reversed.
+# Each segment is 8 bits long, meaning the order of these segments needs to be reversed
+# The total number of bits will always be a multiple of 8.
+
+def data_reverse(data):
+    res = []
+    c = 0
+    for i in range (len(data) // 8):
+        for e in data[c : c + 8][::-1]:
+            res.append(e)
+        c += 8
+    return res[::-1]
+
+
+# TASK - Meeting
+
+# Could you make a program that
+# makes this string uppercase
+# gives it sorted in alphabetical order by last name.
+# When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between 
+# parentheses separated by a comma.
+
+def meeting(s):
+    l = []
+    l_res = []
+    res = ""
+    for i in s.split(";"):
+        l.append(i)
+    print(l)
+    for e in l:
+        l_res.append(f'{e.split(":")[1].upper()} {e.split(":")[0].upper()}')
+    for t in sorted(l_res):
+        res += (f'({t.split()[0]}, {t.split()[1]})')
+    return res
+
+
+# TASK - Multiplication table
+
+# Your task, is to create NxN multiplication table, of size provided in parameter.
+
+def multiplication_table(size):
+    c = 1
+    res = []
+    for i in range(size):
+        l = []
+        for e in range(1, size + 1):
+            l.append(c * e)
+        c += 1
+        res.append(l)
+    return res
+
+
+# TASK - Encrypt this!
+
+# You want to create secret messages which can be deciphered by the Decipher this! kata. Here are the conditions:
+# Your message is a string containing space separated words.
+# You need to encrypt each word in the message using the following rules:
+# The first letter needs to be converted to its ASCII code.
+# The second letter needs to be switched with the last letter
+# Keepin' it simple: There are no special characters in input.
+
+def encrypt_this(text):
+    res = []
+    for i in text.split():
+        if len(i) == 1:
+            res.append(str(ord(i)))
+        elif len(i) == 2:
+            res.append(str(ord(i[0])) + i[1:])
+        elif len(i) == 3:
+            res.append(str(ord(i[0])) + i[-1] + i[1])
+        else:
+            res.append(str(ord(i[0])) + i[-1] + i[2:-1] + i[1])
+    return " ".join(res)
+
+
+# TASK - Largest pair sum in array
+
+# Given a sequence of numbers, find the largest pair sum in the sequence.
+
+def largest_pair_sum(numbers): 
+    res = 0
+    for i in range(2):
+        res += max(numbers)
+        numbers.remove(max(numbers))
+    return res
+
+
+# TASK - Average Scores
+
+# Create a function that returns the average of an array of numbers ("scores"), rounded to the nearest whole number. You are 
+# not allowed to use any loops (including for, for/in, while, and do/while loops).
+
+def average(array):
+    return round(sum(array) / len(array))
+
+
+# TASK - Evens times last
+
+# Given a sequence of integers, return the sum of all the integers that have an even index, multiplied by the integer at the last index. 
+
+def even_last(numbers): 
+    res = 0
+    for i in range(len(numbers)):
+        if i % 2 == 0:
+            res += numbers[i] * numbers[-1]
+    return res
+
+
+# TASK - Letterbox Paint-Squad
+
+# Given the start and end letterbox numbers, write a method to return the frequency of all 10 digits painted.
+
+def paint_letterboxes(start, finish):
+    l = []
+    for number in range(start, finish + 1):
+        for i in str(number):
+            l.append(int(i))
+    c = 0
+    result_l = []
+    while c != 10:
+        result_l.append(l.count(c))
+        c += 1
+    return result_l
+
+
+# TASK - 16+18=214
+
+# In simple terms, our method does not like the principle of carrying over numbers and just writes down every number it calculates :-)
+
+def add(num1, num2):
+    first_num = [int(i) for i in str(num1)][::-1]
+    second_num = [int(i) for i in str(num2)][::-1]
+    m = 0
+    if len(str(num1)) > len(str(num2)):
+        m = len(str(num2))
+    else:
+        m = len(str(num1))
+    c = 0
+    res_l = []
+    for i in range(m):
+        res_l.append(str(first_num[c] + second_num[c]))
+        c += 1
+    more_nums = ""
+    if len(str(num1)) > len(str(num2)):
+        more_nums = str(num1)[:len(str(num1)) - len(str(num2))]
+    elif len(str(num1)) < len(str(num2)):
+        more_nums = str(num2)[:len(str(num2)) - len(str(num1))]
+    return int(more_nums + "".join(res_l[::-1]))
+
+
+# TASK - Coding Meetup #5 - Higher-Order Functions Series - Prepare the count of languages
+
+# You will be given an array of objects (associative arrays in PHP) representing data about developers who have signed up to attend the next 
+# coding meetup that you are organising.
+# Your task is to return an object (associative array in PHP) which includes the count of each coding language represented at the meetup.
+
+def count_languages(lst): 
+    l = []
+    for d in lst:
+        l.append(d['language'])
+    res_d = {}
+    for i in l:
+        res_d[i] = l.count(i)
+    return res_d
+
+
+# TASK - Debug Sum of Digits of a Number
+
+# Debug   function getSumOfDigits that takes positive integer to calculate sum of it's digits. Assume that argument is an integer.
+
+def get_sum_of_digits(num):
+    return sum([int(i) for i in str(num)])
+
+
+# TASK - Minimum Steps (Array Series #6)
+
+# Given an array of N integers, you have to find how many times you have to add up the smallest numbers in the array until their 
+# Sum becomes greater or equal to K.
+
+def minimum_steps(numbers, value):
+    result = 0
+    m = min(numbers)
+    numbers.remove(min(numbers))
+    c = 0
+    while m < value:
+        m += min(numbers)
+        numbers.remove(min(numbers))
+        result += 1
+    return result
+
+
+# TASK - Drone Fly-By
+
+# You will be given two strings: lamps and drone. lamps represents a row of lamps, currently off, each represented by x. When these lamps are 
+# on, they should be represented by o.
+# The drone string represents the position of the drone T (any better suggestion for character??) and its flight path up until this point =. 
+# The drone always flies left to right, and always begins at the start of the row of lamps. Anywhere the drone has flown, including its 
+# current position, will result in the lamp at that position switching on.
+
+def fly_by(lamps, drone):
+    print(lamps, drone)
+    on = len(drone) * "o"
+    if len(lamps) > len(drone):
+        return on + (len(lamps) - len(drone)) * "x"
+    else:
+        return len(lamps) * "o"
+
+
+# TASK - Band name generator
+
+# My friend wants a new band name for her band. She like bands that use the formula: "The" + a noun with the first letter capitalized.
+# However, when a noun STARTS and ENDS with the same letter, she likes to repeat the noun twice and connect them together with the first 
+# and last letter, combined into one word (WITHOUT "The" in front)
+
+def band_name_generator(name):
+    return f"The {name.capitalize()}" if name[0] != name[-1] else name.capitalize() + name[1:]
+
+
+# TASK - Numbers with this digit inside
+
+# You have to search all numbers from inclusive 1 to inclusive a given number x, that have the given digit d in it.
+# The value of d will always be 0 - 9.
+# The value of x will always be greater than 0.
+# You have to return as an array
+# the count of these numbers,
+# their sum
+# and their product.
+
+def numbers_with_digit_inside(x, d):
+    l = []
+    for i in range(1, x + 1):
+        if str(d) in str(i):
+            l.append(i)
+    lis = []
+    p = 1
+    for i in l:
+        p *= i
+        lis.append(p)
+    if len(lis) == 0:
+        product = 0
+    else:
+        product = max(lis)
+    return [len(l), sum(l), product]
+
+
+# TASK - Scaling Squared Strings
+
+# You are given a string of n lines, each substring being n characters long. 
+# A k-horizontal scaling of a string consists of replicating k times each character of the string (except '\n').\
+# A v-vertical scaling of a string consists of replicating v times each part of the squared string.
+# Function scale(strng, k, v) will perform a k-horizontal scaling and a v-vertical scaling.
+
+def scale(strng, k, v):
+    if strng == "":
+        return ""
+    else:
+        result = []
+        for i in strng.split("\n"):
+            word = ""
+            for e in i:
+                word += e * k
+            for i in range(v):
+                result.append(word)
+        return "\n".join(result)
+
+
+# TASK - Broken sequence
+
+# You receive some random elements as a space-delimited string. Check if the elements are part of an ascending sequence of integers starting with 1, with an increment of 1 (e.g. 1, 2, 3, 4).
+#Return:
+# 0 if the elements can form such a sequence, and no number is missing ("not broken", e.g. "1 2 4 3")
+# 1 if there are any non-numeric elements in the input ("invalid", e.g. "1 2 a")
+# n if the elements are part of such a sequence, but some numbers are missing, and n is the lowest of them ("broken", e.g. "1 2 4" or "1 5")
+
+def find_missing_number(sequence):
+    if sequence == "":
+        return 0
+    else:
+        count = 1
+        l = []
+        for i in sequence.split(" "):
+            try:
+                l.append(int(i))
+            except:
+                return 1
+        compare = [i for i in range(1, max(l) + 1)]
+        res = []
+        for i in compare:
+            if not i in l:
+                res.append(i)
+        if len(res) == 0:
+            return 0
+        else:
+            return min(res)
+
+
+# TASK - Help the Fruit Guy
+
+# Our fruit guy has a bag of fruit (represented as an array of strings) where some fruits are rotten. He wants to replace all the rotten 
+# pieces of fruit with fresh ones. For example, given ["apple","rottenBanana","apple"] the replaced array should be ["apple","banana","apple"]. 
+# Your task is to implement a method that accepts an array of strings containing fruits should returns an array of strings where all the 
+# rotten fruits are replaced by good ones. 
+
+def remove_rotten(bag_of_fruits):
+    if bag_of_fruits:
+        l = []
+        for i in bag_of_fruits:
+            for e in i.split("rotten"):
+                l.append(e.lower())
+        res = []
+        for i in l:
+            if len(i) > 0:
+                res.append(i)
+        return res
+    else:
+        return []
+
+
+# TASK - Thinkful - List Drills: Longest word
+
+# Complete the function that takes one argument, a list of words, and returns the length of the longest word in the list.
+
+def longest(words):
+    return max([len(i) for i in words])
+
+
+# TASK - Selective fear of numbers
+
+# I've got a crazy mental illness. I dislike numbers a lot. But it's a little complicated: The number I'm afraid of depends on which day of 
+# the week it is... This is a concrete description of my mental illness:
+# Monday --> 12
+# Tuesday --> numbers greater than 95
+# Wednesday --> 34
+# Thursday --> 0
+# Friday --> numbers divisible by 2
+# Saturday --> 56
+# Sunday --> 666 or -666
+# Write a function which takes a string (day of the week) and an integer (number to be tested) so it tells the doctor if I'm afraid or 
+# not. (return a boolean)
+
+def am_I_afraid(day,num):
+    if day == "Monday" and num == 12:
+        return True
+    elif day == "Tuesday" and num > 95:
+        return True
+    elif day == "Wednesday" and num == 34:
+        return True
+    elif day == "Thursday" and num == 0:
+        return True
+    elif day == "Friday" and num % 2 == 0:
+        return True
+    elif day == "Saturday" and num == 56:
+        return True
+    elif day == "Sunday" and abs(num) == 666:
+        return True
+    else:
+        return False
+
+
+# TASK - Product Array (Array Series #5)
+
+# Given an array/list [] of integers , Construct a product array Of same size Such That prod[i] is equal to The Product of all the 
+# elements of Arr[] except Arr[i]. 
+
+def product_array(numbers):
+    count = 0
+    result = []
+    for i in range(len(numbers)):
+        res = 1
+        for e in range(len(numbers)):
+            if e != count:
+                res *= numbers[e]
+        count += 1
+        result.append(res)
+    return result
+
+
+# TASK - Enumerable Magic #5- True for Just One?
+
+# Create a function called one that accepts two params:
+# a sequence
+# a function
+# and returns true only if the function in the params returns true for exactly one (1) item in the sequence. 
+
+def one(sq, fun): 
+    res = 0
+    for i in sq:
+        if fun(i):
+            res += 1
+    if res == 1:
+        return True
+    else:
+        return False
+
+
+# TASK - Exclamation marks series #13: Count the number of exclamation marks and question marks, return the product
+
+# Count the number of exclamation marks and question marks, return the product.
+
+def product(s):
+    return s.count("!") * s.count("?")
+
+
+# TASK - Help Suzuki rake his garden!
+
+# The monastery has a magnificent Zen garden made of white gravel and rocks and it is raked diligently 
+# everyday by the monks. Suzuki having a keen eye is always on the lookout for anything creeping into 
+# the garden that must be removed during the daily raking such as insects or moss.
+# You will be given a string representing the garden.
+# Rake out any items that are not a rock or gravel and replace them with gravel.
+
+def rake_garden(garden):
+    res = []
+    for i in garden.split():
+        if i == "gravel" or i == "rock":
+            res.append(i)
+        else:
+            res.append("gravel")
+    return " ".join(res)
+
+
+# TASK - Double Sort
+
+# Your job is to return a single array that has first the numbers sorted in ascending order, followed by 
+# the strings sorted in alphabetic order. The values must maintain their original type.
+
+def db_sort(arr): 
+    numbers = [i for i in arr if type(i) == int]
+    strings = [i for i in arr if type(i) == str]
+    return sorted(numbers) + sorted(strings)
+
+
+# TASK - Correct the time-string
+
+# You have to create a method, that corrects a given time string.
+# There was a problem in addition, so many of the time strings are broken.
+# Time is formatted using the 24-hour clock, so from 00:00:00 to 23:59:59.
+
+def time_correct(t):
+    if t == "":
+        return ""
+    elif t == None:
+        return None
+    elif not t.count(":") == 2:
+        return None
+    else:
+        for i in t.split(":"):
+            if not i.isdigit() or not len(i) == 2:
+                return None
+        all_seconds = (int(t.split(":")[0]) * 3600) + (int(t.split(":")[1]) * 60) + (int(t.split(":")[2]))
+        hours = all_seconds // 3600
+        check_hours = 0
+        if hours > 24:
+            check_hours = round((hours / 24 - hours // 24) * 24)
+        else:
+            check_hours = hours
+        minutes = int((all_seconds / 3600 - hours) * 60)
+        seconds = all_seconds - hours * 3600 - minutes * 60 
+        f_hours = ""
+        f_minutes = ""
+        f_seconds = ""
+        if check_hours == 24:
+            f_hours = "00"
+        elif check_hours < 10:
+            f_hours = "0" + str(check_hours)
+        else:
+            f_hours = str(check_hours)
+        if minutes < 10:
+            f_minutes = "0" + str(minutes)
+        else:
+            f_minutes = str(minutes)
+        if seconds < 10:
+            f_seconds = "0" + str(seconds)
+        else:
+            f_seconds = str(seconds)
+        return f_hours + ":" + f_minutes + ":" + f_seconds
+
+
+# TASK - Hungarian Vowel Harmony (easy)
+
+# Your goal is to create a function dative() (Dative() in C#) which returns the valid form of a valid Hungarian word w in dative 
+# case i. e. append the correct suffix nek or nak to the word w based on vowel harmony rules.
+
+def dative(word):
+    front_vowel = ["e", "é", "i", "í", "ö", "ő", "ü", "ű"]
+    back_vowel = ["a", "á", "o", "ó", "u", "ú"]
+    res_front = 0
+    res_back = 0
+    for i in word:
+        if i in front_vowel:
+            res_front += 1
+        elif i in back_vowel:
+            res_back += 1
+    if res_front > res_back:
+        return word + "nek"
+    else:
+        return word + "nak"
+
+
+# TASK - Find all pairs
+
+# You are given array of integers, your task will be to count all pairs in that array and return their count.
+
+def duplicates(arr):
+    res_d = {}
+    res = 0
+    for i in arr:
+        res_d[i] = arr.count(i)
+    for e in res_d:
+        res += res_d[e] // 2
+    return res
+
+
+# TASK - Consecutive letters
+
+# In this Kata, we will check if a string contains consecutive letters as they appear in the English alphabet and if each letter occurs 
+# only once. 
+
+def solve(st):
+    alphabet = [chr(i) for i in range(97, 123)]
+    indx = alphabet.index(sorted(st)[0])
+    print(indx)
+    print(sorted(st))
+    res = []
+    for i in sorted(st):
+        if i == alphabet[indx]:
+            res.append(1)
+            indx += 1
+        else:
+            res.append(0)
+            indx += 1
+    print(res)
+    if 0 in res:
+        return False
+    else:
+        return True
+
+
+# TASK - Max-min arrays
+
+# In this Kata, you will be given an array of unique elements, and your task is to rearrange the values so that the first 
+# max value is followed by the first minimum, followed by second max value then second min value, etc. 
+
+def solve(arr):
+    count = 1
+    res = []
+    for i in range(len(arr)):
+        if count % 2 == 0:
+            res.append(min(arr))
+            arr.remove(min(arr))
+            count += 1
+        else:
+            res.append(max(arr))
+            arr.remove(max(arr))
+            count += 1
+    return res
+
+
+# TASK - Do you speak retsec?
+
+# You're given a single word. Your task is to swap the halves. If the word has an uneven length, leave the character in the middle at 
+# that position and swap the chunks around it.
+
+def reverse_by_center(s):
+    if len(s) % 2 == 0:
+        return s[len(s) // 2:] + s[:len(s) // 2]
+    else:
+        return s[len(s) // 2 + 1: ] + s[len(s) // 2] + s[:len(s) // 2]
+
+
+# TASK - Return String of First Characters
+
+# In this exercise, a string is passed to a method and a new string has to be returned with the first character of each word in the string.
+
+def make_string(s):
+    res = ""
+    for i in s.split():
+        res += i[0]
+    return res
+
+
+# TASK - Move 10
+
+# Move every letter in the provided string forward 10 letters through the alphabet.
+# If it goes past 'z', start again at 'a'.
+# Input will be a string with length > 0.
+
+def move_ten(st):
+    res = ""
+    for i in st:
+        if ord(i) + 10 in range(97, 123):
+            res += chr(ord(i) + 10)
+        else:
+            res += chr((ord(i) + 10 - 123) + 97)
+    return res
+
+
+# TASK - Simple Fun #3: Late Ride
+
+# One night you go for a ride on your motorcycle. At 00:00 you start your engine, and the built-in timer automatically begins counting the 
+# length of your ride, in minutes. Off you go to explore the neighborhood.
+# When you finally decide to head back, you realize there's a chance the bridges on your route home are up, leaving you stranded! 
+# Unfortunately, you don't have your watch on you and don't know what time it is. All you know thanks to the bike's timer is that n 
+# minutes have passed since 00:00.
+# Using the bike's timer, calculate the current time. Return an answer as the sum of digits that the digital timer in the format hh:mm would show.
+
+def late_ride(n):
+    h = 0
+    m = 0
+    if n % 60  == 0:
+        h += (n // 60)
+    else:
+        h += (n // 60)
+        m += (n - ((n // 60) * 60))
+    res = str(h) + str(m)
+    return sum([int(i) for i in res])
+
+
+# TASK - Digits explosion
+
+# Given a string made of digits [0-9], return a string where each digit is repeated a number of times equals to its value. 
+
+def explode(s):
+    res = ""
+    for i in s:
+        res += i * int(i)
+    return res
+
+
+# TASK - This is odd
+
+# Create a function that checks if a number is odd.
+# Expect negative and decimal numbers too. Remember... all negative numbers can also be either odd or even.
+# Decimal numbers always return false 
+
+def is_odd(n):
+    if type(n) == float:
+        if int(n) == 0:
+            return False
+        elif abs(n) % int(n) != 0:
+            return False
+        else:
+            return abs(n) % 2 != 0
+    else:
+        return abs(n) % 2 != 0
+
+
+# TASK - Complete The Pattern #6 - Odd Ladder
+
+# You have to write a function pattern which creates the following pattern (see examples) up to the desired number of rows.
+# If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.
+# If any even number is passed as argument then the pattern should last upto the largest odd number which is smaller than the passed even number.
+
+def pattern(n):
+    if n <= 0:
+        return ""
+    else:
+        res = []
+        final = 0
+        if n % 2 == 0:
+            final = n - 1
+        else:
+            final = n
+        for i in range(1, final + 1):
+            if i % 2 != 0:
+                res.append(str(i) * i)
+    return "\n".join(res)
+
+
+# TASK - Running out of space
+
+# Kevin is noticing his space run out! Write a function that removes the spaces from the values and returns an array showing the 
+# space decreasing. For example, running this function on the array ['i', 'have','no','space'] would produce 
+# ['i','ihave','ihaveno','ihavenospace'].
+
+def spacey(array):
+    res = []
+    count = 1
+    for i in range(len(array)):
+        res.append("".join(array[:count]))
+        count += 1
+    return res
+
+
+# TASK - Scrabble Score
+
+# Write a program that, given a word, computes the scrabble score for that word.
+
+def scrabble_score(st): 
+    res = 0
+    d = {
+        "AEIOULNRST": 1,
+        "DG": 2,
+        "BCMP":  3,
+        "FHVWY": 4,
+        "K": 5,
+        "JX": 8,
+        "QZ": 10
+    }
+    for i in st.upper():
+        for e in d:
+            if i in e:
+                res += d[e]
+    return res
+
+
+# TASK - Find all non-consecutive numbers
+
+# Your task is to find all the elements of an array that are non consecutive.
+# A number is non consecutive if it is not exactly one larger than the previous element in the array. The first element gets a pass and 
+# is never considered non consecutive.
+
+def all_non_consecutive(arr):
+    res = []
+    count = min(arr)
+    for i in arr:
+        d = {}
+        if i != count:
+            d["i"] = arr.index(i)
+            d["n"] = i
+            count = i
+            res.append(d)
+        count += 1
+    return res
+
+
+# TASK - Sort arrays - 1
+
+# Just a simple sorting usage. Create a function that returns the elements of the input-array / list sorted in lexicographical order.
+
+def sortme(names):
+    return sorted(names)
+
+
+# TASK - Gauß needs help! (Sums of a lot of numbers).
+
+# Due to another of his misbehaved, the primary school's teacher of the young Gauß, Herr J.G. Büttner, to keep the bored and 
+# unruly young schoolboy Karl Friedrich Gauss busy for a good long time, while he teaching arithmetic to his mates, assigned him 
+# the problem of adding up all the whole numbers from 1 through a given number n.
+#Your task is to help the young Carl Friedrich to solve this problem as quickly as you can; so, he can astonish his teacher and 
+# rescue his recreation interval.
+
+def f(n):
+    try:
+        if n:
+            if n >= 0:
+                res = 0
+                for i in range(1, n+1):
+                    res += i
+                return res
+            else:
+                return None
+    except:
+        return None
+
+
+# TASK - Factorial Factory
+
+# In mathematics, the factorial of integer 'n' is written as 'n!'. It is equal to the product of n and every integer preceding it. For 
+# example: 5! = 1 x 2 x 3 x 4 x 5 = 120
+# Your mission is simple: write a function that takes an integer 'n' and returns 'n!'.
+# You are guaranteed an integer argument. For any values outside the positive range, return null, nil or None .
+
+def factorial(n):
+    if n >= 0:
+        if n == 0:
+            return 1
+        res = 1
+        for i in range(1, n+1):
+            res *= i
+        return res
+    else:
+        return None
+
+
+# TASK - Complete The Pattern #4
+
+# You have to write a function pattern which creates the following pattern upto n number of rows. If the Argument is 0 or a 
+# Negative Integer then it should return "" i.e. empty string.
+
+def pattern(n):
+    res = []
+    count = 1
+    for i in range(n):
+        temp = "".join([str(i) for i in range(count, n+1)])
+        res.append(temp)
+        count += 1
+    return "\n".join(res)
+
+
+# TASK - Computer problem series #1: Fill the Hard Disk Drive
+
+# Your task is to determine how many files of the copy queue you will be able to save into your Hard Disk Drive. The files must be saved 
+# in the order they appear in the queue. 
+
+def save(sizes, hd): 
+    res = 0
+    count = 0
+    count_res = 0
+    step = 0
+    if sum(sizes) <= hd:
+        return len(sizes)
+    else:
+        while res <= hd:
+            res += sizes[step]
+            step += 1
+            count_res = count
+            count += 1
+        return count_res
+
+
+# TASK - Arithmetic progression
+
+# In your class, you have started lessons about arithmetic progression. Since you are also a programmer, you have decided to write a 
+# function that will return the first n elements of the sequence with the given common difference d and first element a. Note that the 
+# difference may be zero!
+
+def arithmetic_sequence_elements(a, r, n):
+    count = 0
+    res = []
+    temp = a
+    while count != n:
+        res.append(str(temp) + ",")
+        temp += r
+        count += 1
+    return " ".join(res)[:-1]
+
+
+# TASK - The Office II - Boredom Score
+
+# You will be provided with an object(staff) containing the staff names as keys, and the department they work in as values.
+# Each department has a different boredom assessment score.
+# Depending on the cumulative score of the team, return the appropriate sentiment
+
+def boredom(staff):
+    d = {
+        "accounts": 1,
+        "finance": 2,
+        "canteen": 10,
+        "regulation": 3,
+        "trading": 6,
+        "change": 6,
+        "IS": 8,
+        "retail": 5,
+        "cleaning": 4,
+        "pissing about": 25
+    }
+    res = 0
+    for i in staff:
+        res += d[staff[i]]
+    if res <= 80:
+        return "kill me now"
+    elif res in range(81, 100):
+        return "i can handle this"
+    else:
+        return "party time!!"
+
+
+# TASK - Simple string reversal II
+
+# In this Kata, you will be given a string and two indexes (a and b). Your task is to reverse the portion of that string between those two 
+# indices inclusive. 
+
+def solve(st,a,b):
+    res_before = ""
+    res_middle = ""
+    res_after = ""
+    for i in range(len(st)):
+        if i < a:
+            res_before += st[i]
+        elif i > b:
+            res_after += st[i]
+        else:
+            res_middle += st[i]
+    return res_before + res_middle[::-1] + res_after

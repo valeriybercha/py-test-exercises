@@ -9445,3 +9445,1183 @@ def solve(st,a,b):
         else:
             res_middle += st[i]
     return res_before + res_middle[::-1] + res_after
+
+
+# CODEWARS TEST EXERCISES
+
+# TASK - Rearrange Number to Get its Maximum
+
+# Create a function that takes one positive three digit integer and rearranges 
+# its digits to get the maximum possible number. Assume that the argument 
+# is an integer. Return null (nil for Ruby, nothing for Julia) if the argument is not valid.
+
+def max_redigit(num):
+	if len(str(num)) == 3:
+		if num < 0:
+			return None
+		else:
+			return int("".join(sorted(str(num), reverse=True)))
+	else:
+		return None
+
+
+# TASK - V A P O R C O D E
+
+# Write a function that converts any sentence into a V A P O R W A V E 
+# sentence. a V A P O R W A V E sentence converts all the letters into 
+# uppercase, and adds 2 spaces between each letter (or special character)
+# to create this V A P O R W A V E effect.
+
+def vaporcode(s):
+	res = []
+	for i in s:
+		if i != " ":
+			res.append(i.upper())
+	return "  ".join(res)
+
+
+# TASK - Even or Odd - Which is Greater?
+
+# Given a string of digits confirm whether the sum of all the individual
+# even digits are greater than the sum of all the indiviudal odd digits. 
+# Always a string of numbers will be given.
+
+def even_or_odd(s):
+	even = 0
+	odd = 0
+	for i in s:
+		if int(i) % 2 == 0:
+			even += int(i)
+		else:
+			odd += int(i)
+	if even > odd:
+		return "Even is greater than Odd"
+	elif odd > even:
+		return "Odd is greater than Even"
+	else:
+		return "Even and Odd are the same"
+
+
+# TASK - Check for prime numbers
+
+# In this kata you will create a function to check a non-negative input 
+# to see if it is a prime number.
+# The function will take in a number and will return True if it is a 
+# prime number and False if it is not.
+# A prime number is a natural number greater than 1 that has no positive
+# divisors other than 1 and itself.
+
+def is_prime(n):
+	flag = False
+	if n > 1:
+		for i in range(2, int(n / 2) + 1):
+			if (n % i) == 0:
+				flag = True
+				break
+	else:
+		flag = True
+	if flag:
+		return False
+	else:
+		return True
+
+
+# TASK - Is n divisible by (...)?
+
+# Create a function isDivisible(n,...) that checks if the first 
+# argument n is divisible by all other arguments (return true if no 
+# other arguments)
+
+def is_divisible(*kwargs):
+	res = []
+	flag = False
+	for i in kwargs[1:]:
+		if not kwargs[0] % i == 0:
+			flag = True
+			break
+	if flag:
+		return False
+	else:
+		return True
+
+
+# TASK - Gradually Adding Parameters
+
+# This kata is all about adding numbers.
+# You will create a function named add. This function will return the 
+# sum of all the arguments. Sounds easy, doesn't it??
+# Well here's the twist. The inputs will gradually increase with their 
+# index as parameter to the function.
+
+def add(*args):
+	res = 0
+	for i in range(len(args)):
+		res += args[i] * (i + 1)
+	return res
+
+
+# TASK - Plus - minus - plus - plus - ... - Count
+
+# Count how often sign changes in array.
+
+def catch_sign_change(lst):
+	if len(lst) == 0:
+		return 0
+	else:
+		res = 0
+		var = "neg"
+		if lst[0] >= 0:
+			var = "pos"
+		for i in lst[1:]:
+			t = "neg"
+			if i >= 0:
+				t = "pos"
+			if t != var:
+				res += 1
+			var = t
+		return res
+
+
+# TASK - Replace every nth
+
+# Write a method, that replaces every nth char oldValue with char newValue.
+
+def replace_nth(text, n, old, new):
+	if n <= 0:
+		return text
+	else:
+		res = ""
+		count = 0
+		for letter in text:
+			if letter == old:
+				count += 1
+				if count % n == 0:
+					res += new
+				else:
+					res += letter
+			else:
+				res += letter
+		return res
+
+
+# TASK - Homogenous arrays
+
+# Given a two-dimensional array, return a new array which carries 
+# over only those arrays from the original, which were not empty and 
+# whose items are all of the same type (i.e. homogenous). For simplicity, 
+# the arrays inside the array will only contain characters and integers.
+
+def filter_homogenous(arrays):
+	l = []
+	res = []
+	for arr in arrays:
+		if len(arr) > 0:
+			if len(arr) == 1:
+				res.append(arr)
+			else:
+				temp_res = 1
+				temp = type(arr[0])
+				for i in arr[1:]:
+					if type(i) == temp:
+						temp_res += 1
+				if temp_res == len(arr):
+					res.append(arr)
+	return res
+
+
+# TASK - The Office III - Broken Photocopier
+
+# The bloody photocopier is broken... Just as you were sneaking around 
+# the office to print off your favourite binary code!
+# Instead of copying the original, it reverses it: '1' becomes '0' and 
+# vice versa.
+# Given a string of binary, return the version the photocopier gives you
+# as a string.
+
+def broken(inp):
+	res = ""
+	for i in inp:
+		if i == "0":
+			res += "1"
+		else:
+			res += "0"
+	return res
+
+
+# TASK - Check three and two
+
+# Given an array with exactly 5 strings "a", "b" or "c" (chars in 
+# Java, characters in Fortran), check if the array contains three and 
+# two of the same values.
+
+def check_three_and_two(array):
+	res_d = {}
+	for i in array:
+		res_d[i] = array.count(i)
+	if len(res_d) == 2:
+		l = []
+		for i in res_d:
+			l.append(res_d[i])
+		if 3 in l and 2 in l:
+			return True
+		else:
+			return False
+	else:
+		return False
+
+
+# TASK - L2: Triple X
+
+# Given a string, return true if the first instance of "x" in the 
+# string is immediately followed by the string "xx". 
+
+def triple_x(s):
+	if s == "":
+		return False
+	else:
+		if not "x" in s:
+			return False
+		else:
+			indx = s.index("x")
+			if s[indx:indx+3] == "xxx":
+				return True
+			else:
+				return False
+
+
+# TASK - Thinkful - List and Loop Drills: Inverse Slicer
+
+# write a function inverse_slice() that takes three arguments: a list 
+# items, an integer a and an integer b. The function should return a 
+# new list with the slice specified by items[a:b]
+
+def inverse_slice(items, a, b):
+	res = []
+	for i in range(len(items)):
+		if not i in range(a, b):
+			res.append(items[i])
+	return res
+
+
+# TASK - Filter unused digits
+
+# Given a list of integers, return the digits that are not present in any of them.
+
+def unused_digits(*args):
+	res = []
+	l = []
+	for i in args:
+		for e in str(i):
+			l.append(int(e))
+	compare_var = [i for i in range(0, 10)]
+	for i in compare_var:
+		if not i in l:
+			res.append(i)
+	res_str = ""
+	for i in sorted(res):
+		res_str += str(i)
+	return res_str
+
+
+# TASK - Count the Characters
+ 
+# The goal of this kata is to write a function that takes two inputs: a
+# string and a character. The function will count the number of times 
+# that character appears in the string. The count is case insensitive.
+
+def count_char(str, char):
+	return str.lower().count(char.lower())
+
+
+# TASK - Hit Count
+
+# As a step towards achieving this; you have decided to create a 
+# function that will produce a multi-dimensional array out of the hit 
+# count value. Each inner dimension of the array represents an individual
+# digit in the hit count, and will include all numbers that come before 
+# it, going back to 0.
+
+def counter_effect(hit_count):
+	res = []
+	for i in hit_count:
+		l = []
+		for e in range(0, int(i) + 1):
+			l.append(e)
+		res.append(l)
+	return res
+
+
+# TASK - Odder Than the Rest
+
+# Create a method that takes an array/list as an input, and outputs the 
+# index at which the sole odd number is located.
+
+def odd_one(arr):
+	res = -1
+	for i in arr:
+		if i % 2 != 0:
+			res = arr.index(i)
+			break
+	return res
+
+
+# TASK - Elevator Distances
+
+# Given an array representing a series of floors you must reach by 
+# elevator, return an integer representing the total distance travelled 
+# for visiting each floor in the array in order. 
+
+def elevator_distance(array):
+	count = 0
+	res = 0
+	for i in range(len(array) - 1):
+		res += (max(array[count : count + 2]) - min(array[count : count + 2]))
+		count += 1
+	return res
+
+
+# TASK - Borrower Speak
+
+# The borrowers are tiny tiny fictional people. As tiny tiny people they
+# have to be sure they aren't spotted, or more importantly, stepped on.
+# As a result, the borrowers talk very very quietly. They find that 
+# capitals and punctuation of any sort lead them to raise their voices 
+# and put them in danger. 
+
+def borrow(s):
+	res = ""
+	for i in s:
+		if ord(i.lower()) in range(97, 123):
+			res += i.lower()
+	return res
+
+
+# TASK - Email Address Obfuscator
+
+# write a function that takes an email address string and returns the 
+# obfuscated version as a string that replaces the characters @ and . 
+# with [at] and [dot], respectively.
+
+def obfuscate(email):
+	res = email.replace("@", " [at] ")
+	res2 = res.replace(".", " [dot] ")
+	return res2
+
+
+# TASK - Consecutive items
+
+# ou are given a list of unique integers arr, and two integers a and b. 
+# Your task is to find out whether or not a and b appear consecutively 
+# in arr, and return a boolean value (True if a and b are consecutive, 
+# False otherwise). 
+
+def consecutive(arr, a, b):
+	if arr.index(a) + 1 == arr.index(b) or arr.index(b) + 1 == arr.index(a):
+		return True
+	else:
+		return False
+
+
+# TASK - Sum - Square Even, Root Odd
+
+# Complete the function that takes a list of numbers (nums), as the only
+# argument to the function. Take each number in the list and square it 
+# if it is even, or square root the number if it is odd. Take this new 
+# list and return the sum of it, rounded to two decimal places.
+
+import math
+def sum_square_even_root_odd(nums):
+	res = []
+	for i in nums:
+		if i % 2 == 0:
+			res.append(i ** 2)
+		else:
+			res.append(math.sqrt(i))
+	return round(sum(res), 2)
+
+
+# TASK - Hells Kitchen
+
+# Obviously the words should be Caps, Every word should end with '!!!!', 
+# Any letter 'a' or 'A' should become '@', Any other vowel should become '*'.
+
+def gordon(a):
+	res = []
+	vowels = "eiou"
+	for i in a.split():
+		strng = ""
+		for e in i:
+			if e in vowels:
+				strng += "*"
+			elif e.lower() == "a":
+				strng += "@"
+			else:
+				strng += e.upper()
+		res.append(strng + "!!!!")
+	return " ".join(res)
+
+
+# TASK - Coding Meetup #11 - Higher-Order Functions Series - Find the average age
+
+# You will be given a sequence of objects representing data about 
+# developers who have signed up to attend the next coding meetup that 
+# you are organising.
+
+def get_average(lst): 
+	res = 0
+	for i in lst:
+		res += i["age"]
+	return round(res / len(lst))
+
+
+# TASK - Calculate mean and concatenate string
+
+# Return an array of length 2 with a[0] representing the mean of the 
+# ten integers as a floating point number. There will always be 10 
+# integers and 10 characters. Create a single string with the characters
+# and return it as a[1] while maintaining the original order.
+
+def mean(lst):
+	char = ""
+	count = 0
+	nums = 0
+	for i in lst:
+		if i.isalpha():
+			char += i
+		else:
+			nums += int(i)		
+	return [round(nums / 10, 1), char]
+
+
+# TASK - Pandemia
+
+# You would be given a map of the world in a type of string:
+# string s = "01000000X000X011X0X"
+# '0' : uninfected
+# '1' : infected
+# 'X' : ocean
+# Your task is to find the percentage of human population that got 
+# infected in the end.
+
+def infected(s):
+	if not "1" in s:
+		return 0
+	else:
+		res = []
+		for i in s.split("X"):
+			if "1" in i:
+				res.append("1" * len(i))
+			elif i == "":
+				res.append("X")
+			else:
+				res.append(i)
+		return 100 * "X".join(res).count("1") / (len(s) - s.count("X"))
+
+
+# TASK - Who's Online?
+
+# Given an input of an array of objects containing usernames, status 
+# and time since last activity (in mins), create a function to work out 
+# who is online, offline and away.
+
+def who_is_online(friends):
+	online = []
+	offline = []
+	away = []
+	for i in friends:
+		if i["status"] == "online":
+			if i["last_activity"] <= 10:
+				online.append(i["username"])
+			else:
+				away.append(i["username"])
+		else:
+			offline.append(i["username"])
+	res = {}
+	if len(online) > 0:
+		res["online"] = online
+	if len(offline) > 0:
+		res["offline"] = offline
+	if len(away) > 0:
+		res["away"] = away
+	return res
+	
+
+# TASK - Initialize my name
+
+# Some people just have a first name; some people have first and last 
+# names and some people have first, middle and last names.
+# You task is to initialize the middle names (if there is any).
+
+def initialize_names(name):
+	if len(name.split()) <= 2:
+		return name
+	elif len(name) > 2:
+		res = []
+		for i in name.split()[1:-1]:
+			res.append(i[0]  + ".")
+		return name.split()[0] + " " + " ".join(res) + " " + name.split()[-1]
+
+
+# TASK - Delete occurrences of an element if it occurs more than n times
+
+# Given a list lst and a number N, create a new list that contains each 
+# number of lst at most N times without reordering. For example if 
+# N = 2, and the input is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], 
+# drop the next [1,2] since this would lead to 1 and 2 being in the 
+# result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+
+def delete_nth(order,max_e):
+	d = {}
+	for i in order:
+		d[i] = 0
+	res = []
+	for e in order:
+		d[e] += 1
+		if d[e] <= max_e:
+			res.append(e)
+	return res
+
+
+# TASK - Backspaces in string
+
+# Assume "#" is like a backspace in string. This means that string 
+# "a#bc#d" actually is "bd"
+# Your task is to process a string with "#" symbols.
+
+def clean_string(s):
+	rev_string = s[::-1] # 'c##d#cba'
+	count = s.count("#")
+	res = ""
+	c = 0
+	for i in rev_string:
+		if i == "#":
+			c += 1
+		else:
+			if c == 0:
+				res += i
+			else:
+				c -= 1
+	return res[::-1] 
+
+
+# TASK - Highest Rank Number in an Array
+
+# Complete the method which returns the number which is most frequent 
+# in the given input array. If there is a tie for most frequent number, 
+# return the largest number among them.
+
+def highest_rank(arr):
+	d = {}
+	for i in arr:
+		d[i] = arr.count(i)
+	res_v = []
+	for i in d.values():
+		res_v.append(i)
+	res_k = []
+	for i in d.keys():
+		res_k.append(i)
+	if res_v.count(max(res_v)) > 1:
+		res_final = []
+		count = 0
+		maxim = max(res_v)
+		for i in res_v:
+			if i == maxim:
+				res_final.append(count)
+			count += 1
+		res_f = []
+		for i in range(len(res_final)):
+			res_f.append(res_k[res_final[i]])
+		return max(res_f)
+	else:
+		return res_k[res_v.index(max(res_v))]
+
+
+# TASK - Dictionary from two lists
+
+# There are two lists, possibly of different lengths. The first one 
+# consists of keys, the second one consists of values. Write a function 
+# createDict(keys, values) that returns a dictionary created from keys 
+# and values. If there are not enough values, the rest of keys should 
+# have a None (JS null)value. If there not enough keys, just ignore the 
+# rest of values.
+
+def createDict(keys, values):
+	res_d = {}
+	for i in range(len(keys)):
+		if i in range(len(values)):
+			res_d[keys[i]] = values[i]
+		else:
+			res_d[keys[i]] = None
+	return res_d
+
+
+# TASK - Return the closest number multiple of 10
+
+# Given a number return the closest number to it that is divisible by 10.
+
+def closest_multiple_10(i):
+	if (int(i) - (int(i) // 10) * 10) <= 4:
+		return (i // 10) * 10
+	else:
+		return (i // 10) * 10 + 10
+
+
+# TASK - C.Wars
+
+# Normally we have firstname, middle and the last name but there may be 
+# more than one word in a name like a South Indian one.
+# Similar to those kinda names we need to initialize the names.
+
+def initials(name):
+	rev_name = name.split()[::-1]
+	final_res = [rev_name[0].title()]
+	for i in rev_name[1:]:
+		final_res.append(i[0].upper() + ".")
+	return "".join(final_res[::-1])
+
+
+# TASK - Binary Calculator
+
+# Your task is to write the calculate function so that it will perform 
+# the arithmetic and the result returned should be a string representing
+# the binary result.
+
+def calculate(n1, n2, o):
+	res = 0
+	if o == "add":
+		res = int(n1, 2) + int(n2, 2)
+	elif o == "subtract":
+		res = int(n1, 2) - int(n2, 2)
+	elif o == "multiply":
+		res = int(n1, 2) * int(n2, 2)
+	if "-" in str(res):
+		return bin(res)[0] + bin(res)[3:]
+	else:
+		return bin(res)[2:]
+
+
+# TASK - Sudoku Solution Validator
+
+# Write a function validSolution/ValidateSolution/valid_solution() that 
+# accepts a 2D array representing a Sudoku board, and returns true if 
+# it is a valid solution, or false otherwise. The cells of the sudoku 
+# board may also contain 0's, which will represent empty cells. Boards 
+# containing one or more zeroes are considered to be invalid solutions.
+# The board is always 9 cells by 9 cells, and every cell only contains 
+# integers from 0 to 9.
+
+def valid_solution(board):
+	res = "123456789"
+	if len(board) != 9:
+		return False
+	else:
+		for line in board:
+			if 0 in line:
+				return False
+				break
+			else:
+				# verifying rows
+				if not "".join([str(i) for i in sorted(line)]) == res:
+					return False
+					break
+		# verifying columns
+		for i in range(9):
+			res_l = []
+			for e in range(9):
+				res_l.append(board[e][i])
+			if not "".join([str(i) for i in sorted(res_l)]) == res:
+				return False
+				break
+		# verifying 3x3 grids
+		col_range = 0
+		for e in range(3):
+			row_range = 0
+			for i in range(3):				
+				temp_res = []
+				for row in range(row_range, row_range + 3):
+					for col in range(col_range, col_range + 3):
+						temp_res.append(board[row][col])
+				if not "".join(str(i) for i in sorted(temp_res)) == res:
+					return False
+					break
+				row_range += 3	
+			col_range += 3
+		return True
+
+
+# TASK - Generate range of integers
+
+# Implement a function named generateRange(min, max, step), which takes 
+# three arguments and generates a range of integers from min to max, 
+# with the step. The first integer is the minimum value, the second is 
+# the maximum of the range and the third is the step. (min < max)
+
+def generate_range(min, max, step):
+	res = []
+	str = min
+	while str <= max:
+		res.append(str)
+		str += step
+	return res
+
+
+# TASK - Multiplication table for number
+
+# Your goal is to return multiplication table for number that is always 
+# an integer from 1 to 10.
+
+def multi_table(number):
+	res = []
+	for i in range(1, 11):
+		res.append("{} * {} = {}".format(i, number, i * number))
+	return "\n".join(res)
+
+
+# TASK - Do you speak "English"? 
+
+# Given a string of arbitrary length with any ascii characters. Write 
+# a function to determine whether the string contains the whole 
+# word "English".
+
+def sp_eng(sentence): 
+	return "english" in sentence.lower()
+
+
+# TASK - Pyramid Array
+
+# Write a function that when given a number >= 0, returns an Array of 
+# ascending length subarrays.
+
+def pyramid(n):
+	res = []
+	for i in range(1, n + 1):
+		temp = []
+		for e in range(i):
+			temp.append(1)
+		res.append(temp)
+	return res
+
+
+# TASK - Grouped by commas
+
+# Finish the solution so that it takes an input n (integer) and returns 
+# a string that is the decimal representation of the number grouped by 
+# commas after every 3 digits.
+
+def group_by_commas(n):
+	if n < 1000:
+		return str(n)
+	else:
+		res = ""
+		rev_n = str(n)[::-1]
+		for i in range(1, len(rev_n) + 1):
+			if i != 1:
+				if i % 3 == 0:
+					res += rev_n[i - 1]
+					res += ","
+				else:
+					res += rev_n[i - 1]
+			else:
+				res += rev_n[i - 1]
+		if len(rev_n) % 3 == 0:
+			return res[::-1][1:]
+		else:
+			return res[::-1]
+
+
+# TASK - Merge two sorted arrays into one
+
+# You are given two sorted arrays that both only contain integers. 
+# Your task is to find a way to merge them into a single one, sorted 
+# in asc order. Complete the function mergeArrays(arr1, arr2), where 
+# arr1 and arr2 are the original sorted arrays.
+
+def merge_arrays(arr1, arr2):
+	arr1.extend(arr2)
+	s = set(arr1)
+	return sorted(list(s))
+
+
+# TASK - Compare within margin
+
+# Create a function close_compare that accepts 3 parameters: a, b, 
+# and an optional margin. The function should return whether a is lower 
+# than, close to, or higher than b. 
+
+def close_compare(a, b, margin=0):
+	if margin >= abs(a - b):
+		return 0
+	else:
+		if a < b:
+			return -1
+		elif a > b:
+			return 1
+		else:
+			return 0
+
+
+# TASK - Holiday VI - Shark Pontoon
+
+# You are given 5 variables;
+# sharkDistance = distance from the shark to the pontoon. The shark 
+# will eat you if it reaches you before you escape to the pontoon.
+# sharkSpeed = how fast it can move in metres/second.
+# pontoonDistance = how far you need to swim to safety in metres.
+# youSpeed = how fast you can swim in metres/second.
+# dolphin = a boolean, if true, you can half the swimming speed of the 
+# shark as the dolphin will attack it.
+# The pontoon, you, and the shark are all aligned in one dimension.
+# You need to work out if the shark will get to you before you can get 
+# to the pontoon. To make it easier... as you do the mental calculations
+# in the water you either freeze when you realise you are dead, or swim 
+# when you realise you can make it!
+
+def shark(pontoon_distance, shark_distance, you_speed, shark_speed, dolphin):
+	attack = 0
+	if dolphin:
+		attack = round(shark_speed / 2, 1)
+	else:
+		attack = shark_speed
+	while pontoon_distance >= 0 and shark_distance >= 0:
+		pontoon_distance -= you_speed
+		shark_distance -= attack
+	if shark_distance <= 0:
+		return "Shark Bait!"
+	else:
+		return "Alive!"
+
+
+# TASK - Name on billboard 
+
+# You can print your name on a billboard ad. Find out how much it will 
+# cost you. Each letter has a default price of 30 pounds, but that can be 
+# different if you are given 2 parameters instead of 1.
+
+def billboard(name, price=30):
+	res = 0
+	for i in range(len(name)):
+		res += price
+	return res
+
+
+# TASK - Uncollapse Digits
+
+# You will be given a string of English digits "stuck" together
+# Your task is to split the string into separate digits
+
+def uncollapse(digits):
+	compare = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+	res = []
+	count = 0
+	for i in range(len(digits) + 1):
+		if digits[count:i] in compare:
+			res.append(digits[count:i])
+			count = i
+	return " ".join(res)
+
+
+# TASK - Price of Mangoes
+
+# There's a "3 for 2" (or "2+1" if you like) offer on mangoes. For a 
+# given quantity and price (per mango), calculate the total cost of the 
+# mangoes.
+
+def mango(quantity, price):
+	return (quantity - quantity // 3) * price
+
+
+# TASK - validate code with simple regex
+
+# Basic regex tasks. Write a function that takes in a numeric code of 
+# any length. The function should check if the code begins with 1, 2, 
+# or 3 and return true if so. Return false otherwise. 
+ 
+def validate_code(code):
+	return str(code)[0] in ["1","2","3"]
+
+
+# TASK - USD => CNY
+
+# Create a function that converts US dollars (USD) to Chinese Yuan 
+# (CNY) . The input is the amount of USD as an integer, and the output 
+# should be a string that states the amount of Yuan followed by 'Chinese 
+# Yuan'
+
+def usdcny(usd):
+	convert = str(round(usd * 6.75, 2))
+	if len(convert.split(".")[-1]) == 2:
+		return f"{convert} Chinese Yuan"
+	else:
+		return f"{convert}0 Chinese Yuan"
+
+
+# TASK - Is there a vowel in there?
+
+# Given an array of numbers, check if any of the numbers are the 
+# character codes for lower case vowels (a, e, i, o, u).
+# If they are, change the array value to a string of that vowel.
+# Return the resulting array.
+
+def is_vow(inp):
+    vowels = [ord("a"),ord("e"),ord("i"),ord("o"),ord("u")]
+    res = []
+    for i in inp:
+        if i in vowels:
+            res.append(chr(i))
+        else:
+            res.append(i)
+    return res
+
+
+# TASK - Fix the Bugs (Syntax) - My First Kata
+
+# In this Kata you should fix/create a program that returns the following 
+# values:
+# false/False if either a or b (or both) are not numbers
+# a % b plus b % a if both arguments are numbers
+
+def my_first_kata(a,b):
+    if not type(a) == int or not type(b) == int: return False
+    else:
+        return a % b + b % a
+
+
+# TASK - Man in the west
+
+# You need to check if there is gold in the bucket, and if so, return 
+# True/true. If not, return False/false.
+
+def check_the_bucket(bucket):
+    return "gold" in bucket
+
+
+# TASK - Coding Meetup #12 - Higher-Order Functions Series - Find GitHub admins
+
+# You will be given an array of objects representing data about 
+# developers who have signed up to attend the next coding meetup that 
+# you are organising. 
+
+def find_admin(lst, lang): 
+    return [i for i in lst if i['language'] == lang and i['githubAdmin'] == "yes"]
+
+
+# TASK - How many are smaller than me?
+
+# Write smaller(arr) that given an array arr, you have to return the 
+# amount of numbers that are smaller than arr[i] to the right.
+
+def smaller(arr):
+    res = []
+    for i in range(len(arr)):
+        count = 0
+        compare = arr[i]
+        for e in arr[i + 1:]:
+            if e < compare:
+                count += 1
+        res.append(count)
+    return res
+
+
+# TASK - How many consecutive numbers are needed?
+
+# Create the function consecutive(arr) that takes an array of integers 
+# and return the minimum number of integers needed to make the contents 
+# of arr consecutive from the lowest number to the highest number.
+
+def consecutive(arr):
+    if arr == []:
+        return 0
+    else:
+        res = 0
+        for i in range(min(arr), max(arr) + 1):
+            if i not in arr:
+                res += 1
+        return res
+
+
+# TASK - SillyCASE
+
+# Create a function that takes a string and returns that string with 
+# the first half lowercased and the last half uppercased.
+
+def sillycase(silly):
+    if len(silly) % 2 == 0:
+        return silly[:len(silly) // 2].lower() + silly[len(silly) // 2:].upper()
+    else:
+        return silly[:len(silly) // 2 + 1].lower() + silly[len(silly) // 2 + 1:].upper()
+
+
+# TASK - Simple Fun #136: Missing Values
+
+#  You are given a sequence of positive ints where every element appears
+# three times, except one that appears only once (let's call it x) and 
+# one that appears only twice (let's call it y).
+# Your task is to find x * x * y.
+
+def missing_values(seq): 
+    x = 0
+    y = 0
+    for i in seq:
+        if seq.count(i) == 1:
+            x = i
+        elif seq.count(i) == 2:
+            y = i
+    return x * x * y
+
+
+# TASK - How many times should I go?
+
+# Lot of museum allow you to be a member, for a certain amount 
+# amount_by_year you can have unlimitted acces to the museum.
+# In this kata you should complete a function in order to know after 
+# how many visit it will be better to take an annual pass. The function 
+# take 2 arguments annual_price and individual_price.
+
+def how_many_times(annual_price, individual_price):
+    res = 0
+    count = 0
+    while res < annual_price:
+        res += individual_price
+        count += 1
+    return count
+
+
+# TASK - Character Counter
+
+# You are going to be given a word. Your job will be to make sure that 
+# each character in that word has the exact same number of occurrences. 
+# You will return true if it is valid, or false if it is not.
+
+def validate_word(word):
+	res = {}
+	result = True
+	for letter in word.lower():
+		res[letter] = word.lower().count(letter)
+	return len(set(res.values())) == 1
+
+
+# TASK - Histogram - H1
+
+# You will be passed the dice value frequencies, and your task is to 
+# write the code to return a string representing a histogram, so that 
+# when it is printed it has the same format as the example.
+
+def histogram(results):
+    res = []
+    for i in range(len(results)):
+        res.append(f"{i + 1}|{'#' * results[i]} {results[i]}" if results[i] != 0 else f"{i + 1}|")
+    return "\n".join(res[::-1]) + "\n"
+
+
+# TASK - Absent vowel
+
+# Your job is to figure out the index of which vowel is missing from a 
+# given string 
+
+def absent_vowel(x): 
+    vowels = "aeiou"
+    for letter in vowels:
+        if not letter in x:
+            return vowels.index(letter)
+
+
+# TASK - Thinkful - String Drills: Hello, World
+
+# Complete the function body for this hello() function so that it takes 
+# one argument (person, a string) and returns a string saying hello to 
+# that person. 
+
+def hello(name):
+    return f"Hello, {name}"
+
+
+# TASK - Nickname Generator
+
+# Write a function, nicknameGenerator that takes a string name as an 
+# argument and returns the first 3 or 4 letters as a nickname.
+
+def nickname_generator(name):
+    vowels = "aeiou"
+    return (name[:4] if name[2] in vowels else name[:3]) if len(name) > 3 else "Error: Name too short"
+
+
+# TASK - Find the calculation type
+
+# You have to create a function calcType, which receives 3 arguments: 
+# 2 numbers, and the result of an unknown operation performed on them 
+# (also a number). 
+
+def calc_type(a, b, res):
+    if a + b == res:
+        return "addition"
+    elif a - b == res:
+        return "subtraction"
+    elif a * b  == res:
+        return "multiplication"
+    else:
+        return "division"
+
+
+# TASK - Failed Sort - Bug Fixing #4 
+
+# Your task is to fix the sortArray function to sort all numbers in 
+# ascending order 
+
+def sort_array(value):
+    return "".join(sorted([i for i in value]))
+
+
+# TASK - Find the Missing Number
+
+# You are given an unsorted array containing all the integers from 0 to 
+# 100 inclusively. However, one number is missing. Write a function to 
+# find and return this number. 
+
+def missing_no(nums):   
+    compare = 0
+    for i in sorted(nums):
+        if compare != i:
+            return compare
+            break
+        else:
+            compare += 1
+    if max(nums) != 100:
+	    return 100
+
+
+# TASK - All Star Code Challenge #1 
+
+# Write a function, called sumPPG, that takes two NBA player 
+# objects/struct/Hash/Dict/Class and sums their PPG 
+
+def sum_ppg(player_one, player_two):
+    return player_one['ppg'] + player_two['ppg']
+
+
+# TASK - Invalid Input - Error Handling #1
+
+# Your task is to implement a function which takes a string as input 
+# and return an object containing the properties vowels and consonants. 
+# The vowels property must contain the total count of vowels 
+# {a,e,i,o,u}, and the total count of consonants {a,..,z} - {a,e,i,o,u}.
+# Handle invalid input and don't forget to return valid ones.
+
+def get_count(*words):
+	res = {"vowels":0, "consonants":0}
+	if words:
+		try:
+			for word in words:
+				if type(word) == str:
+					for letter in word:
+						if letter.isalpha():
+							if letter.lower() in "aeiou":
+								res["vowels"] += 1
+							else:
+								res["consonants"] += 1
+				else:
+					return res
+			return res
+		except:
+			return res
+	else:
+		return res
